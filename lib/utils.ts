@@ -3,31 +3,36 @@ export const categoryMenuList = [
     id: 1,
     title: "Single Layer PCBs",
     icon: "🔧",
-    href: "/shop/single-layer-pcbs"
+    href: "/shop/single-layer-pcbs",
+    categoryId: "cat_1753894634025_vzk9y7yae"
   },
   {
     id: 2,
     title: "Multi Layer PCBs",
     icon: "⚙️",
-    href: "/shop/multi-layer-pcbs"
+    href: "/shop/multi-layer-pcbs",
+    categoryId: "cat_1753894657262_vt9ovggw5"
   },
   {
     id: 3,
     title: "Flex PCBs",
     icon: "🔌",
-    href: "/shop/flex-pcbs"
+    href: "/shop/flex-pcbs",
+    categoryId: "cat_1753894667307_1p6i1fljb"
   },
   {
     id: 4,
     title: "Rigid-Flex PCBs",
     icon: "🛠️",
-    href: "/shop/rigid-flex-pcbs"
+    href: "/shop/rigid-flex-pcbs",
+    categoryId: "cat_1753894678072_zydbmq0m4" // Add correct ID if available
   },
   {
     id: 5,
     title: "Prototype PCBs",
     icon: "⚡",
-    href: "/shop/prototype-pcbs"
+    href: "/shop/prototype-pcbs",
+    categoryId: "cat_1753894689818_mv1zqvuzs"
   },
 ];
 

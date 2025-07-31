@@ -6,24 +6,26 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const limit = searchParams.get('limit');
     const mode = searchParams.get('mode');
-    
     // For price filtering
     const priceMax = searchParams.get('filters[price][$lte]');
     const priceMin = searchParams.get('filters[price][$gte]');
-    const category = searchParams.get('filters[category_id][$eq]');
+    const category = searchParams.get('filters[categoryId][$eq]');
+    const categoryId = searchParams.get('categoryId');
     const page = parseInt(searchParams.get('page') || '1');
     const pageSize = 12;
 
     let whereClause: any = {};
-    
+
     // Build filter conditions
     if (priceMax || priceMin) {
       whereClause.price = {};
       if (priceMax) whereClause.price.lte = parseFloat(priceMax);
       if (priceMin) whereClause.price.gte = parseFloat(priceMin);
     }
-    
-    if (category) {
+
+    if (categoryId) {
+      whereClause.categoryId = categoryId;
+    } else if (category) {
       whereClause.categoryId = category;
     }
 

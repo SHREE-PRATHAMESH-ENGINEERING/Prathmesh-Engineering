@@ -27,9 +27,10 @@ const Filters = () => {
   });
   const { sortBy } = useSortStore();
 
+  const searchParams = useSearchParams();
   useEffect(() => {
-    const params = new URLSearchParams();
-    // setting URL params and after that putting them all in URL
+    const params = new URLSearchParams(searchParams?.toString() || "");
+    // Overwrite filter params, but preserve others (like categoryId)
     params.set("outOfStock", inputCategory.outOfStock.isChecked.toString());
     params.set("inStock", inputCategory.inStock.isChecked.toString());
     params.set("rating", inputCategory.ratingFilter.value.toString());
@@ -37,7 +38,7 @@ const Filters = () => {
     params.set("sort", sortBy);
     params.set("page", page.toString());
     replace(`${pathname}?${params}`);
-  }, [inputCategory, sortBy, page, pathname, replace]);
+  }, [inputCategory, sortBy, page, pathname, replace, searchParams]);
 
   return (
     <div>

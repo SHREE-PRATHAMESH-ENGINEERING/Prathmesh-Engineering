@@ -56,9 +56,15 @@ const Products = async ({ slug }: any) => {
     whereClause.inStock = { gt: 0 };
   }
   
-  // Category filter
+  // Category filter from dynamic route or query param
   if (slug?.params?.slug?.length > 0) {
-    whereClause.categoryId = slug.params.slug;
+    if (Array.isArray(slug.params.slug)) {
+      whereClause.categoryId = { in: slug.params.slug };
+    } else {
+      whereClause.categoryId = slug.params.slug;
+    }
+  } else if (slug?.searchParams?.categoryId) {
+    whereClause.categoryId = slug.searchParams.categoryId;
   }
   
   // Get products with filters
