@@ -58,23 +58,35 @@ export const incentives = [
 ];
 
 export const navigation = {
-  sale: [
-    { name: "PCB Prototypes", href: "#" },
-    { name: "Volume Discounts", href: "#" },
+  quicklinks: [
+    { name: "Home", href: "#" },
+    { name: "Products", href: "#" },
+    { name: "Contact us", href: "#" },
+    { name: "Check order", href: "#" },
   ],
-  about: [
-    { name: "About Us", href: "#" },
-    { name: "Quality Standards", href: "#" },
-  ],
-  buy: [
-    { name: "PCB Design Guidelines", href: "#" },
-    { name: "Shipping Info", href: "#" },
-  ],
-  help: [
-    { name: "Technical Support", href: "#" },
-    { name: "PCB FAQ", href: "#" },
+  ourcompany: [
+    { name: "About us", href: "#" },
+    { name: "Privacy policy", href: "#" },
+    { name: "Return policy", href: "#" },
+    { name: "Terms & conditions", href: "#" },
   ],
 };
+
+export const brands = [
+  { name: 'Intel', color: '#0071c5' },
+  { name: 'AMD', color: '#ed1c24' },
+  { name: 'NVIDIA', color: '#76b900' },
+  { name: 'Qualcomm', color: '#3253dc' },
+  { name: 'Broadcom', color: '#cc092f' },
+  { name: 'Texas Instruments', color: '#cc0000' },
+  { name: 'Analog Devices', color: '#0066cc' },
+  { name: 'Microchip', color: '#ee3124' },
+  { name: 'STMicroelectronics', color: '#03234b' },
+  { name: 'Infineon', color: '#1a1a1a' },
+  { name: 'NXP', color: '#ff6600' },
+  { name: 'Xilinx', color: '#ee3124' },
+];
+
 
 export const isValidNameOrLastname = (input: string) => {
   // Simple name or lastname regex format check
@@ -85,25 +97,5 @@ export const isValidNameOrLastname = (input: string) => {
 export const isValidEmailAddressFormat = (input: string) => {
   // simple email address format check
   const regex = /^\S+@\S+\.\S+$/;
-  return regex.test(input);
-};
-
-export const isValidCardNumber = (input: string) => {
-  // Remove all non-digit characters
-  const cleanedInput = input.replace(/[^0-9]/g, "");
-  // test for credit card number between 13 and 19 characters
-  const regex = /^\d{13,19}$/;
-  return regex.test(cleanedInput);
-}
-
-export const isValidCreditCardExpirationDate = (input: string) => {
-  // simple expiration date format check
-  const regex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
-  return regex.test(input);
-};
-
-export const isValidCreditCardCVVOrCVC = (input: string) => {
-  // simple CVV or CVC format check
-  const regex = /^[0-9]{3,4}$/;
   return regex.test(input);
 };

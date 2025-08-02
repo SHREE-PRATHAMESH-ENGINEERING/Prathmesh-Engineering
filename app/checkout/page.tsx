@@ -5,7 +5,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { isValidCardNumber, isValidCreditCardCVVOrCVC, isValidCreditCardExpirationDate, isValidEmailAddressFormat, isValidNameOrLastname } from "@/lib/utils";
+import { isValidEmailAddressFormat, isValidNameOrLastname } from "@/lib/utils";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const CheckoutPage = () => {
   const [checkoutForm, setCheckoutForm] = useState({
@@ -13,10 +20,6 @@ const CheckoutPage = () => {
     lastname: "",
     phone: "",
     email: "",
-    cardName: "",
-    cardNumber: "",
-    expirationDate: "",
-    cvc: "",
     company: "",
     adress: "",
     apartment: "",
@@ -34,9 +37,6 @@ const CheckoutPage = () => {
       checkoutForm.lastname.length > 0 &&
       checkoutForm.phone.length > 0 &&
       checkoutForm.email.length > 0 &&
-      checkoutForm.cardName.length > 0 &&
-      checkoutForm.expirationDate.length > 0 &&
-      checkoutForm.cvc.length > 0 &&
       checkoutForm.company.length > 0 &&
       checkoutForm.adress.length > 0 &&
       checkoutForm.apartment.length > 0 &&
@@ -59,30 +59,87 @@ const CheckoutPage = () => {
         return;
       }
 
-      if (!isValidNameOrLastname(checkoutForm.cardName)) {
-        toast.error("You entered invalid format for card name");
-        return;
-      }
+      // Calculate total with shipping and tax
+      const finalTotal = Math.round(total + total / 5 + 5);
+      
+      // Create Razorpay order first
+      try {
+        const razorpayResponse = await fetch("/api/razorpay", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: finalTotal,
+            currency: "INR",
+          }),
+        });
 
-      if (!isValidCardNumber(checkoutForm.cardNumber)) {
-        toast.error("You entered invalid format for credit card number");
-        return;
-      }
+        const razorpayData = await razorpayResponse.json();
 
-      if (!isValidCreditCardExpirationDate(checkoutForm.expirationDate)) {
-        toast.error(
-          "You entered invalid format for credit card expiration date"
-        );
-        return;
-      }
+        if (!razorpayResponse.ok) {
+          toast.error("Failed to initialize payment");
+          return;
+        }
 
-      if (!isValidCreditCardCVVOrCVC(checkoutForm.cvc)) {
-        toast.error("You entered invalid format for credit card CVC or CVV");
-        return;
-      }
+        // Initialize Razorpay payment
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "your_razorpay_key_id",
+          amount: razorpayData.amount,
+          currency: "INR",
+          name: "Electronic Store",
+          description: "Purchase from Electronic Store",
+          order_id: razorpayData.orderId,
+          handler: async function (response: any) {
+            // Verify payment
+            try {
+              const verifyResponse = await fetch("/api/verify-payment", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                }),
+              });
 
-      // sending API request for creating a order
-      const response = fetch("/api/orders", {
+              const verifyData = await verifyResponse.json();
+
+              if (verifyData.success) {
+                // Payment verified, create order in database
+                await createOrder();
+              } else {
+                toast.error("Payment verification failed");
+              }
+            } catch (error) {
+              toast.error("Payment verification failed");
+            }
+          },
+          prefill: {
+            name: `${checkoutForm.name} ${checkoutForm.lastname}`,
+            email: checkoutForm.email,
+            contact: checkoutForm.phone,
+          },
+          theme: {
+            color: "#5068a4",
+          },
+        };
+
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      } catch (error) {
+        toast.error("Failed to initialize payment");
+      }
+    } else {
+      toast.error("You need to enter values in the input fields");
+    }
+  };
+
+  const createOrder = async () => {
+    try {
+      const response = await fetch("/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,48 +153,43 @@ const CheckoutPage = () => {
           adress: checkoutForm.adress,
           apartment: checkoutForm.apartment,
           postalCode: checkoutForm.postalCode,
-          status: "processing",
+          status: "paid",
           total: total,
           city: checkoutForm.city,
           country: checkoutForm.country,
           orderNotice: checkoutForm.orderNotice,
         }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const orderId: string = data.id;
-          // for every product in the order we are calling addOrderProduct function that adds fields to the customer_order_product table
-          for (let i = 0; i < products.length; i++) {
-            let productId: string = products[i].id;
-            addOrderProduct(orderId, products[i].id, products[i].amount);
-          }
-        })
-        .then(() => {
-          setCheckoutForm({
-            name: "",
-            lastname: "",
-            phone: "",
-            email: "",
-            cardName: "",
-            cardNumber: "",
-            expirationDate: "",
-            cvc: "",
-            company: "",
-            adress: "",
-            apartment: "",
-            city: "",
-            country: "",
-            postalCode: "",
-            orderNotice: "",
-          });
-          clearCart();
-          toast.success("Order created successfuly");
-          setTimeout(() => {
-            router.push("/");
-          }, 1000);
-        });
-    } else {
-      toast.error("You need to enter values in the input fields");
+      });
+
+      const data = await response.json();
+      const orderId: string = data.id;
+      
+      // Add products to order
+      for (let i = 0; i < products.length; i++) {
+        await addOrderProduct(orderId, products[i].id, products[i].amount);
+      }
+
+      // Reset form and cart
+      setCheckoutForm({
+        name: "",
+        lastname: "",
+        phone: "",
+        email: "",
+        company: "",
+        adress: "",
+        apartment: "",
+        city: "",
+        country: "",
+        postalCode: "",
+        orderNotice: "",
+      });
+      clearCart();
+      toast.success("Order created successfully! Payment completed.");
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
+    } catch (error) {
+      toast.error("Failed to create order");
     }
   };
 
@@ -170,8 +222,13 @@ const CheckoutPage = () => {
   }, [products.length, router]);
 
   return (
-    <div className="bg-white">
-      <SectionTitle title="Checkout" path="Home | Cart | Checkout" />
+    <>
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="lazyOnload"
+      />
+      <div className="bg-white">
+        <SectionTitle title="Checkout" path="Home | Cart | Checkout" />
       {/* Background color split screen for large screens */}
       <div
         className="hidden h-full w-1/2 bg-white lg:block"
@@ -362,116 +419,6 @@ const CheckoutPage = () => {
               </div>
             </section>
 
-            <section aria-labelledby="payment-heading" className="mt-10">
-              <h2
-                id="payment-heading"
-                className="text-lg font-medium text-gray-900"
-              >
-                Payment details
-              </h2>
-
-              <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
-                <div className="col-span-3 sm:col-span-4">
-                  <label
-                    htmlFor="name-on-card"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Name on card
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="name-on-card"
-                      name="name-on-card"
-                      autoComplete="cc-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      value={checkoutForm.cardName}
-                      onChange={(e) =>
-                        setCheckoutForm({
-                          ...checkoutForm,
-                          cardName: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div className="col-span-3 sm:col-span-4">
-                  <label
-                    htmlFor="card-number"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Card number
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="card-number"
-                      name="card-number"
-                      autoComplete="cc-number"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      value={checkoutForm.cardNumber}
-                      onChange={(e) =>
-                        setCheckoutForm({
-                          ...checkoutForm,
-                          cardNumber: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div className="col-span-2 sm:col-span-3">
-                  <label
-                    htmlFor="expiration-date"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Expiration date (MM/YY)
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="expiration-date"
-                      id="expiration-date"
-                      autoComplete="cc-exp"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      value={checkoutForm.expirationDate}
-                      onChange={(e) =>
-                        setCheckoutForm({
-                          ...checkoutForm,
-                          expirationDate: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="cvc"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    CVC or CVV
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="cvc"
-                      id="cvc"
-                      autoComplete="csc"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      value={checkoutForm.cvc}
-                      onChange={(e) =>
-                        setCheckoutForm({
-                          ...checkoutForm,
-                          cvc: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
 
             <section aria-labelledby="shipping-heading" className="mt-10">
               <h2
@@ -656,19 +603,20 @@ const CheckoutPage = () => {
               </div>
             </section>
 
-            <div className="mt-10 border-t border-gray-200 pt-6 ml-0">
+            <div className="mt-10 mb-10 border-t border-gray-200 pt-6 ml-0">
               <button
                 type="button"
                 onClick={makePurchase}
                 className="w-full rounded-md border border-transparent bg-blue-500 px-20 py-2 text-lg font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last"
               >
-                Pay Now
+                Pay Now with Razorpay
               </button>
             </div>
           </div>
         </form>
       </main>
-    </div>
+      </div>
+    </>
   );
 };
 

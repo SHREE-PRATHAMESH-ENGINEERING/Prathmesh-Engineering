@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
         country: body.country,
         orderNotice: body.orderNotice || '',
         status: body.status || 'pending',
-        total: parseInt(body.total)
+        total: parseFloat(body.total)
       }
     });
 

@@ -1,0 +1,85 @@
+"use client";
+import React from 'react';
+import { brands } from '@/lib/utils';
+
+const BrandsStrip = () => {
+
+  return (
+    <div className="py-16 pb-12 overflow-hidden bg-[#FAF9EE]">
+      <div className="max-w-screen-2xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-4">
+            Trusted by Leading Brands
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We partner with industry leaders to deliver cutting-edge PCB solutions for the world's most innovative electronic products.
+          </p>
+        </div>
+        
+        {/* Moving strip container */}
+        <div className="relative">
+          <div className="flex animate-scroll space-x-8 items-center">
+            {/* First set of brands */}
+            {brands.map((brand, index) => (
+              <div 
+                key={`first-${index}`}
+                className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
+              >
+                <div className="text-center px-4">
+                  <div 
+                    className="w-12 h-12 rounded-full mx-auto flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: brand.color }}
+                  >
+                    {brand.name.charAt(0)}
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            {/* Duplicate set for seamless loop */}
+            {brands.map((brand, index) => (
+              <div 
+                key={`second-${index}`}
+                className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
+              >
+                <div className="text-center px-4">
+                  <div 
+                    className="w-12 h-12 rounded-full mx-auto flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: brand.color }}
+                  >
+                    {brand.name.charAt(0)}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Gradient overlays for smooth edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#FAF9EE] to-transparent pointer-events-none z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#FAF9EE] to-transparent pointer-events-none z-10"></div>
+        </div>
+      </div>
+      
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default BrandsStrip;
