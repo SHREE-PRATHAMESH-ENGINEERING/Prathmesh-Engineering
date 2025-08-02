@@ -1,4 +1,4 @@
-import { CategoryMenu, Hero, IntroducingSection, ProductsSection, BrandsStrip } from "@/components";
+import { CategoryMenu, Hero, IntroducingSection, ProductsSection, BrandsStrip, Testimonials } from "@/components";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
     <IntroducingSection />
     <CategoryMenu />
     <ProductsSection />
+    <Testimonials />
     </>
   );
 }

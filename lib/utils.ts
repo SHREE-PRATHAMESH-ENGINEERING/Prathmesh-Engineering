@@ -87,6 +87,35 @@ export const brands = [
   { name: 'Xilinx', color: '#ee3124' },
 ];
 
+export const testimonials = [
+  {
+    id: 1,
+    name: "John Mitchell",
+    position: "Senior Hardware Engineer",
+    company: "TechCorp Industries",
+    content: "Outstanding PCB quality and fast turnaround time. Shree Prathamesh Engineering has been our go-to partner for all custom PCB solutions. Their attention to detail and professional service is unmatched.",
+    rating: 5,
+    avatar: "JM"
+  },
+  {
+    id: 2,
+    name: "Sarah Chen",
+    position: "Product Development Manager",
+    company: "InnovateTech Solutions",
+    content: "The precision and reliability of their PCBs have significantly improved our product performance. Their technical expertise and customer support made our complex project a success.",
+    rating: 4,
+    avatar: "SC"
+  },
+  {
+    id: 3,
+    name: "David Rodriguez",
+    position: "Electronics Design Lead",
+    company: "Future Electronics",
+    content: "Exceptional quality control and competitive pricing. We've been working with them for over two years, and they consistently deliver high-quality PCBs that meet our exact specifications.",
+    rating: 5,
+    avatar: "DR"
+  }
+];
 
 export const isValidNameOrLastname = (input: string) => {
   // Simple name or lastname regex format check

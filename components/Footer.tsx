@@ -1,8 +1,26 @@
+"use client";
 import { navigation } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
+  const handleQuickLinkClick = (linkName: string, href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (linkName === "Home") {
+      window.location.reload();
+    } else if (linkName === "Products") {
+      router.push("/shop");
+    } else {
+      if (href !== "#") {
+        router.push(href);
+      }
+    }
+  };
+
   return (
     <footer className="bg-white border-t-2 border-[#5068a4] relative overflow-hidden" aria-labelledby="footer-heading">
       
@@ -33,7 +51,8 @@ const Footer = () => {
                   <li key={item.name} className="footer-link" style={{animationDelay: `${index * 0.1}s`}}>
                     <a
                       href={item.href}
-                      className="text-sm leading-6 text-black hover:text-[#5068a4] transition-colors duration-300 relative group inline-block"
+                      onClick={(e) => handleQuickLinkClick(item.name, item.href, e)}
+                      className="text-sm leading-6 text-black hover:text-[#5068a4] transition-colors duration-300 relative group inline-block cursor-pointer"
                     >
                       {item.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5068a4] group-hover:w-full transition-all duration-300"></span>
