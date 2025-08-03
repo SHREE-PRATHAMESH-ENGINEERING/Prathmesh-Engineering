@@ -32,9 +32,6 @@ const BrandsStrip = () => {
             {brand.name.charAt(0)}
           </div>
         )}
-        <div className="mt-2 text-xs font-medium text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
-          {brand.name}
-        </div>
       </div>
     );
   };
@@ -51,10 +48,9 @@ const BrandsStrip = () => {
           </p>
         </div>
         
-        {/* Moving strip container */}
         <div className="relative">
           <div className="flex animate-scroll space-x-8 items-center">
-            {/* First set of brands */}
+
             {brands.map((brand, index) => (
               <div 
                 key={`first-${index}`}
@@ -64,20 +60,15 @@ const BrandsStrip = () => {
               </div>
             ))}
             
-            {/* Duplicate set for seamless loop */}
             {brands.map((brand, index) => (
               <div 
                 key={`second-${index}`}
-                className="flex-shrink-0 w-40 h-24 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
+                className="flex-shrink-0 w-40 h-24 flex items-center justify-center hover:rounded-2xl hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
               >
                 {renderBrandContent(brand, index)}
               </div>
             ))}
           </div>
-          
-          {/* Gradient overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#FAF9EE] to-transparent pointer-events-none z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#FAF9EE] to-transparent pointer-events-none z-10"></div>
         </div>
       </div>
       

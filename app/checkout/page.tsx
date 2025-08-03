@@ -17,7 +17,6 @@ declare global {
 const CheckoutPage = () => {
   const [checkoutForm, setCheckoutForm] = useState({
     name: "",
-    lastname: "",
     phone: "",
     email: "",
     company: "",
@@ -34,7 +33,6 @@ const CheckoutPage = () => {
   const makePurchase = async () => {
     if (
       checkoutForm.name.length > 0 &&
-      checkoutForm.lastname.length > 0 &&
       checkoutForm.phone.length > 0 &&
       checkoutForm.email.length > 0 &&
       checkoutForm.company.length > 0 &&
@@ -49,20 +47,13 @@ const CheckoutPage = () => {
         return;
       }
 
-      if (!isValidNameOrLastname(checkoutForm.lastname)) {
-        toast.error("You entered invalid format for lastname");
-        return;
-      }
-
       if (!isValidEmailAddressFormat(checkoutForm.email)) {
         toast.error("You entered invalid format for email address");
         return;
       }
 
-      // Calculate total with shipping and tax
       const finalTotal = Math.round(total + total / 5 + 5);
-      
-      // Create Razorpay order first
+
       try {
         const razorpayResponse = await fetch("/api/razorpay", {
           method: "POST",
@@ -82,7 +73,6 @@ const CheckoutPage = () => {
           return;
         }
 
-        // Initialize Razorpay payment
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "your_razorpay_key_id",
           amount: razorpayData.amount,
@@ -91,7 +81,7 @@ const CheckoutPage = () => {
           description: "Purchase from Electronic Store",
           order_id: razorpayData.orderId,
           handler: async function (response: any) {
-            // Verify payment
+
             try {
               const verifyResponse = await fetch("/api/verify-payment", {
                 method: "POST",
@@ -108,7 +98,6 @@ const CheckoutPage = () => {
               const verifyData = await verifyResponse.json();
 
               if (verifyData.success) {
-                // Payment verified, create order in database
                 await createOrder();
               } else {
                 toast.error("Payment verification failed");
@@ -118,7 +107,7 @@ const CheckoutPage = () => {
             }
           },
           prefill: {
-            name: `${checkoutForm.name} ${checkoutForm.lastname}`,
+            name: checkoutForm.name,
             email: checkoutForm.email,
             contact: checkoutForm.phone,
           },
@@ -146,7 +135,6 @@ const CheckoutPage = () => {
         },
         body: JSON.stringify({
           name: checkoutForm.name,
-          lastname: checkoutForm.lastname,
           phone: checkoutForm.phone,
           email: checkoutForm.email,
           company: checkoutForm.company,
@@ -164,15 +152,12 @@ const CheckoutPage = () => {
       const data = await response.json();
       const orderId: string = data.id;
       
-      // Add products to order
       for (let i = 0; i < products.length; i++) {
         await addOrderProduct(orderId, products[i].id, products[i].amount);
       }
 
-      // Reset form and cart
       setCheckoutForm({
         name: "",
-        lastname: "",
         phone: "",
         email: "",
         company: "",
@@ -198,7 +183,7 @@ const CheckoutPage = () => {
     productId: string,
     productQuantity: number
   ) => {
-    // sending API POST request for the table customer_order_product that does many to many relatioship for order and product
+    
     const response = await fetch("/api/order-product", {
       method: "POST", // or 'PUT'
       headers: {
@@ -229,7 +214,7 @@ const CheckoutPage = () => {
       />
       <div className="bg-white">
         <SectionTitle title="Checkout" path="Home | Cart | Checkout" />
-      {/* Background color split screen for large screens */}
+      
       <div
         className="hidden h-full w-1/2 bg-white lg:block"
         aria-hidden="true"
@@ -275,7 +260,7 @@ const CheckoutPage = () => {
                     <p className="text-gray-500">x{product?.amount}</p>
                   </div>
                   <p className="flex-none text-base font-medium">
-                    ${product?.price}
+                    ₹{product?.price}
                   </p>
                   <p></p>
                 </li>
@@ -285,23 +270,23 @@ const CheckoutPage = () => {
             <dl className="hidden space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
               <div className="flex items-center justify-between">
                 <dt className="text-gray-600">Subtotal</dt>
-                <dd>${total}</dd>
+                <dd>₹{total}</dd>
               </div>
 
               <div className="flex items-center justify-between">
                 <dt className="text-gray-600">Shipping</dt>
-                <dd>$5</dd>
+                <dd>₹5</dd>
               </div>
 
               <div className="flex items-center justify-between">
                 <dt className="text-gray-600">Taxes</dt>
-                <dd>${total / 5}</dd>
+                <dd>₹{total / 5}</dd>
               </div>
 
               <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                 <dt className="text-base">Total</dt>
                 <dd className="text-base">
-                  ${total === 0 ? 0 : Math.round(total + total / 5 + 5)}
+                  ₹{total === 0 ? 0 : Math.round(total + total / 5 + 5)}
                 </dd>
               </div>
             </dl>
@@ -337,31 +322,6 @@ const CheckoutPage = () => {
                     type="text"
                     id="name-input"
                     name="name-input"
-                    autoComplete="text"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label
-                  htmlFor="lastname-input"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Lastname
-                </label>
-                <div className="mt-1">
-                  <input
-                    value={checkoutForm.lastname}
-                    onChange={(e) =>
-                      setCheckoutForm({
-                        ...checkoutForm,
-                        lastname: e.target.value,
-                      })
-                    }
-                    type="text"
-                    id="lastname-input"
-                    name="lastname-input"
                     autoComplete="text"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
@@ -607,9 +567,9 @@ const CheckoutPage = () => {
               <button
                 type="button"
                 onClick={makePurchase}
-                className="w-full rounded-md border border-transparent bg-blue-500 px-20 py-2 text-lg font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last"
+                className="w-full btn-pcb-hero text-md py-4 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                Pay Now with Razorpay
+                Proceed to Payment
               </button>
             </div>
           </div>

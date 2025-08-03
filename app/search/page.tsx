@@ -54,7 +54,3 @@ const SearchPage = ({ searchParams: { search } }: Props) => {
 };
 
 export default SearchPage;
-
-/*
-
-*/

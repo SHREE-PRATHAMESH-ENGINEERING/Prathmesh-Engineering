@@ -29,7 +29,7 @@ const AddToCartSingleProductBtn = ({ product, quantityCount } : SingleProductBtn
         </svg>
         Add to cart
       </span>
-      {/* Circuit effect on hover */}
+
       <div className="absolute top-1/2 left-2 w-8 h-0.5 bg-white opacity-0 group-hover:opacity-40 transition-opacity duration-300 transform -translate-y-1/2"></div>
       <div className="absolute top-1/2 right-2 w-6 h-0.5 bg-white opacity-0 group-hover:opacity-30 transition-opacity duration-300 transform -translate-y-1/2"></div>
     </button>

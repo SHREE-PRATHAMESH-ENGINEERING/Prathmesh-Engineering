@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import RatingPercentElement from "./RatingPercentElement";
-import SingleReview from "./SingleReview";
 import { formatCategoryName } from "@/utils/categoryFormating";
 
 const ProductTabs = ({ product }: { product: Product }) => {
@@ -41,12 +39,10 @@ const ProductTabs = ({ product }: { product: Product }) => {
           <div className="overflow-x-auto">
             <table className="table text-xl text-center max-[500px]:text-base">
               <tbody>
-                {/* row 1 */}
                 <tr>
                   <th>Manufacturer:</th>
                   <td>{product?.manufacturer}</td>
                 </tr>
-                {/* row 2 */}
                 <tr>
                   <th>Category:</th>
                   <td>
@@ -55,7 +51,6 @@ const ProductTabs = ({ product }: { product: Product }) => {
                       : "No category"}
                   </td>
                 </tr>
-                {/* row 3 */}
                 <tr>
                   <th>Color:</th>
                   <td>Silver, LightSlateGray, Blue</td>

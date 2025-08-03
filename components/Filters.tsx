@@ -16,7 +16,6 @@ const Filters = () => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  // getting current page number from Zustand store
   const { page } = usePaginationStore();
 
   const [inputCategory, setInputCategory] = useState<InputCategory>({
@@ -30,7 +29,7 @@ const Filters = () => {
   const searchParams = useSearchParams();
   useEffect(() => {
     const params = new URLSearchParams(searchParams?.toString() || "");
-    // Overwrite filter params, but preserve others (like categoryId)
+    
     params.set("outOfStock", inputCategory.outOfStock.isChecked.toString());
     params.set("inStock", inputCategory.inStock.isChecked.toString());
     params.set("rating", inputCategory.ratingFilter.value.toString());

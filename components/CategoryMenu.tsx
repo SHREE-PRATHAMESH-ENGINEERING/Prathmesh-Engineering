@@ -1,10 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import CategoryItem from "./CategoryItem";
 import { categoryMenuList } from "@/lib/utils";
 import Heading from "./Heading";
-
-import ProductItem from "./ProductItem";
 
 const CategoryMenu = () => {
   const handleCategoryClick = (categoryId: string) => {

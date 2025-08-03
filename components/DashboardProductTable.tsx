@@ -36,7 +36,7 @@ const DashboardProductTable = () => {
 
       <div className="xl:ml-5 max-xl:mt-5 overflow-auto w-full h-[80vh]">
         <table className="table table-md table-pin-cols">
-          {/* head */}
+         
           <thead>
             <tr>
               <th>
@@ -51,7 +51,7 @@ const DashboardProductTable = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
+            
             {products &&
               products.map((product) => (
                 <tr key={nanoid()}>
@@ -91,7 +91,7 @@ const DashboardProductTable = () => {
                     </span>) }
                     
                   </td>
-                  <td>${product?.price}</td>
+                  <td>₹{product?.price}</td>
                   <th>
                     <Link
                       href={`/admin/products/${product.id}`}
@@ -103,7 +103,7 @@ const DashboardProductTable = () => {
                 </tr>
               ))}
           </tbody>
-          {/* foot */}
+
           <tfoot>
             <tr>
               <th></th>

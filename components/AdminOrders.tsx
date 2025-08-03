@@ -20,7 +20,7 @@ const AdminOrders = () => {
       <h1 className="text-3xl font-semibold text-center mb-5">All orders</h1>
       <div className="overflow-x-auto">
         <table className="table table-md table-pin-cols">
-          {/* head */}
+
           <thead>
             <tr>
               <th>
@@ -37,7 +37,7 @@ const AdminOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
+
             {orders &&
               orders.map((order) => (
                 <tr key={order?.id}>
@@ -84,7 +84,7 @@ const AdminOrders = () => {
                 </tr>
               ))}
           </tbody>
-          {/* foot */}
+
           <tfoot>
             <tr>
               <th></th>

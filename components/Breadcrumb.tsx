@@ -5,7 +5,7 @@ import { FaHouse } from "react-icons/fa6";
 const Breadcrumb = () => {
   return (
     <div className="text-lg breadcrumbs pb-10 py-5 max-sm:text-base relative">
-      {/* Subtle circuit elements */}
+
       <div className="absolute top-1/2 left-0 w-8 h-0.5 bg-[#5068a4] opacity-20"></div>
       <div className="absolute top-1/2 right-0 w-6 h-0.5 bg-[#5068a4] opacity-25"></div>
       

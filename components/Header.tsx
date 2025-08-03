@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useCallback } from "react";
 import HeaderTop from "./HeaderTop";
 import Image from "next/image";
-import SearchInput from "./SearchInput";
 import Link from "next/link";
 import { FaBell } from "react-icons/fa6";
 
@@ -23,7 +22,6 @@ const Header = () => {
     toast.success("Logout successful!");
   };
 
-  // getting all wishlist items by user id
   const getWishlistByUserId = useCallback(async (id: string) => {
     const response = await fetch(`/api/wishlist/${id}`, {
       cache: "no-store",
@@ -48,7 +46,6 @@ const Header = () => {
     setWishlist(productArray);
   }, [setWishlist]);
 
-  // getting user by email so I can get his user id
   const getUserByEmail = useCallback(async () => {
     if (session?.user?.email) {
       fetch(`/api/users/email/${encodeURIComponent(session?.user?.email)}`, {
@@ -79,23 +76,19 @@ const Header = () => {
               alt="Shree Prathmesh Engineering - PCB Manufacturing"
               className="relative right-5 max-[1023px]:w-56 max-md:w-48 max-sm:w-40 max-sm:right-2 "
             />
-            {/* Glowing effect around logo */}
+
             <div className="absolute inset-0 -m-2 border border-[#5068a4] rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
           </Link>
-          
-          <div className="relative max-lg:order-3 max-lg:w-full max-md:max-w-md max-md:mx-auto">
-            <SearchInput />
-          </div>
           
           <div className="flex gap-x-10 items-center max-lg:order-2 max-md:gap-x-6 max-sm:gap-x-4">
             <div className="relative group">
               <HeartElement wishQuantity={wishQuantity} />
-              {/* Circuit indicator */}
+
               <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-[#5068a4] transform -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-opacity duration-300 max-sm:w-4"></div>
             </div>
             <div className="relative group">
               <CartElement />
-              {/* Circuit indicator */}
+              
               <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-[#5068a4] transform -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-opacity duration-300 max-sm:w-4"></div>
             </div>
           </div>

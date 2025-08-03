@@ -23,8 +23,7 @@ const Hero = () => {
               DESIGN GUIDE
             </button>
           </div>
-          
-          {/* PCB Stats with Animation */}
+
           <div className="grid grid-cols-3 gap-6 mt-8 text-animate-delay-2">
             <div className="text-center animate-scale" style={{animationDelay: '0.8s'}}>
               <div className="text-3xl font-bold text-[#5068a4] text-glow">50K+</div>

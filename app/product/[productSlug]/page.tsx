@@ -1,6 +1,5 @@
 import {
   StockAvailabillity,
-  UrgencyText,
   SingleProductRating,
   ProductTabs,
   SingleProductDynamicFields,
@@ -21,7 +20,7 @@ interface ImageItem {
 }
 
 const SingleProductPage = async ({ params }: SingleProductPageProps) => {
-  // Use Prisma directly instead of fetch since we're in a server component
+
   const product = await prisma.product.findUnique({
     where: { slug: params.productSlug },
     include: {
@@ -33,7 +32,6 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
     notFound();
   }
 
-  // Get product images
   const images = await prisma.image.findMany({
     where: { productID: product.id }
   });
@@ -66,7 +64,7 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
           <div className="flex flex-col gap-y-7 text-black max-[500px]:text-center">
             <SingleProductRating rating={product?.rating} />
             <h1 className="text-3xl">{product?.title}</h1>
-            <p className="text-xl font-semibold">${product?.price}</p>
+            <p className="text-xl font-semibold">₹{product?.price}</p>
             <StockAvailabillity stock={94} inStock={product?.inStock} />
             <SingleProductDynamicFields product={product} />
             <div className="flex flex-col gap-y-2 max-[500px]:items-center">

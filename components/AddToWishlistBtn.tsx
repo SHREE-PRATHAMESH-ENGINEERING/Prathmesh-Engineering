@@ -18,9 +18,9 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
   const [isProductInWishlist, setIsProductInWishlist] = useState<boolean>();
 
   const addToWishlistFun = async () => {
-    // getting user by email so I can get his user id
+
     if (session?.user?.email) {
-      // sending fetch request to get user id because we will need it for saving wish item
+      
       fetch(`/api/users/email/${session?.user?.email}`, {
         cache: "no-store",
       })
@@ -54,7 +54,7 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
 
   const removeFromWishlistFun = async () => {
     if (session?.user?.email) {
-      // sending fetch request to get user id because we will need to delete wish item
+      
       fetch(`/api/users/email/${session?.user?.email}`, {
         cache: "no-store",
       })
@@ -75,14 +75,14 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
   };
 
   const isInWishlist = useCallback(async () => {
-    // sending fetch request to get user id because we will need it for cheching whether the product is in wishlist
+    
     if (session?.user?.email) {
       fetch(`/api/users/email/${session?.user?.email}`, {
         cache: "no-store",
       })
         .then((response) => response.json())
         .then((data) => {
-          // checking is product in wishlist
+          
           return fetch(
             `/api/wishlist/${data?.id}/${product?.id}`
           );

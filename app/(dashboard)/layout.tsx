@@ -19,14 +19,12 @@ export default async function Layout({
 
   let email: string = await session?.user?.email;
   
-  // Use Prisma directly instead of fetch since we're in a server component
   const user = await prisma.user.findUnique({
     where: {
       email: email,
     },
   });
 
-  // redirecting user to the home page if not admin
   if (!user || user.role === "user") {
     redirect("/");
   }

@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  CustomButton,
-  QuantityInput,
   QuantityInputCart,
   SectionTitle,
 } from "@/components";
@@ -68,14 +66,9 @@ const CartPage = () => {
                               </Link>
                             </h3>
                           </div>
-                          {/* <div className="mt-1 flex text-sm">
-                        <p className="text-gray-500">{product.color}</p>
-                        {product.size ? (
-                          <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{product.size}</p>
-                        ) : null}
-                      </div> */}
+
                           <p className="mt-1 text-sm font-medium text-gray-900">
-                            ${product.price}
+                            ₹{product.price}
                           </p>
                         </div>
 
@@ -115,12 +108,10 @@ const CartPage = () => {
               </ul>
             </section>
 
-            {/* Order summary */}
             <section
               aria-labelledby="summary-heading"
               className="mt-16 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#5068a4] px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 shadow-lg relative overflow-hidden"
             >
-              {/* Circuit elements */}
               <div className="absolute top-4 right-4 w-12 h-0.5 bg-[#5068a4] opacity-20"></div>
               <div className="absolute bottom-4 left-4 w-8 h-0.5 bg-[#5068a4] opacity-15"></div>
               
@@ -135,7 +126,7 @@ const CartPage = () => {
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-600">Subtotal</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ${total}
+                    ₹{total}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -154,7 +145,7 @@ const CartPage = () => {
                       />
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.00</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹5.00</dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex text-sm text-gray-600">
@@ -173,7 +164,7 @@ const CartPage = () => {
                     </a>
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    ${total / 5}
+                    ₹{total / 5}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -181,7 +172,7 @@ const CartPage = () => {
                     Order total
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    ${total === 0 ? 0 : Math.round(total + total / 5 + 5)}
+                    ₹{total === 0 ? 0 : Math.round(total + total / 5 + 5)}
                   </dd>
                 </div>
               </dl>
@@ -197,7 +188,7 @@ const CartPage = () => {
                       </svg>
                       Checkout
                     </span>
-                    {/* Circuit effects */}
+                    
                     <div className="absolute top-1/2 left-4 w-8 h-0.5 bg-white opacity-0 group-hover:opacity-40 transition-opacity duration-300 transform -translate-y-1/2"></div>
                     <div className="absolute top-1/2 right-4 w-6 h-0.5 bg-white opacity-0 group-hover:opacity-30 transition-opacity duration-300 transform -translate-y-1/2"></div>
                   </Link>

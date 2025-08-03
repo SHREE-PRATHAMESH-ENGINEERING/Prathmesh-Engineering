@@ -1,3 +1,4 @@
+// Home page data
 export const categoryMenuList = [
   {
     id: 1,
@@ -25,7 +26,7 @@ export const categoryMenuList = [
     title: "Rigid-Flex PCBs",
     icon: "🛠️",
     href: "/shop/rigid-flex-pcbs",
-    categoryId: "cat_1753894678072_zydbmq0m4" // Add correct ID if available
+    categoryId: "cat_1753894678072_zydbmq0m4"
   },
   {
     id: 5,
@@ -35,42 +36,6 @@ export const categoryMenuList = [
     categoryId: "cat_1753894689818_mv1zqvuzs"
   },
 ];
-
-export const incentives = [
-  {
-    name: "Fast PCB Manufacturing",
-    description:
-      "Quick turnaround times for prototype and production PCBs with industry-leading quality standards.",
-    icon: "⚡",
-  },
-  {
-    name: "Quality Assurance",
-    description:
-      "100% electrical testing and visual inspection ensures your PCBs meet specification requirements.",
-    icon: "✅",
-  },
-  {
-    name: "Professional Support",
-    description:
-      "Expert technical support team available to help with design optimization and manufacturing queries.",
-    icon: "🔧",
-  },
-];
-
-export const navigation = {
-  quicklinks: [
-    { name: "Home", href: "#" },
-    { name: "Products", href: "#" },
-    { name: "Contact us", href: "/contact" },
-    { name: "Check order", href: "#" },
-  ],
-  ourcompany: [
-    { name: "About us", href: "/about" },
-    { name: "Privacy policy", href: "#" },
-    { name: "Return policy", href: "#" },
-    { name: "Terms & conditions", href: "#" },
-  ],
-};
 
 export const brands = [
   { name: 'Intel', logo: '/brands/intel_logo.png' },
@@ -113,14 +78,199 @@ export const testimonials = [
   }
 ];
 
+// Footer data
+export const navigation = {
+  quicklinks: [
+    { name: "Home", href: "#" },
+    { name: "Products", href: "#" },
+    { name: "Contact us", href: "/contact" },
+    { name: "Check order", href: "#" },
+  ],
+  ourcompany: [
+    { name: "About us", href: "/about" },
+    { name: "Privacy policy", href: "#" },
+    { name: "Return policy", href: "#" },
+    { name: "Terms & conditions", href: "#" },
+  ],
+};
+
+// About Page Data
+export const aboutStats = [
+  {
+    value: "15+",
+    label: "Years Experience",
+    delay: "0.2s"
+  },
+  {
+    value: "50K+",
+    label: "PCBs Delivered",
+    delay: "0.4s"
+  },
+  {
+    value: "500+",
+    label: "Happy Clients",
+    delay: "0.6s"
+  },
+  {
+    value: "99.9%",
+    label: "Quality Rate",
+    delay: "0.8s"
+  }
+];
+
+export const whyChooseUsFeatures = [
+  {
+    icon: "⚡",
+    title: "Fast Turnaround",
+    description: "Quick delivery times without compromising on quality, ensuring your projects stay on schedule."
+  },
+  {
+    icon: "🛠️",
+    title: "Expert Team",
+    description: "Skilled professionals with years of experience in PCB design and manufacturing."
+  },
+  {
+    icon: "🤝",
+    title: "Customer Support",
+    description: "Dedicated support team providing technical assistance and project guidance."
+  }
+];
+
+export const leadershipTeam = [
+  {
+    name: "Prathmesh Shah",
+    position: "Founder & CEO",
+    description: "Visionary leader with 15+ years in electronics manufacturing",
+    initials: "PS"
+  },
+  {
+    name: "Dr. Rajesh Kumar",
+    position: "Chief Technology Officer",
+    description: "Expert in advanced PCB technologies and process optimization",
+    initials: "RK"
+  },
+  {
+    name: "Priya Mehta",
+    position: "Quality Assurance Director",
+    description: "Ensuring the highest standards in every product we deliver",
+    initials: "PM"
+  }
+];
+
+// Contact Page Data
+export const contactStats = [
+  {
+    value: "24/7",
+    label: "Engineering Support",
+    delay: "0.2s"
+  },
+  {
+    value: "<4HR",
+    label: "Quote Response",
+    delay: "0.4s"
+  },
+  {
+    value: "1000+",
+    label: "Projects Completed",
+    delay: "0.6s"
+  },
+  {
+    value: "99.8%",
+    label: "Client Satisfaction",
+    delay: "0.8s"
+  }
+];
+
+export const contactMethods = [
+  {
+    iconType: "phone",
+    title: "Call Us",
+    info: "+91 98765 43210",
+    delay: "0.1s"
+  },
+  {
+    iconType: "email",
+    title: "Email Support",
+    info: "engineering@shreeprathmesh.com",
+    delay: "0.2s"
+  },
+  {
+    iconType: "location",
+    title: "Visit Our Facility",
+    info: "Industrial Area, Sector 12, Mumbai",
+    delay: "0.3s"
+  },
+  {
+    iconType: "clock",
+    title: "Business Hours",
+    info: "Mon-Fri: 9:00 AM - 7:00 PM",
+    delay: "0.4s"
+  }
+];
+
+export const pcbServices = [
+  {
+    iconType: "tools",
+    title: "Advanced Manufacturing",
+    description: "State-of-the-art equipment with precision manufacturing capabilities for complex PCB designs"
+  },
+  {
+    iconType: "shipping",
+    title: "Lightning Fast Delivery",
+    description: "Industry-leading turnaround times with rush service available for urgent projects"
+  },
+  {
+    iconType: "industry",
+    title: "Engineering Support",
+    description: "Expert technical consultation from design optimization to manufacturing recommendations"
+  }
+];
+
+export const manufacturingCapabilities = {
+  leftColumn: [
+    {
+      label: "Layers",
+      value: "1-16 layers"
+    },
+    {
+      label: "Board Size",
+      value: "5x5mm to 500x500mm"
+    },
+    {
+      label: "Thickness",
+      value: "0.4mm - 6.0mm"
+    },
+    {
+      label: "Min Via",
+      value: "0.1mm (4 mil)"
+    }
+  ],
+  rightColumn: [
+    {
+      label: "Min Trace",
+      value: "0.075mm (3 mil)"
+    },
+    {
+      label: "Copper Weight",
+      value: "0.5oz - 6oz"
+    },
+    {
+      label: "Surface Finish",
+      value: "HASL, ENIG, OSP"
+    },
+    {
+      label: "Delivery",
+      value: "24hrs - 15 days"
+    }
+  ]
+};
+
 export const isValidNameOrLastname = (input: string) => {
-  // Simple name or lastname regex format check
   const regex = /^[a-zA-Z\s]+$/;
   return regex.test(input);
 };
 
 export const isValidEmailAddressFormat = (input: string) => {
-  // simple email address format check
   const regex = /^\S+@\S+\.\S+$/;
   return regex.test(input);
 };

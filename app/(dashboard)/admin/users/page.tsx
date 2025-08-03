@@ -8,7 +8,6 @@ const DashboardUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    // sending API request for all users
     fetch("/api/users")
       .then((res) => {
         return res.json();
@@ -35,9 +34,9 @@ const DashboardUsers = () => {
             />
           </Link>
         </div>
-        <div className="xl:ml-5 w-full max-xl:mt-5 overflow-auto w-full h-[80vh]">
+        <div className="xl:ml-5 max-xl:mt-5 overflow-auto w-full h-[80vh]">
           <table className="table table-md table-pin-cols">
-            {/* head */}
+
             <thead>
               <tr>
                 <th>
@@ -51,7 +50,7 @@ const DashboardUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
+
               {users &&
                 users.map((user) => (
                   <tr key={nanoid()}>
@@ -80,7 +79,7 @@ const DashboardUsers = () => {
                   </tr>
                 ))}
             </tbody>
-            {/* foot */}
+
             <tfoot>
               <tr>
                 <th></th>

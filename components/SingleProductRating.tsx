@@ -10,7 +10,6 @@ const SingleProductRating = ({ rating }: { rating: number }) => {
     "empty star",
   ];
 
-  // going through product rating and modifying rating state
   for (let i = 0; i < rating; i++) {
     ratingArray[i] = "full star";
   }

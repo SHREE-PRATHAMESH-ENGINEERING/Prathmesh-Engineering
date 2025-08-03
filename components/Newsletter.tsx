@@ -3,7 +3,7 @@ import React from 'react'
 const Newsletter = () => {
   return (
     <div className="pcb-hero-bg pcb-pattern py-5 sm:py-24 lg:py-20 relative overflow-hidden">
-      {/* Animated PCB Elements */}
+
       <div className="absolute top-1/4 left-10 w-20 h-1 circuit-flow opacity-40"></div>
       <div className="absolute bottom-1/4 right-10 w-16 h-1 circuit-flow opacity-50" style={{animationDelay: '1s'}}></div>
       <div className="absolute top-10 right-1/4 w-6 h-6 bg-[#5068a4] rounded-full electric-pulse opacity-60"></div>

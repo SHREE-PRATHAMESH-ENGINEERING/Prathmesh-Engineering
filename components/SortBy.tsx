@@ -3,7 +3,7 @@ import React from "react";
 import { useSortStore } from "@/app/_zustand/sortStore";
 
 const SortBy = () => {
-  // getting values from Zustand sort store
+  
   const { sortBy, changeSortBy } = useSortStore();
 
   return (

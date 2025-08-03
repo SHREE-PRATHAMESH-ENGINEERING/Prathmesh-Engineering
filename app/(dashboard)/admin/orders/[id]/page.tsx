@@ -358,7 +358,7 @@ const AdminSingleOrder = () => {
                   {product?.product?.title}
                 </Link>
                 <p>
-                  ${product?.product?.price} * {product?.quantity} items
+                  ₹{product?.product?.price} * {product?.quantity} items
                 </p>
               </div>
             </div>

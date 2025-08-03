@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import prisma from "@/utils/db";
 
 export const authOptions: AuthOptions = {
-  // Configure one or more authentication providers
+
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -15,7 +15,6 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials: any): Promise<any> {
         try {
-          // Check if credentials exist
           if (!credentials?.email || !credentials?.password) {
             return null;
           }
@@ -40,17 +39,11 @@ export const authOptions: AuthOptions = {
           }
         } catch (err: any) {
           console.error("Database connection error during authentication:", err);
-          // Return null instead of throwing error to prevent 500
           return null;
         }
         return null;
       },
     })
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID ?? "",
-    //   clientSecret: process.env.GOOGLE_SECRET ?? "",
-    // }),
-    // ...add more providers here if you want. You can find them on nextauth website.
   ],
   callbacks: {
     async signIn({ user, account }: any) {
@@ -58,26 +51,6 @@ export const authOptions: AuthOptions = {
         return true;
       }
       return true;
-      // if (account?.provider == "google") {
-
-      //   try {
-      //     const existingUser = await prisma.user.findFirst({where: { email: user.email! }});
-      //     if (!existingUser) {
-      //       await prisma.user.create({
-      //           data: {
-      //             id: nanoid() + "",
-      //             email: user.email!
-      //           },
-      //         });
-
-      //       return true;
-      //     }
-      //     return true;
-      //   } catch (err) {
-      //     console.log("Error saving user", err);
-      //     return false;
-      //   }
-      // }
     },
     async jwt({ token, user }: any) {
       if (user) {

@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
-    // chechking if user has already registered redirect to home page
+
     if (sessionStatus === "authenticated") {
       router.replace("/");
     }
@@ -47,7 +47,7 @@ const RegisterPage = () => {
     }
 
     try {
-      // sending API request for registering user
+
       const res = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -82,7 +82,7 @@ const RegisterPage = () => {
     <div className="pcb-hero-bg pcb-pattern min-h-screen">
       <SectionTitle title="Register" path="Home | Register" />
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
-        {/* Background Circuit Elements */}
+
         <div className="absolute top-20 left-10 w-32 h-1 circuit-flow opacity-20"></div>
         <div className="absolute top-40 right-20 w-24 h-1 circuit-flow opacity-25" style={{animationDelay: '1s'}}></div>
         <div className="absolute bottom-40 left-1/4 w-20 h-1 circuit-flow opacity-30" style={{animationDelay: '2s'}}></div>
@@ -95,7 +95,7 @@ const RegisterPage = () => {
 
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-[480px] relative z-10">
           <div className="bg-[#ffffff] border border-[#5068a4] border-opacity-30 px-6 py-12 shadow-xl rounded-2xl sm:px-12 backdrop-blur-sm animate-scale relative overflow-hidden">
-            {/* Circuit pattern overlay */}
+
             <div className="absolute top-0 right-0 w-16 h-16 border-l border-b border-[#5068a4] opacity-20"></div>
             <div className="absolute bottom-0 left-0 w-12 h-12 border-r border-t border-[#5068a4] opacity-20"></div>
             <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>

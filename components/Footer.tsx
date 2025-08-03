@@ -38,7 +38,7 @@ const Footer = () => {
                 height={250}
                 className="h-auto w-auto"
               />
-              {/* Glowing effect around logo */}
+              
               <div className="absolute inset-0 -m-4 border border-[#5068a4] rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
             </div>
             

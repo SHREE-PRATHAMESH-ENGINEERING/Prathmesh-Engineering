@@ -10,7 +10,6 @@ import {
 } from "@/components";
 import React from "react";
 
-// improve readabillity of category text, for example category text "smart-watches" will be "smart watches"
 const improveCategoryText = (text: string): string => {
   if (text.indexOf("-") !== -1) {
     let textArray = text.split("-");

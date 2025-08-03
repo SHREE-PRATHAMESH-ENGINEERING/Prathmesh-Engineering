@@ -3,9 +3,6 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import toast from "react-hot-toast";
-import { FaHeadphones } from "react-icons/fa6";
-import { FaRegEnvelope } from "react-icons/fa6";
-import { FaLocationDot } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa6";
 import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa6";
@@ -19,12 +16,12 @@ const HeaderTop = () => {
   }
   return (
     <div className="h-20 text-white bg-[#5068a4] max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:px-2 max-sm:py-2 relative overflow-hidden">
-      {/* Subtle circuit patterns */}
+      
       <div className="absolute top-1/2 left-1/4 w-12 h-0.5 bg-white opacity-10 animate-pulse max-sm:hidden"></div>
       <div className="absolute top-1/2 right-1/4 w-8 h-0.5 bg-white opacity-15 animate-pulse max-sm:hidden" style={{animationDelay: '1s'}}></div>
       
       <div className="flex justify-between h-full max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:gap-y-2 max-w-screen-2xl mx-auto px-12 max-md:px-6 max-sm:px-2 relative z-10">
-        {/* Social Media Icons - Left Side */}
+        
         <ul className="flex items-center h-full gap-x-4 max-lg:h-auto max-md:gap-x-3 max-sm:gap-x-2">
           <li className="flex items-center">
             <a 

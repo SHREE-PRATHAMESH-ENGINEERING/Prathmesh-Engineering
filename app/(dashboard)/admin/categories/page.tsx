@@ -8,7 +8,6 @@ import { formatCategoryName } from "../../../../utils/categoryFormating";
 const DashboardCategory = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
-  // getting all categories to be displayed on the all categories page
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => {
@@ -40,7 +39,7 @@ const DashboardCategory = () => {
         </div>
         <div className="xl:ml-5 max-xl:mt-5 overflow-auto w-full h-[80vh]">
           <table className="table table-md table-pin-cols">
-            {/* head */}
+
             <thead>
               <tr>
                 <th>
@@ -79,7 +78,7 @@ const DashboardCategory = () => {
                   </tr>
                 ))}
             </tbody>
-            {/* foot */}
+
             <tfoot>
               <tr>
                 <th></th>
