@@ -21,6 +21,17 @@ const improveCategoryText = (text: string): string => {
 };
 
 const ShopPage = (slug: any) => {
+  const searchQuery = slug?.searchParams?.search;
+  
+  const getPageTitle = () => {
+    if (searchQuery) {
+      return `Search Results for "${searchQuery}"`;
+    } else if (slug?.params?.slug && slug?.params?.slug[0]?.length > 0) {
+      return improveCategoryText(slug?.params?.slug[0]);
+    } else {
+      return "All products";
+    }
+  };
   
   return (
     <div className="text-black bg-white">
@@ -31,9 +42,7 @@ const ShopPage = (slug: any) => {
           <div>
             <div className="flex justify-between items-center max-lg:flex-col max-lg:gap-y-5">
               <h2 className="text-2xl font-bold max-sm:text-xl max-[400px]:text-lg uppercase">
-                {slug?.params?.slug && slug?.params?.slug[0]?.length > 0
-                  ? improveCategoryText(slug?.params?.slug[0])
-                  : "All products"}
+                {getPageTitle()}
               </h2>
 
               <SortBy />

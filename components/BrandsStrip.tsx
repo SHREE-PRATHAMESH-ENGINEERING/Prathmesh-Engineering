@@ -21,6 +21,7 @@ const BrandsStrip = () => {
               src={brand.logo}
               alt={`${brand.name} logo`}
               fill
+              sizes="(max-width: 768px) 60px, 80px"
               className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
               onError={() => handleImageError(brand.name)}
             />

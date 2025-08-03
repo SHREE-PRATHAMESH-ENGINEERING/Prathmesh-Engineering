@@ -1,3 +1,91 @@
+// Main Navigation for Header
+export const mainNavigation = [
+  {
+    id: 1,
+    name: "All Products",
+    href: "/shop",
+    megaMenu: false
+  },
+  {
+    id: 2,
+    name: "PCBs",
+    href: "/shop/pcbs",
+    megaMenu: true,
+    subItems: [
+      { name: "Single Layer PCBs", href: "/shop?categoryId=cat_1753894634025_vzk9y7yae" },
+      { name: "Multi Layer PCBs", href: "/shop?categoryId=cat_1753894657262_vt9ovggw5" },
+      { name: "Flex PCBs", href: "/shop?categoryId=cat_1753894667307_1p6i1fljb" },
+      { name: "Rigid-Flex PCBs", href: "/shop?categoryId=cat_1753894678072_zydbmq0m4" },
+      { name: "Prototype PCBs", href: "/shop?categoryId=cat_1753894689818_mv1zqvuzs" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Electronic Products",
+    href: "/shop/electronics",
+    megaMenu: false
+  },
+  {
+    id: 4,
+    name: "Contact Us",
+    href: "/contact",
+    megaMenu: false
+  }
+];
+
+// Social Media and Contact Icons
+export const socialMediaIcons = [
+  {
+    id: 'phone',
+    icon: 'FaPhone',
+    href: 'tel:+919876543210',
+    title: 'Call Us',
+    external: false
+  },
+  {
+    id: 'whatsapp',
+    icon: 'FaWhatsapp',
+    href: 'https://wa.me/919876543210',
+    title: 'WhatsApp',
+    external: true
+  },
+  {
+    id: 'linkedin',
+    icon: 'FaLinkedin',
+    href: 'https://linkedin.com/company/shree-prathamesh-engineering',
+    title: 'LinkedIn',
+    external: true
+  },
+  {
+    id: 'instagram',
+    icon: 'FaInstagram',
+    href: 'https://instagram.com/shreeprathameshengineering',
+    title: 'Instagram',
+    external: true
+  },
+  {
+    id: 'twitter',
+    icon: 'FaTwitter',
+    href: 'https://twitter.com/shreeprathamesh',
+    title: 'Twitter',
+    external: true
+  },
+  {
+    id: 'facebook',
+    icon: 'FaFacebook',
+    href: 'https://facebook.com/shreeprathameshengineering',
+    title: 'Facebook',
+    external: true
+  },
+  {
+    id: 'email',
+    icon: 'FaEnvelope',
+    href: 'mailto:sales@prathmeshengineering.com',
+    title: 'Email',
+    external: false
+  }
+];
+
 // Home page data
 export const categoryMenuList = [
   {

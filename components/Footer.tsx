@@ -17,6 +17,8 @@ const Footer = () => {
       window.location.reload();
     } else if (linkName === "Products") {
       router.push("/shop");
+    } else if (linkName === "Check order") {
+      router.push("/orders");
     } else {
       if (href !== "#") {
         router.push(href);
