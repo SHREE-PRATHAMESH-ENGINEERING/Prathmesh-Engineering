@@ -1,11 +1,9 @@
 export { default as Header } from "./Header";
 export { default as HeaderTop } from "./HeaderTop";
-export { default as SimpleSlider } from "./SimpleSlider";
 export { default as CategoryItem } from "./CategoryItem";
 export { default as CategoryMenu } from "./CategoryMenu";
 export { default as ProductItem } from "./ProductItem";
 export { default as ProductsSection } from "./ProductsSection";
-export { default as Newsletter } from "./Newsletter";
 export { default as Footer } from "./Footer";
 export { default as Filters } from "./Filters";
 export { default as Checkbox } from "./Checkbox";
@@ -44,3 +42,4 @@ export { default as StatsElement } from "./StatsElement";
 export { default as DashboardProductTable } from "./DashboardProductTable";
 export { default as AdminOrders } from "./AdminOrders";
 export { default as OrderItem } from "./OrderItem";
+export { default as PolicyModal } from "./PolicyModal";
