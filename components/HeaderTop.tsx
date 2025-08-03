@@ -7,6 +7,8 @@ import { FaHeadphones } from "react-icons/fa6";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa6";
+import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa6";
 
 const HeaderTop = () => {
   const { data: session }: any = useSession();
@@ -22,19 +24,48 @@ const HeaderTop = () => {
       <div className="absolute top-1/2 right-1/4 w-8 h-0.5 bg-white opacity-15 animate-pulse max-sm:hidden" style={{animationDelay: '1s'}}></div>
       
       <div className="flex justify-between h-full max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:gap-y-2 max-w-screen-2xl mx-auto px-12 max-md:px-6 max-sm:px-2 relative z-10">
-        <ul className="flex items-center h-full gap-x-5 max-lg:h-auto max-md:gap-x-3 max-sm:gap-x-2 max-[450px]:flex-col max-[450px]:gap-y-1 max-[450px]:text-center">
-          <li className="flex items-center gap-x-2 font-semibold group max-sm:text-sm max-[450px]:justify-center">
-            <FaHeadphones className="text-white transition-transform duration-300 group-hover:scale-110 max-sm:text-sm" />
-            <span className="transition-all duration-300 group-hover:text-shadow max-[450px]:hidden">+91 98765 43210</span>
-            <span className="transition-all duration-300 group-hover:text-shadow hidden max-[450px]:block text-xs">Call Us</span>
+        {/* Social Media Icons - Left Side */}
+        <ul className="flex items-center h-full gap-x-4 max-lg:h-auto max-md:gap-x-3 max-sm:gap-x-2">
+          <li className="flex items-center">
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <FaInstagram className="text-white text-lg transition-transform duration-300 group-hover:scale-110" />
+            </a>
           </li>
-          <li className="flex items-center gap-x-2 font-semibold group max-sm:text-sm max-[450px]:justify-center">
-            <FaRegEnvelope className="text-white text-xl transition-transform duration-300 group-hover:scale-110 max-sm:text-lg" />
-            <span className="transition-all duration-300 group-hover:text-shadow max-md:hidden">sales@prathmeshengineering.com</span>
-            <span className="transition-all duration-300 group-hover:text-shadow hidden max-md:block max-[450px]:hidden text-sm">Email Us</span>
-            <span className="transition-all duration-300 group-hover:text-shadow hidden max-[450px]:block text-xs">Email</span>
+          <li className="flex items-center">
+            <a 
+              href="https://twitter.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <FaTwitter className="text-white text-lg transition-transform duration-300 group-hover:scale-110" />
+            </a>
+          </li>
+          <li className="flex items-center">
+            <a 
+              href="https://facebook.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <FaFacebook className="text-white text-lg transition-transform duration-300 group-hover:scale-110" />
+            </a>
+          </li>
+          <li className="flex items-center">
+            <a 
+              href="mailto:sales@prathmeshengineering.com"
+              className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white hover:bg-opacity-10 transition-all duration-300 group"
+            >
+              <FaEnvelope className="text-white text-lg transition-transform duration-300 group-hover:scale-110" />
+            </a>
           </li>
         </ul>
+
         <ul className="flex items-center gap-x-5 h-full max-lg:h-auto max-md:gap-x-3 max-sm:gap-x-2 font-semibold max-[450px]:mt-1">
           {!session ? ( 
           <>

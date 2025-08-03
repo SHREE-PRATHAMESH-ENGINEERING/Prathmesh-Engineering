@@ -61,11 +61,11 @@ export const navigation = {
   quicklinks: [
     { name: "Home", href: "#" },
     { name: "Products", href: "#" },
-    { name: "Contact us", href: "#" },
+    { name: "Contact us", href: "/contact" },
     { name: "Check order", href: "#" },
   ],
   ourcompany: [
-    { name: "About us", href: "#" },
+    { name: "About us", href: "/about" },
     { name: "Privacy policy", href: "#" },
     { name: "Return policy", href: "#" },
     { name: "Terms & conditions", href: "#" },
@@ -73,18 +73,14 @@ export const navigation = {
 };
 
 export const brands = [
-  { name: 'Intel', color: '#0071c5' },
-  { name: 'AMD', color: '#ed1c24' },
-  { name: 'NVIDIA', color: '#76b900' },
-  { name: 'Qualcomm', color: '#3253dc' },
-  { name: 'Broadcom', color: '#cc092f' },
-  { name: 'Texas Instruments', color: '#cc0000' },
-  { name: 'Analog Devices', color: '#0066cc' },
-  { name: 'Microchip', color: '#ee3124' },
-  { name: 'STMicroelectronics', color: '#03234b' },
-  { name: 'Infineon', color: '#1a1a1a' },
-  { name: 'NXP', color: '#ff6600' },
-  { name: 'Xilinx', color: '#ee3124' },
+  { name: 'Intel', logo: '/brands/intel_logo.png' },
+  { name: 'Sony', logo: '/brands/sony_logo.png' },
+  { name: 'Samsung', logo: '/brands/samsung_logo.png' },
+  { name: 'Infenion', logo: '/brands/infenion_logo.png' },
+  { name: 'Usha', logo: '/brands/usha_logo.jpg' },
+  { name: 'Godrej', logo: '/brands/godrej_logo.png' },
+  { name: 'LG', logo: '/brands/lg_logo.png' },
+  { name: 'Philips', logo: '/brands/philips_logo.png' },
 ];
 
 export const testimonials = [

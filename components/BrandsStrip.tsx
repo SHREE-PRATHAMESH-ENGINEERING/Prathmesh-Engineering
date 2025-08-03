@@ -1,8 +1,43 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import { brands } from '@/lib/utils';
 
 const BrandsStrip = () => {
+  const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
+
+  const handleImageError = (brandName: string) => {
+    setImageErrors(prev => ({ ...prev, [brandName]: true }));
+  };
+
+  const renderBrandContent = (brand: { name: string; logo: string }, index: number) => {
+    const hasError = imageErrors[brand.name];
+    
+    return (
+      <div className="text-center px-4">
+        {!hasError ? (
+          <div className="relative w-20 h-12 mx-auto">
+            <Image
+              src={brand.logo}
+              alt={`${brand.name} logo`}
+              fill
+              className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+              onError={() => handleImageError(brand.name)}
+            />
+          </div>
+        ) : (
+          <div 
+            className="w-12 h-12 rounded-full mx-auto flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300"
+          >
+            {brand.name.charAt(0)}
+          </div>
+        )}
+        <div className="mt-2 text-xs font-medium text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+          {brand.name}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="py-16 pb-12 overflow-hidden bg-[#FAF9EE]">
@@ -23,16 +58,9 @@ const BrandsStrip = () => {
             {brands.map((brand, index) => (
               <div 
                 key={`first-${index}`}
-                className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
+                className="flex-shrink-0 w-40 h-24 flex items-center justify-center hover:rounded-2xl hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
               >
-                <div className="text-center px-4">
-                  <div 
-                    className="w-12 h-12 rounded-full mx-auto flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: brand.color }}
-                  >
-                    {brand.name.charAt(0)}
-                  </div>
-                </div>
+                {renderBrandContent(brand, index)}
               </div>
             ))}
             
@@ -40,16 +68,9 @@ const BrandsStrip = () => {
             {brands.map((brand, index) => (
               <div 
                 key={`second-${index}`}
-                className="flex-shrink-0 w-40 h-20 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
+                className="flex-shrink-0 w-40 h-24 flex items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 group"
               >
-                <div className="text-center px-4">
-                  <div 
-                    className="w-12 h-12 rounded-full mx-auto flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: brand.color }}
-                  >
-                    {brand.name.charAt(0)}
-                  </div>
-                </div>
+                {renderBrandContent(brand, index)}
               </div>
             ))}
           </div>
