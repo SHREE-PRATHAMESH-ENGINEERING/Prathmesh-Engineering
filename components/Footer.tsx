@@ -1,14 +1,28 @@
 "use client";
-import { navigation } from "@/lib/utils";
+import { navigation, socialMediaIcons } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FaPhone, FaWhatsapp, FaLinkedin, FaInstagram, FaTwitter, FaFacebook, FaEnvelope } from "react-icons/fa";
 import PolicyModal from "./PolicyModal";
 
 const Footer = () => {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState<"privacy" | "return" | "terms" | null>(null);
+
+  const getIconComponent = (iconName: string) => {
+    const iconMap: { [key: string]: React.ComponentType<any> } = {
+      FaPhone,
+      FaWhatsapp,
+      FaLinkedin,
+      FaInstagram,
+      FaTwitter,
+      FaFacebook,
+      FaEnvelope
+    };
+    return iconMap[iconName];
+  };
 
   const handleQuickLinkClick = (linkName: string, href: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -112,6 +126,32 @@ const Footer = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+            
+            {/* Social Media Icons Section */}
+            <div className="border-t border-gray-200 mt-12 pt-8">
+              <div className="flex justify-center">
+                <div className="flex items-center gap-x-4">
+                  <div className="flex gap-x-3">
+                    {socialMediaIcons.map((social, index) => {
+                      const IconComponent = getIconComponent(social.icon);
+                      return (
+                        <a
+                          key={social.id}
+                          href={social.href}
+                          {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
+                          className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#5068a4] to-[#3d5998] rounded-xl hover:scale-110 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+                          title={social.title}
+                          style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                          {IconComponent && <IconComponent className="text-white text-lg relative z-10 group-hover:scale-110 transition-transform duration-300" />}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

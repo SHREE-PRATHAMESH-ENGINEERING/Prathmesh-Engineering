@@ -91,7 +91,7 @@ const Products = async ({ slug }: any) => {
           </p>
         </div>
         
-        <div className="grid grid-cols-3 justify-items-center gap-x-2 gap-y-5 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-1">
+        <div className="grid grid-cols-4 justify-items-center gap-x-4 gap-y-5 lg:gap-x-6 lg:gap-y-6 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-2">
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product: Product) => (
               <ProductItem key={product.id} product={product} color="black" />
@@ -177,7 +177,7 @@ const Products = async ({ slug }: any) => {
   });
 
   return (
-    <div className="grid grid-cols-3 justify-items-center gap-x-2 gap-y-5 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-1">
+    <div className="grid grid-cols-4 justify-items-center gap-x-4 gap-y-8 lg:gap-x-12 lg:gap-y-12 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-2">
       {products.length > 0 ? (
         products.map((product: Product) => (
           <ProductItem key={product.id} product={product} color="black" />

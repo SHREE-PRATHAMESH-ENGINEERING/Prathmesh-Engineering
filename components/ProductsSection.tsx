@@ -44,7 +44,7 @@ const ProductsSection = () => {
         ) : products.length > 0 ? (
           <>
 
-            <div className="grid grid-cols-4 justify-items-center max-w-screen-2xl mx-auto gap-8 px-10 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+            <div className="grid grid-cols-4 justify-items-center max-w-screen-2xl mx-auto gap-8 max-sm:gap-4 px-10 max-xl:grid-cols-3 max-md:grid-cols-2">
               {products.map((product: Product, index: number) => (
                 <div
                   key={product.id}
@@ -59,16 +59,6 @@ const ProductsSection = () => {
               ))}
             </div>
             
-            <div className="text-center mt-16 animate-in">
-              <div className="inline-flex items-center gap-4 bg-[#FAF9EE] backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg">
-                <span className="text-gray-700 font-medium">Need custom PCB solutions?</span>
-                <Link href="/shop">
-                  <button className="btn-pcb-hero px-6 py-2 text-sm">
-                    VIEW ALL PRODUCTS
-                  </button>
-                </Link>
-              </div>
-            </div>
           </>
         ) : (
           <div className="text-center py-16">

@@ -264,11 +264,11 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               
-              <div className="bg-white rounded-3xl p-8 shadow-2xl animate-scale" style={{animationDelay: '0.2s'}}>
+              <div className="animate-scale" style={{animationDelay: '0.2s'}}>
                 <h3 className="text-3xl font-bold text-[#5068a4] mb-6 text-glow">Why Choose Our PCB Services?</h3>
-                <div className="space-y-6">
+                <div className="space-y-2">
                   {pcbServices.map((feature, index) => {
                     const getIcon = () => {
                       switch (feature.iconType) {
@@ -284,7 +284,7 @@ const ContactPage = () => {
                     };
 
                     return (
-                      <div key={index} className="flex items-start space-x-4 group p-4 rounded-xl hover:bg-gray-50 transition-all duration-300">
+                      <div key={index} className="flex items-start space-x-4 group p-4 rounded-xl hover:bg-white/30 transition-all duration-300">
                         <div className="text-[#5068a4] group-hover:scale-110 transition-transform duration-300 group-hover:text-glow mt-1">
                           {getIcon()}
                         </div>
@@ -298,7 +298,7 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-3xl p-8 shadow-2xl animate-scale" style={{animationDelay: '0.6s'}}>
+              <div className="animate-scale" style={{animationDelay: '0.6s'}}>
                 <h3 className="text-3xl font-bold text-[#5068a4] mb-6 text-glow">Manufacturing Capabilities</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="space-y-3">

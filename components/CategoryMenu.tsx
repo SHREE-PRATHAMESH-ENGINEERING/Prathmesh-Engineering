@@ -14,7 +14,7 @@ const CategoryMenu = () => {
       <div className="text-animate">
         <Heading title="SHOP BY CATEGORY" />
       </div>
-      <div className="max-w-screen-2xl mx-auto py-16 gap-6 px-16 max-md:px-10 grid grid-cols-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-[450px]:grid-cols-1 relative z-10">
+      <div className="max-w-screen-2xl mx-auto py-16 gap-6 max-sm:gap-3 px-16 max-md:px-10 grid grid-cols-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-[450px]:grid-cols-2 relative z-10">
         {categoryMenuList.map((item, index) => (
           <div
             key={item.id}

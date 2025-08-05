@@ -1,10 +1,12 @@
 import prisma from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 
+// Mark this route as dynamic since it uses search parameters
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const email = searchParams.get('email');
+    const email = request.nextUrl.searchParams.get('email');
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
