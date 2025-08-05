@@ -290,6 +290,24 @@ const CheckoutPage = () => {
                 </dd>
               </div>
             </dl>
+
+              <div className="mt-6 border-t border-gray-200 pt-6">
+                <h3 className="md:mt-12 text-sm font-medium text-gray-900 mb-3">Have a coupon code?</h3>
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    placeholder="Enter coupon code"
+                    className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  />
+                  <button
+                    type="button"
+                    className="btn-pcb-hero px-6 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    Apply
+                  </button>
+                </div>
+              </div>
+              
           </div>
         </section>
 

@@ -9,6 +9,7 @@ import { FaSearch } from "react-icons/fa";
 
 import CartElement from "./CartElement";
 import HeartElement from "./HeartElement";
+import OrdersElement from "./OrdersElement";
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useWishlistStore } from "@/app/_zustand/wishlistStore";
@@ -113,17 +114,10 @@ const Header = () => {
             </form>
           </div>
           
-          <div className="flex gap-x-10 items-center max-lg:order-2 max-md:gap-x-6 max-sm:gap-x-4">
-            <div className="relative group">
-              <HeartElement wishQuantity={wishQuantity} />
-
-              <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-[#5068a4] transform -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-opacity duration-300 max-sm:w-4"></div>
-            </div>
-            <div className="relative group">
-              <CartElement />
-              
-              <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-[#5068a4] transform -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-opacity duration-300 max-sm:w-4"></div>
-            </div>
+          <div className="flex gap-x-6 items-center max-lg:order-2 max-md:gap-x-6 max-sm:gap-x-4">
+            <HeartElement wishQuantity={wishQuantity} />
+            <OrdersElement />
+            <CartElement />
           </div>
         </div>
       )}

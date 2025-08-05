@@ -180,7 +180,7 @@ const CartPage = () => {
                 <div className="mt-6">
                   <Link
                     href="/checkout"
-                    className="flex justify-center items-center w-full uppercase bg-[#5068a4] px-4 py-3 text-base border-2 border-[#5068a4] font-bold text-white shadow-lg hover:bg-white hover:text-[#5068a4] focus:outline-none focus:ring-2 focus:ring-[#5068a4] transition-all duration-300 group relative overflow-hidden"
+                    className="flex justify-center items-center w-full btn-pcb-hero text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,9 +188,6 @@ const CartPage = () => {
                       </svg>
                       Checkout
                     </span>
-                    
-                    <div className="absolute top-1/2 left-4 w-8 h-0.5 bg-white opacity-0 group-hover:opacity-40 transition-opacity duration-300 transform -translate-y-1/2"></div>
-                    <div className="absolute top-1/2 right-4 w-6 h-0.5 bg-white opacity-0 group-hover:opacity-30 transition-opacity duration-300 transform -translate-y-1/2"></div>
                   </Link>
                 </div>
               )}
