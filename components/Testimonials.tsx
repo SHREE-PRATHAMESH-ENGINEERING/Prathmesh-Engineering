@@ -29,7 +29,7 @@ const Testimonials = () => {
             What Our Clients Say
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-md">
-            Don't just take our word for it. Here's what industry professionals say about our PCB manufacturing services and quality.
+            Don&apos;t just take our word for it. Here&apos;s what industry professionals say about our PCB manufacturing services and quality.
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-[#5068a4] to-[#00a86b] mx-auto mt-6"></div>
         </div>
@@ -59,7 +59,7 @@ const Testimonials = () => {
               </div>
 
               <p className="text-sm text-gray-700 mb-6 leading-relaxed italic group-hover:text-gray-800 transition-colors duration-300">
-                "{testimonial.content}"
+                &quot;{testimonial.content}&quot;
               </p>
 
               <div className="flex items-center mb-6 group-hover:scale-105 transition-transform duration-300">

@@ -262,7 +262,7 @@ const AboutPage = () => {
               Ready to Start Your Next Project?
             </h2>
             <p className="text-md text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed text-animate-delay">
-              Let's discuss how we can help bring your electronic innovations to life with our 
+              Let&apos;s discuss how we can help bring your electronic innovations to life with our 
               professional PCB manufacturing services and cutting-edge technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center text-animate-delay-2">

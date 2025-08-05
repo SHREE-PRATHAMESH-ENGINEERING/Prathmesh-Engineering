@@ -84,7 +84,7 @@ const Products = async ({ slug }: any) => {
       <div>
         <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <h3 className="text-lg font-semibold text-blue-800">
-            Search Results for "{searchQuery}"
+            Search Results for &quot;{searchQuery}&quot;
           </h3>
           <p className="text-blue-600 text-sm">
             Found {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''} matching your search
@@ -99,7 +99,7 @@ const Products = async ({ slug }: any) => {
           ) : (
             <div className="col-span-full text-center py-8">
               <h3 className="text-2xl font-semibold text-gray-700 mb-2">
-                No products found for "{searchQuery}"
+                No products found for &quot;{searchQuery}&quot;
               </h3>
               <p className="text-gray-500">
                 Try adjusting your search terms or browse our categories

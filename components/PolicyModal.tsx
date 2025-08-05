@@ -143,7 +143,7 @@ const PolicyModal: React.FC<PolicyModalProps> = ({ isOpen, onClose, type }) => {
                 <h3 className="text-lg font-semibold text-[#5068a4] mb-3">Use License</h3>
                 <p className="text-gray-700 leading-relaxed mb-3">
                   Permission is granted to temporarily download one copy of the materials on 
-                  Shree Prathamesh Engineering's website for personal, non-commercial transitory viewing only.
+                  Shree Prathamesh Engineering&apos;s website for personal, non-commercial transitory viewing only.
                 </p>
                 <p className="text-gray-700 leading-relaxed">This license shall automatically terminate if you violate any of these restrictions.</p>
               </div>
