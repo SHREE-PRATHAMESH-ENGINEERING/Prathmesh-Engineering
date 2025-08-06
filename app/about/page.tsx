@@ -32,10 +32,10 @@ const AboutPage = () => {
       <section className={`relative py-20 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
           <div className="text-center animate-in">
-            <h1 className="text-4xl md:text-6xl font-bold text-[#5068a4] mb-6 text-glow">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#5068a4] mb-6">
               About <span className="text-gray-800">Shree Prathmesh Engineering</span>
             </h1>
-            <p className="text-md text-gray-700 max-w-4xl mx-auto leading-relaxed text-animate-delay mb-8">
+            <p className="text-md text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
               Your trusted partner in professional PCB manufacturing, delivering cutting-edge solutions 
               for the electronics industry with precision, quality, and innovation.
             </p>
@@ -43,7 +43,7 @@ const AboutPage = () => {
             <div className="grid grid-cols-4 gap-6 mt-12 max-md:grid-cols-2 max-sm:grid-cols-1">
               {aboutStats.map((stat, index) => (
                 <div key={index} className="text-center animate-scale" style={{animationDelay: stat.delay}}>
-                  <div className="text-4xl font-bold text-[#5068a4] text-glow">{stat.value}</div>
+                  <div className="text-4xl font-bold text-[#5068a4]">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
                 </div>
               ))}
@@ -56,23 +56,23 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-in">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6 text-glow">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6">
                 Our Story
               </h2>
               <div className="space-y-6 text-gray-700 leading-relaxed text-md">
-                <p className="text-animate-delay">
+                <p className="">
                   Founded with a vision to revolutionize PCB manufacturing, Shree Prathmesh Engineering 
                   has grown from a small workshop to a leading manufacturer in the electronics industry. 
                   Our journey began with a simple mission: to deliver high-quality printed circuit boards 
                   that exceed customer expectations.
                 </p>
-                <p className="text-animate-delay-2">
+                <p className="">
                   Over the years, we have invested in state-of-the-art technology and built a team of 
                   skilled professionals who share our commitment to excellence. From single-layer prototypes 
                   to complex multi-layer production runs, we handle every project with the same level of 
                   dedication and precision.
                 </p>
-                <p className="text-animate-delay-2">
+                <p className="">
                   Today, we proudly serve customers across various industries, from consumer electronics 
                   to industrial automation, providing them with reliable PCB solutions that power their innovations.
                 </p>
@@ -103,7 +103,7 @@ const AboutPage = () => {
         <div className="absolute inset-0 pcb-pattern opacity-5"></div>
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-in">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6 text-glow">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6">
               Mission & Vision
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-[#5068a4] to-[#00a86b] mx-auto animate-scale"></div>
@@ -115,9 +115,9 @@ const AboutPage = () => {
               <div className="absolute top-0 right-0 w-20 h-20 pcb-circuit-bg opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
               
               <div className="w-20 h-20 bg-gradient-to-br from-[#5068a4] to-[#3d5998] rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span className="text-white text-3xl font-bold text-glow">M</span>
+                <span className="text-white text-3xl font-bold">M</span>
               </div>
-              <h3 className="text-3xl font-bold text-[#5068a4] mb-6 group-hover:text-glow transition-all duration-300">Our Mission</h3>
+              <h3 className="text-3xl font-bold text-[#5068a4] mb-6 transition-all duration-300">Our Mission</h3>
               <p className="text-gray-700 leading-relaxed text-md">
                 To provide exceptional PCB manufacturing services that enable our clients to bring 
                 their electronic innovations to life. We are committed to delivering superior quality, 
@@ -132,9 +132,9 @@ const AboutPage = () => {
               <div className="absolute top-0 right-0 w-20 h-20 pcb-circuit-bg opacity-5 group-hover:opacity-10 transition-opacity duration-300"></div>
               
               <div className="w-20 h-20 bg-gradient-to-br from-[#00a86b] to-[#5068a4] rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span className="text-white text-3xl font-bold text-glow">V</span>
+                <span className="text-white text-3xl font-bold">V</span>
               </div>
-              <h3 className="text-3xl font-bold text-[#5068a4] mb-6 group-hover:text-glow transition-all duration-300">Our Vision</h3>
+              <h3 className="text-3xl font-bold text-[#5068a4] mb-6 transition-all duration-300">Our Vision</h3>
               <p className="text-gray-700 leading-relaxed text-md">
                 To be the most trusted and preferred PCB manufacturing partner globally, recognized 
                 for our innovation, quality, and reliability. We envision a future where our advanced 
@@ -151,7 +151,7 @@ const AboutPage = () => {
         <div className="absolute inset-0 pcb-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-in">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6 text-glow">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-6">
               Why Choose Us
             </h2>
             <p className="text-md text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -180,7 +180,7 @@ const AboutPage = () => {
                   <div className="absolute inset-0 rounded-xl border-2 border-[#5068a4] opacity-0 group-hover:opacity-30 group-hover:animate-ping"></div>
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-800 mb-4 group-hover:text-[#5068a4] group-hover:text-glow transition-all duration-500 group-hover:scale-105">{feature.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800 mb-4 group-hover:text-[#5068a4] transition-all duration-500 group-hover:scale-105">{feature.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">{feature.description}</p>
                 
                 <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#5068a4] to-transparent opacity-0 group-hover:opacity-60 transform scale-x-0 group-hover:scale-x-100 transition-all duration-700 mt-4 mx-auto"></div>
@@ -199,7 +199,7 @@ const AboutPage = () => {
         <div className="absolute inset-0 pcb-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-in">
-            <h2 className="text-2xl md:text-5xl font-bold text-[#5068a4] mb-6 text-glow">
+            <h2 className="text-2xl md:text-5xl font-bold text-[#5068a4] mb-6">
               Our Leadership Team
             </h2>
             <p className="text-md text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -221,14 +221,14 @@ const AboutPage = () => {
                 </div>
                 
                 <div className="relative w-20 h-20 bg-gradient-to-br from-[#5068a4] to-[#3d5998] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                  <span className="text-white text-lg font-bold text-glow group-hover:scale-110 transition-transform duration-300">{member.initials}</span>
+                  <span className="text-white text-lg font-bold group-hover:scale-110 transition-transform duration-300">{member.initials}</span>
                   
                   <div className="absolute inset-0 bg-[#5068a4] rounded-full opacity-20 group-hover:opacity-30 group-hover:animate-ping"></div>
                   
                   <div className="absolute -inset-2 rounded-full border border-[#00a86b] opacity-0 group-hover:opacity-40 group-hover:animate-pulse"></div>
                 </div>
                 
-                <h3 className="text-lg font-bold text-[#5068a4] mb-2 group-hover:text-glow transition-all duration-500 group-hover:scale-105">{member.name}</h3>
+                <h3 className="text-lg font-bold text-[#5068a4] mb-2 transition-all duration-500 group-hover:scale-105">{member.name}</h3>
                 <p className="text-gray-600 font-semibold mb-4 text-sm group-hover:text-[#3d5998] transition-colors duration-300 group-hover:font-bold">{member.position}</p>
                 
                 <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#5068a4] to-transparent opacity-0 group-hover:opacity-60 transform scale-x-0 group-hover:scale-x-100 transition-all duration-700 mt-4 mx-auto"></div>
@@ -258,14 +258,14 @@ const AboutPage = () => {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="animate-in">
-            <h2 className="text-2xl md:text-6xl font-bold text-white mb-8 text-glow">
+            <h2 className="text-2xl md:text-6xl font-bold text-white mb-8">
               Ready to Start Your Next Project?
             </h2>
-            <p className="text-md text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed text-animate-delay">
+            <p className="text-md text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed">
               Let&apos;s discuss how we can help bring your electronic innovations to life with our 
               professional PCB manufacturing services and cutting-edge technology.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center text-animate-delay-2">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="/contact"
                 className="border-2 border-white text-white px-10 py-5 rounded-xl text-lg font-semibold hover:bg-white hover:text-[#5068a4] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-scale"

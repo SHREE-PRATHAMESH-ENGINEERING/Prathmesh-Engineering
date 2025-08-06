@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBox, FaClock, FaCheckCircle, FaTruck, FaEye, FaArrowLeft } from "react-icons/fa";
+import { FaBox, FaClock, FaCheckCircle, FaTruck, FaEye, FaArrowLeft, FaTimes } from "react-icons/fa";
 
 interface OrderItem {
   id: string;
@@ -103,11 +103,15 @@ const OrdersPage = () => {
       case "pending":
         return <FaClock className="text-yellow-500" />;
       case "processing":
-        return <FaBox className="text-blue-500" />;
+        return <FaBox className="text-green-500" />;
       case "shipped":
-        return <FaTruck className="text-purple-500" />;
+        return <FaTruck className="text-blue-500" />;
       case "delivered":
-        return <FaCheckCircle className="text-green-500" />;
+        return <FaCheckCircle className="text-blue-500" />;
+      case "cancelled":
+        return <FaTimes className="text-red-500" />;
+      case "need urgent":
+        return <FaClock className="text-yellow-500" />;
       default:
         return <FaClock className="text-gray-500" />;
     }
@@ -118,11 +122,17 @@ const OrdersPage = () => {
       case "pending":
         return "bg-yellow-100 text-yellow-800";
       case "processing":
-        return "bg-blue-100 text-blue-800";
-      case "shipped":
-        return "bg-purple-100 text-purple-800";
-      case "delivered":
         return "bg-green-100 text-green-800";
+      case "shipped":
+        return "bg-blue-100 text-blue-800";
+      case "delivered":
+        return "bg-blue-100 text-blue-800";
+      case "cancelled":
+      case "canceled":
+        return "bg-red-100 text-red-800";
+      case "need urgent":
+      case "urgent":
+        return "bg-yellow-100 text-yellow-800";
       default:
         return "bg-gray-100 text-gray-800";
     }

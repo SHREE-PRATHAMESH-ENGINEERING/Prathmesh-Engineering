@@ -28,7 +28,7 @@ const CartPage = () => {
       <SectionTitle title="Cart Page" path="Home | Cart" />
       <div className="bg-transparent relative z-10">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-[#5068a4] sm:text-4xl text-glow">
+          <h1 className="text-3xl font-bold tracking-tight text-[#5068a4] sm:text-4xl">
             Shopping Cart
           </h1>
           <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
@@ -117,7 +117,7 @@ const CartPage = () => {
               
               <h2
                 id="summary-heading"
-                className="text-lg font-bold text-[#5068a4] text-glow relative z-10"
+                className="text-lg font-bold text-[#5068a4] relative z-10"
               >
                 Order summary
               </h2>

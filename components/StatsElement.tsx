@@ -12,8 +12,8 @@ const StatsElement = () => {
       <div className="absolute top-3 left-3 w-2 h-2 bg-[#00a86b] rounded-full opacity-60 animate-pulse"></div>
       <div className="absolute bottom-3 right-3 w-1.5 h-1.5 bg-[#FAF9EE] rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
       
-      <h4 className="text-xl text-white text-glow relative z-10">New Products</h4>
-      <p className="text-2xl font-bold text-glow relative z-10">2,230</p>
+      <h4 className="text-xl text-white relative z-10">New Products</h4>
+      <p className="text-2xl font-bold relative z-10">2,230</p>
       <p className="text-green-300 flex gap-x-1 items-center relative z-10 group-hover:text-green-200 transition-colors duration-300">
         <FaArrowUp className="transition-transform duration-300 group-hover:scale-110" />
         12.5% Since last month

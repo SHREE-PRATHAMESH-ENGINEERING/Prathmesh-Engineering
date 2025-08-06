@@ -10,12 +10,12 @@ const Hero = () => {
           <h1 className="text-6xl text-[#5068a4] font-bold mb-3 max-xl:text-5xl max-md:text-4xl max-sm:text-3xl">
             PREMIUM PCBs FOR YOUR PROJECTS
           </h1>
-          <p className="text-gray-700 max-sm:text-sm text-animate-delay leading-relaxed">
+          <p className="text-gray-700 max-sm:text-sm leading-relaxed">
             Discover high-quality Printed Circuit Boards engineered for precision and reliability. 
             From prototypes to production runs, we deliver custom PCB solutions that meet your exact 
             specifications. Professional-grade circuits designed for engineers, makers, and innovators.
           </p>
-          <div className="flex gap-x-4 max-lg:flex-col max-lg:gap-y-4 text-animate-delay-2">
+          <div className="flex gap-x-4 max-lg:flex-col max-lg:gap-y-4">
             <button className="btn-pcb-hero max-lg:text-xl max-sm:text-lg">
               GET QUOTE
             </button>
@@ -24,17 +24,19 @@ const Hero = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 mt-8 text-animate-delay-2">
-            <div className="text-center animate-scale" style={{animationDelay: '0.8s'}}>
-              <div className="text-3xl font-bold text-[#5068a4] text-glow">50K+</div>
+          <div className="grid grid-cols-3 gap-6 mt-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#5068a4]">50K+</div>
               <div className="text-sm text-gray-600">PCBs Delivered</div>
             </div>
-            <div className="text-center animate-scale" style={{animationDelay: '1s'}}>
-              <div className="text-3xl font-bold text-[#5068a4] text-glow">24HR</div>
+
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#5068a4]">24HR</div>
               <div className="text-sm text-gray-600">Fast Turnaround</div>
             </div>
-            <div className="text-center animate-scale" style={{animationDelay: '1.2s'}}>
-              <div className="text-3xl font-bold text-[#5068a4] text-glow">99.9%</div>
+            
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#5068a4]">99.9%</div>
               <div className="text-sm text-gray-600">Quality Rate</div>
             </div>
           </div>

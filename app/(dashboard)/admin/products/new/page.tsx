@@ -114,155 +114,157 @@ const AddNewProduct = () => {
   }, []);
 
   return (
-    <div className="bg-white flex justify-start max-w-screen-2xl mx-auto xl:h-full max-xl:flex-col max-xl:gap-y-5">
-      <DashboardSidebar />
-      <div className="flex flex-col gap-y-7 xl:ml-5 max-xl:px-5 w-full">
-        <h1 className="text-3xl font-semibold">Add new product</h1>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Product name:</span>
-            </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={product?.title}
-              onChange={(e) =>
-                setProduct({ ...product, title: e.target.value })
-              }
-            />
-          </label>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="flex max-w-screen-2xl mx-auto">
+        <DashboardSidebar />
+        <div className="flex-1 xl:ml-8 max-xl:px-6">
+          <div className="py-8">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-[#5068a4] to-[#3d5998] px-8 py-6">
+                <h1 className="text-3xl font-bold text-white">Add New Product</h1>
+                <p className="text-blue-100 mt-2">Create a new product entry for your store</p>
+              </div>
+              
+              <div className="p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Product Name</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                      value={product?.title}
+                      onChange={(e) =>
+                        setProduct({ ...product, title: e.target.value })
+                      }
+                      placeholder="Enter product name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Product Slug</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                      value={convertSlugToURLFriendly(product?.slug)}
+                      onChange={(e) =>
+                        setProduct({
+                          ...product,
+                          slug: convertSlugToURLFriendly(e.target.value),
+                        })
+                      }
+                      placeholder="product-slug-url"
+                    />
+                  </div>
+                </div>
 
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Product slug:</span>
-            </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={convertSlugToURLFriendly(product?.slug)}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  slug: convertSlugToURLFriendly(e.target.value),
-                })
-              }
-            />
-          </label>
-        </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                    <select
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 bg-white"
+                      value={product?.categoryId}
+                      onChange={(e) =>
+                        setProduct({ ...product, categoryId: e.target.value })
+                      }
+                    >
+                      {categories &&
+                        categories.map((category: any) => (
+                          <option key={category?.id} value={category?.id}>
+                            {category?.name}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Product Price</label>
+                    <input
+                      type="number"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                      value={product?.price}
+                      onChange={(e) =>
+                        setProduct({ ...product, price: Number(e.target.value) })
+                      }
+                      placeholder="0.00"
+                    />
+                  </div>
+                </div>
 
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Category:</span>
-            </div>
-            <select
-              className="select select-bordered"
-              value={product?.categoryId}
-              onChange={(e) =>
-                setProduct({ ...product, categoryId: e.target.value })
-              }
-            >
-              {categories &&
-                categories.map((category: any) => (
-                  <option key={category?.id} value={category?.id}>
-                    {category?.name}
-                  </option>
-                ))}
-            </select>
-          </label>
-        </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Manufacturer</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                      value={product?.manufacturer}
+                      onChange={(e) =>
+                        setProduct({ ...product, manufacturer: e.target.value })
+                      }
+                      placeholder="Enter manufacturer name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Stock Status</label>
+                    <select
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 bg-white"
+                      value={product?.inStock}
+                      onChange={(e) =>
+                        setProduct({ ...product, inStock: Number(e.target.value) })
+                      }
+                    >
+                      <option value={1}>In Stock</option>
+                      <option value={0}>Out of Stock</option>
+                    </select>
+                  </div>
+                </div>
 
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Product price:</span>
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Product Image</label>
+                  <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 hover:border-[#5068a4] transition-colors duration-200">
+                    <input
+                      type="file"
+                      className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#5068a4] file:text-white hover:file:bg-[#3d5998]"
+                      onChange={(e: any) => {
+                        uploadFile(e.target.files[0]);
+                        setProduct({ ...product, mainImage: e.target.files[0].name });
+                      }}
+                    />
+                    {product?.mainImage && (
+                      <div className="mt-4">
+                        <Image
+                          src={`/` + product?.mainImage}
+                          alt={product?.title}
+                          className="w-32 h-32 object-cover rounded-xl border-2 border-gray-200"
+                          width={128}
+                          height={128}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Product Description</label>
+                  <textarea
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 h-32 resize-none"
+                    value={product?.description}
+                    onChange={(e) =>
+                      setProduct({ ...product, description: e.target.value })
+                    }
+                    placeholder="Enter detailed product description..."
+                  ></textarea>
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    onClick={addProduct}
+                    type="button"
+                    className="bg-[#5068a4] hover:bg-[#3d5998] text-white px-12 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Add Product
+                  </button>
+                </div>
+              </div>
             </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={product?.price}
-              onChange={(e) =>
-                setProduct({ ...product, price: Number(e.target.value) })
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Manufacturer:</span>
-            </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={product?.manufacturer}
-              onChange={(e) =>
-                setProduct({ ...product, manufacturer: e.target.value })
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Is product in stock?</span>
-            </div>
-            <select
-              className="select select-bordered"
-              value={product?.inStock}
-              onChange={(e) =>
-                setProduct({ ...product, inStock: Number(e.target.value) })
-              }
-            >
-              <option value={1}>Yes</option>
-              <option value={0}>No</option>
-            </select>
-          </label>
-        </div>
-        <div>
-          <input
-            type="file"
-            className="file-input file-input-bordered file-input-lg w-full max-w-sm"
-            onChange={(e: any) => {
-              uploadFile(e.target.files[0]);
-              setProduct({ ...product, mainImage: e.target.files[0].name });
-            }}
-          />
-          {product?.mainImage && (
-            <Image
-              src={`/` + product?.mainImage}
-              alt={product?.title}
-              className="w-auto h-auto"
-              width={100}
-              height={100}
-            />
-          )}
-        </div>
-        <div>
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Product description:</span>
-            </div>
-            <textarea
-              className="textarea textarea-bordered h-24"
-              value={product?.description}
-              onChange={(e) =>
-                setProduct({ ...product, description: e.target.value })
-              }
-            ></textarea>
-          </label>
-        </div>
-        <div className="flex gap-x-2">
-          <button
-            onClick={addProduct}
-            type="button"
-            className="uppercase bg-blue-500 px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2"
-          >
-            Add product
-          </button>
+          </div>
         </div>
       </div>
     </div>

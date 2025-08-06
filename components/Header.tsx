@@ -148,7 +148,7 @@ const Header = () => {
             </li>
             </>
             ) :  (<>
-            <span className="ml-10 text-base text-[#5068a4] font-medium max-lg:ml-0 truncate max-w-[150px]">{session.user?.email}</span>
+            <span className="ml-10 text-base text-[#5068a4] font-medium max-lg:ml-0">{session.user?.email}</span>
             <li className="flex items-center">
               <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
                 <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
@@ -486,7 +486,7 @@ const Header = () => {
               width={130}
               height={130}
               alt="Shree Prathmesh Engineering - PCB Manufacturing"
-              className="w-56 h-auto max-lg:w-48 max-md:w-40 max-sm:w-32 transition-all duration-300 group-hover:scale-105 filter drop-shadow-lg"
+              className="w-56 h-auto max-lg:w-48 max-md:w-40 max-sm:w-32 transition-all duration-300 group-hover:scale-105 filter"
             />
 
             <div className="absolute inset-0 -m-2 border border-[#5068a4] rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>

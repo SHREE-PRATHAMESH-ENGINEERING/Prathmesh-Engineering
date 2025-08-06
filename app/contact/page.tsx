@@ -65,10 +65,10 @@ const ContactPage = () => {
       <section className={`relative py-20 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
           <div className="text-center animate-in">
-            <h1 className="text-4xl md:text-6xl font-bold text-[#5068a4] mb-6 text-glow">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#5068a4] mb-6">
               Contact Our <span className="text-gray-800">PCB Experts</span>
             </h1>
-            <p className="text-md text-gray-700 max-w-4xl mx-auto leading-relaxed text-animate-delay mb-8">
+            <p className="text-md text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
               Ready to bring your electronic projects to life? Connect with our experienced PCB manufacturing team 
               for custom solutions, rapid prototyping, and high-volume production services.
             </p>
@@ -76,7 +76,7 @@ const ContactPage = () => {
             <div className="grid grid-cols-4 gap-6 mt-12 max-md:grid-cols-2 max-sm:grid-cols-1">
               {contactStats.map((stat, index) => (
                 <div key={index} className="text-center animate-scale" style={{animationDelay: stat.delay}}>
-                  <div className="text-4xl font-bold text-[#5068a4] text-glow">{stat.value}</div>
+                  <div className="text-4xl font-bold text-[#5068a4]">{stat.value}</div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
                 </div>
               ))}
@@ -119,13 +119,13 @@ const ContactPage = () => {
                        }}>
                   </div>
                   
-                  <div className="relative text-[#5068a4] mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:text-glow">
+                  <div className="relative text-[#5068a4] mb-4 group-hover:scale-110 transition-transform duration-500">
                     {getIcon()}
                     
                     <div className="absolute inset-0 rounded-full border-2 border-[#5068a4] opacity-0 group-hover:opacity-30 group-hover:animate-ping w-12 h-12 flex items-center justify-center -m-1.5"></div>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-[#5068a4] mb-3 group-hover:text-glow transition-all duration-500 group-hover:scale-105">{contact.title}</h3>
+                  <h3 className="text-lg font-bold text-[#5068a4] mb-3 transition-all duration-500 group-hover:scale-105">{contact.title}</h3>
                   <p className="text-sm font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors duration-300">{contact.info}</p>
                   
                   <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#5068a4] to-transparent opacity-0 group-hover:opacity-60 transform scale-x-0 group-hover:scale-x-100 transition-all duration-700 mt-4 mx-auto"></div>
@@ -150,7 +150,7 @@ const ContactPage = () => {
               <div className="absolute inset-0 pcb-pattern opacity-5 group-hover:opacity-10 transition-opacity duration-500"></div>
               
               <div className="relative z-10">
-                <h2 className="text-3xl font-bold text-[#5068a4] mb-6 text-glow">Write to us</h2>
+                <h2 className="text-3xl font-bold text-[#5068a4] mb-6">Write to us</h2>
                 <p className="text-gray-600 mb-8 text-md">
                   Write your query or feedback to us. Our team will review and get back to you soon.
                 </p>
@@ -267,7 +267,7 @@ const ContactPage = () => {
             <div className="space-y-12">
               
               <div className="animate-scale" style={{animationDelay: '0.2s'}}>
-                <h3 className="text-3xl font-bold text-[#5068a4] mb-6 text-glow">Why Choose Our PCB Services?</h3>
+                <h3 className="text-3xl font-bold text-[#5068a4] mb-6">Why Choose Our PCB Services?</h3>
                 <div className="space-y-2">
                   {pcbServices.map((feature, index) => {
                     const getIcon = () => {
@@ -285,7 +285,7 @@ const ContactPage = () => {
 
                     return (
                       <div key={index} className="flex items-start space-x-4 group p-4 rounded-xl hover:bg-white/30 transition-all duration-300">
-                        <div className="text-[#5068a4] group-hover:scale-110 transition-transform duration-300 group-hover:text-glow mt-1">
+                        <div className="text-[#5068a4] group-hover:scale-110 transition-transform duration-300 mt-1">
                           {getIcon()}
                         </div>
                         <div>
@@ -299,7 +299,7 @@ const ContactPage = () => {
               </div>
 
               <div className="animate-scale" style={{animationDelay: '0.6s'}}>
-                <h3 className="text-3xl font-bold text-[#5068a4] mb-6 text-glow">Manufacturing Capabilities</h3>
+                <h3 className="text-3xl font-bold text-[#5068a4] mb-6">Manufacturing Capabilities</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="space-y-3">
                     {manufacturingCapabilities.leftColumn.map((item, index) => (

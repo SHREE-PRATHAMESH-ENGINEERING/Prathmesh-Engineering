@@ -19,101 +19,81 @@ const DashboardProductTable = () => {
   }, []);
 
   return (
-    <div className="w-full">
-      <h1 className="text-3xl font-semibold text-center mb-5">All products</h1>
-      <div className="flex justify-end mb-5">
+    <div className="bg-white rounded-2xl shadow-lg border-2 border-[#5068a4] border-opacity-10 p-6">
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">All Products</h2>
+          <p className="text-gray-600">Manage your product inventory</p>
+        </div>
         <Link href="/admin/products/new">
-          <CustomButton
-            buttonType="button"
-            customWidth="110px"
-            paddingX={10}
-            paddingY={5}
-            textSize="base"
-            text="Add new product"
-          />
+          <button className="bg-[#5068a4] hover:bg-[#3d5998] text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-md hover:shadow-lg">
+            Add New Product
+          </button>
         </Link>
       </div>
 
-      <div className="xl:ml-5 max-xl:mt-5 overflow-auto w-full h-[80vh]">
-        <table className="table table-md table-pin-cols">
-         
+      <div className="overflow-x-auto">
+        <table className="w-full">
           <thead>
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+            <tr className="border-b-2 border-[#5068a4] border-opacity-20">
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                <input type="checkbox" className="w-4 h-4 text-[#5068a4] rounded focus:ring-[#5068a4]" />
               </th>
-              <th>Product</th>
-              <th>Stock Availability</th>
-              <th>Price</th>
-              <th></th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Product</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Stock</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Price</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            
+          <tbody className="divide-y divide-gray-200">
             {products &&
               products.map((product) => (
-                <tr key={nanoid()}>
-                  <th>
-                    <label>
-                      <input type="checkbox" className="checkbox" />
-                    </label>
-                  </th>
-
-                  <td>
+                <tr key={nanoid()} className="hover:bg-[#5068a4] hover:bg-opacity-5 transition-colors duration-200">
+                  <td className="py-3 px-4">
+                    <input type="checkbox" className="w-4 h-4 text-[#5068a4] rounded focus:ring-[#5068a4]" />
+                  </td>
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <Image
-                            width={48}
-                            height={48}
-                            src={product?.mainImage ? `/${product?.mainImage}` : "/product_placeholder.jpg"}
-                            alt="Avatar Tailwind CSS Component"
-                            className="w-auto h-auto"
-                          />
-                        </div>
+                      <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-gray-200">
+                        <Image
+                          width={48}
+                          height={48}
+                          src={product?.mainImage ? `/${product?.mainImage}` : "/product_placeholder.jpg"}
+                          alt={product?.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div>
-                        <div className="font-bold">{product?.title}</div>
-                        <div className="text-sm opacity-50">
-                          {product?.manufacturer}
-                        </div>
+                        <div className="font-medium text-gray-900">{product?.title}</div>
+                        <div className="text-sm text-gray-500">{product?.manufacturer}</div>
                       </div>
                     </div>
                   </td>
-
-                  <td>
-                    { product?.inStock ? (<span className="badge badge-success text-white badge-sm">
-                      In stock
-                    </span>) : (<span className="badge badge-error text-white badge-sm">
-                      Out of stock
-                    </span>) }
-                    
+                  <td className="py-3 px-4">
+                    {product?.inStock ? (
+                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">
+                        In Stock
+                      </span>
+                    ) : (
+                      <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">
+                        Out of Stock
+                      </span>
+                    )}
                   </td>
-                  <td>₹{product?.price}</td>
-                  <th>
+                  <td className="py-3 px-4">
+                    <div className="font-semibold text-gray-900">₹{product?.price}</div>
+                  </td>
+                  <td className="py-3 px-4">
                     <Link
                       href={`/admin/products/${product.id}`}
-                      className="btn btn-ghost btn-xs"
+                      className="bg-[#5068a4] bg-opacity-10 hover:bg-opacity-20 text-[#5068a4] px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
                     >
-                      details
+                      View Details
                     </Link>
-                  </th>
+                  </td>
                 </tr>
               ))}
-          </tbody>
-
-          <tfoot>
-            <tr>
-              <th></th>
-              <th>Product</th>
-              <th>Stock Availability</th>
-              <th>Price</th>
-              <th></th>
-            </tr>
-          </tfoot>
-        </table>
+          </tbody>        </table>
       </div>
     </div>
   );

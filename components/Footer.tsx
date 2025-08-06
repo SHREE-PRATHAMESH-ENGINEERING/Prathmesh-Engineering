@@ -75,10 +75,10 @@ const Footer = () => {
             Footer
           </h2>
           <div className="mx-auto max-w-screen px-6 lg:px-8 pt-20 pb-14">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 items-start">
               <div className="group relative flex justify-center md:justify-start">
                 <Image
-                  src="/logo v1.png"
+                  src="/logo v1 svg.svg"
                   alt="Shree Prathmesh Engineering - Professional PCB Manufacturing"
                   width={250}
                   height={250}
@@ -88,7 +88,7 @@ const Footer = () => {
                 <div className="absolute inset-0 -m-4 border border-[#5068a4] rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
               </div>
               
-              <div className="footer-section group text-center md:text-left">
+              <div className="footer-section group text-center md:text-left md:ml-12 lg:ml-16">
                 <h3 className="text-lg font-bold leading-6 text-[#5068a4] relative">
                   Quick Links
                 </h3>

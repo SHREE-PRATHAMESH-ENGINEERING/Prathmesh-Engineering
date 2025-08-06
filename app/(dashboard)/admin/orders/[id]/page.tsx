@@ -140,178 +140,129 @@ const AdminSingleOrder = () => {
   };
 
   return (
-    <div className="bg-white flex justify-start max-w-screen-2xl mx-auto xl:h-full max-xl:flex-col max-xl:gap-y-5">
+    <div className="bg-gradient-to-br from-[#FAF9EE] to-white min-h-screen flex justify-start max-w-screen-2xl mx-auto max-xl:flex-col">
       <DashboardSidebar />
-      <div className="flex flex-col gap-y-7 xl:ml-5 w-full max-xl:px-5">
-        <h1 className="text-3xl font-semibold">Order details</h1>
-        <div className="mt-5">
-          <label className="w-full">
-            <div>
-              <span className="text-xl font-bold">Order ID:</span>
-              <span className="text-base"> {order?.id}</span>
-            </div>
-          </label>
+      <div className="flex-1 p-8 max-xl:p-4">
+        <div className="mb-8 border-b-2 border-[#5068a4] border-opacity-20 pb-6">
+          <h1 className="text-3xl font-bold text-[#5068a4] mb-2">Order Details</h1>
+          <p className="text-gray-700">View and edit order information</p>
         </div>
-        <div className="flex gap-x-2 max-sm:flex-col">
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Name:</span>
-              </div>
+        
+        <div className="bg-white rounded-2xl shadow-lg border-2 border-[#5068a4] border-opacity-10 p-6">
+          <div className="mb-6">
+            <div className="bg-[#5068a4] bg-opacity-10 rounded-xl p-4 mb-6">
+              <span className="text-lg font-bold text-[#5068a4]">Order ID: </span>
+              <span className="text-lg font-semibold text-gray-800">#{order?.id}</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Name</label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
                 value={order?.name}
                 onChange={(e) => setOrder({ ...order, name: e.target.value })}
               />
-            </label>
-          </div>
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Lastname:</span>
-              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
                 value={order?.lastname}
-                onChange={(e) =>
-                  setOrder({ ...order, lastname: e.target.value })
-                }
+                onChange={(e) => setOrder({ ...order, lastname: e.target.value })}
               />
-            </label>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Phone number:</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                value={order?.phone}
+                onChange={(e) => setOrder({ ...order, phone: e.target.value })}
+              />
             </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+              <input
+                type="email"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                value={order?.email}
+                onChange={(e) => setOrder({ ...order, email: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Company (Optional)</label>
             <input
               type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={order?.phone}
-              onChange={(e) => setOrder({ ...order, phone: e.target.value })}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Email adress:</span>
-            </div>
-            <input
-              type="email"
-              className="input input-bordered w-full max-w-xs"
-              value={order?.email}
-              onChange={(e) => setOrder({ ...order, email: e.target.value })}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Company (optional):</span>
-            </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
               value={order?.company}
               onChange={(e) => setOrder({ ...order, company: e.target.value })}
             />
-          </label>
-        </div>
+          </div>
 
-        <div className="flex gap-x-2 max-sm:flex-col">
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Address:</span>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Address</label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
                 value={order?.adress}
                 onChange={(e) => setOrder({ ...order, adress: e.target.value })}
               />
-            </label>
-          </div>
-
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Apartment, suite, etc. :</span>
-              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Apartment, Suite, etc.</label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
                 value={order?.apartment}
-                onChange={(e) =>
-                  setOrder({ ...order, apartment: e.target.value })
-                }
+                onChange={(e) => setOrder({ ...order, apartment: e.target.value })}
               />
-            </label>
+            </div>
           </div>
-        </div>
 
-        <div className="flex gap-x-2 max-sm:flex-col">
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">City:</span>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">City</label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
                 value={order?.city}
                 onChange={(e) => setOrder({ ...order, city: e.target.value })}
               />
-            </label>
-          </div>
-
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Country:</span>
-              </div>
-              <input
-                type="text"
-                className="input input-bordered w-full max-w-xs"
-                value={order?.country}
-                onChange={(e) =>
-                  setOrder({ ...order, country: e.target.value })
-                }
-              />
-            </label>
-          </div>
-
-          <div>
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Postal Code:</span>
-              </div>
-              <input
-                type="text"
-                className="input input-bordered w-full max-w-xs"
-                value={order?.postalCode}
-                onChange={(e) =>
-                  setOrder({ ...order, postalCode: e.target.value })
-                }
-              />
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Order status</span>
             </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Country</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                value={order?.country}
+                onChange={(e) => setOrder({ ...order, country: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Postal Code</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                value={order?.postalCode}
+                onChange={(e) => setOrder({ ...order, postalCode: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Order Status</label>
             <select
-              className="select select-bordered"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 bg-white"
               value={order?.status}
               onChange={(e) =>
                 setOrder({
@@ -319,72 +270,98 @@ const AdminSingleOrder = () => {
                   status: e.target.value as
                     | "processing"
                     | "delivered"
-                    | "canceled",
+                    | "cancelled"
+                    | "need urgent",
                 })
               }
             >
               <option value="processing">Processing</option>
               <option value="delivered">Delivered</option>
-              <option value="canceled">Canceled</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="need urgent">Need Urgent</option>
             </select>
-          </label>
-        </div>
-        <div>
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Order notice:</span>
-            </div>
+          </div>
+          
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Order Notice</label>
             <textarea
-              className="textarea textarea-bordered h-24"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 h-24 resize-none"
               value={order?.orderNotice || ""}
               onChange={(e) =>
                 setOrder({ ...order, orderNotice: e.target.value })
               }
+              placeholder="Add any special instructions or notes..."
             ></textarea>
-          </label>
-        </div>
-        <div>
-          {orderProducts?.map((product) => (
-            <div className="flex items-center gap-x-4" key={product?.id}>
-              <Image
-                src={product?.product?.mainImage ? `/${product?.product?.mainImage}` : "/product_placeholder.jpg"}
-                alt={product?.product?.title}
-                width={50}
-                height={50}
-                className="w-auto h-auto"
-              />
-              <div>
-                <Link href={`/product/${product?.product?.slug}`}>
-                  {product?.product?.title}
-                </Link>
-                <p>
-                  ₹{product?.product?.price} * {product?.quantity} items
-                </p>
+          </div>
+
+          {/* Order Products Section */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 border-b border-[#5068a4] border-opacity-20 pb-2">Order Items</h3>
+            <div className="space-y-4">
+              {orderProducts?.map((product) => (
+                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl" key={product?.id}>
+                  <div className="w-16 h-16 rounded-lg overflow-hidden border-2 border-gray-200">
+                    <Image
+                      src={product?.product?.mainImage ? `/${product?.product?.mainImage}` : "/product_placeholder.jpg"}
+                      alt={product?.product?.title}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Link href={`/product/${product?.product?.slug}`} className="font-medium text-[#5068a4] hover:text-[#3d5998] transition-colors duration-200">
+                      {product?.product?.title}
+                    </Link>
+                    <p className="text-gray-600">
+                      ₹{product?.product?.price} × {product?.quantity} items
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Order Total Section */}
+          <div className="bg-[#5068a4] bg-opacity-5 rounded-xl p-6 mb-8">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Order Summary</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between text-gray-700">
+                <span>Subtotal:</span>
+                <span className="font-semibold">₹{order?.total}</span>
+              </div>
+              <div className="flex justify-between text-gray-700">
+                <span>Tax (20%):</span>
+                <span className="font-semibold">₹{Math.round(order?.total / 5)}</span>
+              </div>
+              <div className="flex justify-between text-gray-700">
+                <span>Shipping:</span>
+                <span className="font-semibold">₹5</span>
+              </div>
+              <div className="border-t border-[#5068a4] border-opacity-20 pt-2 mt-2">
+                <div className="flex justify-between text-xl font-bold text-[#5068a4]">
+                  <span>Total:</span>
+                  <span>₹{Math.round(order?.total + order?.total / 5 + 5)}</span>
+                </div>
               </div>
             </div>
-          ))}
-          <div className="flex flex-col gap-y-2 mt-10">
-            <p className="text-2xl">Subtotal: ${order?.total}</p>
-            <p className="text-2xl">Tax 20%: ${order?.total / 5}</p>
-            <p className="text-2xl">Shipping: $5</p>
-            <p className="text-3xl font-semibold">
-              Total: ${order?.total + order?.total / 5 + 5}
-            </p>
           </div>
-          <div className="flex gap-x-2 max-sm:flex-col mt-5">
+
+          {/* Action Buttons */}
+          <div className="flex gap-4 max-sm:flex-col">
             <button
               type="button"
-              className="uppercase bg-blue-500 px-10 py-5 text-lg border  border-gray-300 font-bold text-white shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2"
+              className="flex-1 bg-[#5068a4] hover:bg-[#3d5998] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
               onClick={updateOrder}
             >
-              Update order
+              Update Order
             </button>
             <button
               type="button"
-              className="uppercase bg-red-600 px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2"
+              className="flex-1 bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
               onClick={deleteOrder}
             >
-              Delete order
+              Delete Order
             </button>
           </div>
         </div>

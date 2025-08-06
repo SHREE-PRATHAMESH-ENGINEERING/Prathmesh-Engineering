@@ -38,14 +38,14 @@ export const socialMediaIcons = [
   {
     id: 'phone',
     icon: 'FaPhone',
-    href: 'tel:+919876543210',
+    href: 'tel:+917972839225',
     title: 'Call Us',
     external: false
   },
   {
     id: 'whatsapp',
     icon: 'FaWhatsapp',
-    href: 'https://wa.me/919876543210',
+    href: 'https://wa.me/917972839225',
     title: 'WhatsApp',
     external: true
   },
@@ -80,7 +80,7 @@ export const socialMediaIcons = [
   {
     id: 'email',
     icon: 'FaEnvelope',
-    href: 'mailto:sales@prathmeshengineering.com',
+    href: 'mailto:contact@prathmeshengineering.com',
     title: 'Email',
     external: false
   }
@@ -273,7 +273,7 @@ export const contactMethods = [
   {
     iconType: "phone",
     title: "Call Us",
-    info: "+91 98765 43210",
+    info: "+91 79728 39225",
     delay: "0.1s"
   },
   {
@@ -285,7 +285,7 @@ export const contactMethods = [
   {
     iconType: "location",
     title: "Visit Our Facility",
-    info: "Industrial Area, Sector 12, Mumbai",
+    info: "Dhaurakahra, Vijaypur, Mirzapur, Uttar Pradesh 231303",
     delay: "0.3s"
   },
   {

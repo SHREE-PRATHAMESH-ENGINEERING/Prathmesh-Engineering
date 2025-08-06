@@ -66,7 +66,7 @@ const LoginPage = () => {
         <div className="absolute bottom-40 left-1/4 w-20 h-1 circuit-flow opacity-30" style={{animationDelay: '2s'}}></div>
         
         <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
-          <h2 className="mt-6 text-center text-2xl font-semibold leading-9 tracking-tight text-[#5068a4] text-glow animate-fade-in">
+          <h2 className="mt-6 text-center text-2xl font-semibold leading-9 tracking-tight text-[#5068a4] animate-fade-in">
             Sign in to your account
           </h2>
         </div>

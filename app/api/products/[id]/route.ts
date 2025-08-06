@@ -45,7 +45,7 @@ export async function PUT(
         mainImage: body.mainImage,
         rating: body.rating ? parseInt(body.rating) : 0,
         manufacturer: body.manufacturer || '',
-        inStock: body.inStock ? parseInt(body.inStock) : 1
+        inStock: body.inStock !== undefined ? parseInt(body.inStock) : 1
       }
     });
 

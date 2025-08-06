@@ -30,7 +30,7 @@ const ProductsSection = () => {
     <div className="bg-white border-t-4 border-[#5068a4] relative overflow-hidden">
       
       <div className="max-w-screen-2xl mx-auto pt-20 pb-16 relative z-10">
-        <div className="text-animate mb-12">
+        <div className="mb-12">
           <Heading title="FEATURED PRODUCTS" />
         </div>
         

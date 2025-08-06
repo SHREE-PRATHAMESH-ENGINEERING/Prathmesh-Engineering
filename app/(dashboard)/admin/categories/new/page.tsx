@@ -41,34 +41,43 @@ const DashboardNewCategoryPage = () => {
     }
   };
   return (
-    <div className="bg-white flex justify-start max-w-screen-2xl mx-auto xl:h-full max-xl:flex-col max-xl:gap-y-5">
-      <DashboardSidebar />
-      <div className="flex flex-col gap-y-7 xl:pl-5 max-xl:px-5 w-full">
-        <h1 className="text-3xl font-semibold">Add new category</h1>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Category name:</span>
-            </div>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              value={categoryInput.name}
-              onChange={(e) =>
-                setCategoryInput({ ...categoryInput, name: e.target.value })
-              }
-            />
-          </label>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="flex max-w-screen-2xl mx-auto">
+        <DashboardSidebar />
+        <div className="flex-1 xl:ml-8 max-xl:px-6">
+          <div className="py-8">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-[#5068a4] to-[#3d5998] px-8 py-6">
+                <h1 className="text-3xl font-bold text-white">Add New Category</h1>
+                <p className="text-blue-100 mt-2">Create a new product category for your store</p>
+              </div>
+              
+              <div className="p-8">
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Category Name</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
+                    value={categoryInput.name}
+                    onChange={(e) =>
+                      setCategoryInput({ ...categoryInput, name: e.target.value })
+                    }
+                    placeholder="Enter category name"
+                  />
+                </div>
 
-        <div className="flex gap-x-2">
-          <button
-            type="button"
-            className="uppercase bg-blue-500 px-10 py-5 text-lg border border-gray-300 font-bold text-white shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2"
-            onClick={addNewCategory}
-          >
-            Create category
-          </button>
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    className="bg-[#5068a4] hover:bg-[#3d5998] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                    onClick={addNewCategory}
+                  >
+                    Create Category
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
