@@ -116,7 +116,7 @@ const Header = () => {
         setWishlist([]); // Set empty wishlist on error
       }
     }
-  }, [session?.user?.email, getWishlistByUserId]);
+  }, [session?.user?.email, getWishlistByUserId, setWishlist]);
 
   useEffect(() => {
     // Only fetch user data if we have a valid session with email
@@ -126,7 +126,7 @@ const Header = () => {
       // Clear wishlist if no valid session
       setWishlist([]);
     }
-  }, [session?.user?.email, getUserByEmail]);
+  }, [session?.user?.email, getUserByEmail, setWishlist]);
 
   return (
     <>
