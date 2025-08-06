@@ -8,9 +8,14 @@ datasource db {
 }
 
 model category {
-  id      String    @id
-  name    String    @unique(map: "Category_name_key")
-  product product[]
+  id           String     @id
+  name         String     @unique(map: "Category_name_key")
+  parentId     String?
+  parent       category?  @relation("CategorySubcategory", fields: [parentId], references: [id], onDelete: Cascade)
+  subcategories category[] @relation("CategorySubcategory")
+  product      product[]
+
+  @@index([parentId], map: "Category_parentId_fkey")
 }
 
 model customer_order {

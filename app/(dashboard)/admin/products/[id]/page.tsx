@@ -122,7 +122,12 @@ const DashboardProductDetails = ({
         return res.json();
       })
       .then((data) => {
-        setCategories(data);
+        // Ensure data is an array before setting it
+        setCategories(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error('Error fetching categories:', error);
+        setCategories([]);
       });
   };
 
@@ -158,7 +163,7 @@ const DashboardProductDetails = ({
               <input
                 type="number"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200"
-                value={product?.price || ""}
+                value={product?.price || 0}
                 onChange={(e) =>
                   setProduct({ ...product!, price: Number(e.target.value) })
                 }
@@ -199,7 +204,7 @@ const DashboardProductDetails = ({
               <label className="block text-sm font-semibold text-gray-700 mb-2">Stock Status</label>
               <select
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#5068a4] focus:outline-none transition-colors duration-200 bg-white"
-                value={product?.inStock !== undefined ? product.inStock : 1}
+                value={product?.inStock ?? 1}
                 onChange={(e) => {
                   setProduct({ ...product!, inStock: Number(e.target.value) });
                 }}
@@ -220,13 +225,26 @@ const DashboardProductDetails = ({
                   })
                 }
               >
-                {categories &&
-                  categories.map((category: Category) => (
-                    <option key={category?.id} value={category?.id}>
-                      {formatCategoryName(category?.name)}
-                    </option>
-                  ))}
+                <option value="">Select a category</option>
+                {Array.isArray(categories) && categories
+                  .filter(category => !category.parentId) // Only show main categories first
+                  .map(category => [
+                    <option key={category.id} value={category.id}>
+                      {formatCategoryName(category.name)}
+                    </option>,
+                    // Add subcategories indented
+                    ...(category.subcategories && Array.isArray(category.subcategories) 
+                      ? category.subcategories.map(subcategory => (
+                          <option key={subcategory.id} value={subcategory.id}>
+                            └ {formatCategoryName(subcategory.name)}
+                          </option>
+                        ))
+                      : [])
+                  ]).flat()}
               </select>
+              <p className="text-xs text-gray-500 mt-1">
+                Main categories and their subcategories are shown with indentation
+              </p>
             </div>
           </div>
 
@@ -249,7 +267,7 @@ const DashboardProductDetails = ({
                 <div className="mt-4">
                   <Image
                     src={`/` + product?.mainImage}
-                    alt={product?.title || "Product image"}
+                    alt={product?.title}
                     className="w-32 h-32 object-cover rounded-xl border-2 border-gray-200"
                     width={128}
                     height={128}

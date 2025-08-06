@@ -47,44 +47,86 @@ const Header = () => {
   };
 
   const getWishlistByUserId = useCallback(async (id: string) => {
-    const response = await fetch(`/api/wishlist/${id}`, {
-      cache: "no-store",
-    });
-    const wishlist = await response.json();
-    const productArray: {
-      id: string;
-      title: string;
-      price: number;
-      image: string;
-      slug:string;
-      stockAvailabillity: number;
-    }[] = [];
-    wishlist.map((item: any) => productArray.push({
-      id: item?.product?.id,
-      title: item?.product?.title,
-      price: item?.product?.price,
-      image: item?.product?.mainImage,
-      slug: item?.product?.slug,
-      stockAvailabillity: item?.product?.inStock
-    }));
-    setWishlist(productArray);
+    // Don't make API call if id is undefined or null
+    if (!id) {
+      console.warn('No user ID provided for wishlist fetch');
+      setWishlist([]);
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/wishlist/${id}`, {
+        cache: "no-store",
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const wishlist = await response.json();
+      const productArray: {
+        id: string;
+        title: string;
+        price: number;
+        image: string;
+        slug:string;
+        stockAvailabillity: number;
+      }[] = [];
+      
+      // Ensure wishlist is an array before mapping
+      if (Array.isArray(wishlist)) {
+        wishlist.map((item: any) => productArray.push({
+          id: item?.product?.id,
+          title: item?.product?.title,
+          price: item?.product?.price,
+          image: item?.product?.mainImage,
+          slug: item?.product?.slug,
+          stockAvailabillity: item?.product?.inStock
+        }));
+      }
+      setWishlist(productArray);
+    } catch (error) {
+      console.error('Error fetching wishlist:', error);
+      setWishlist([]); // Set empty array on error
+    }
   }, [setWishlist]);
 
   const getUserByEmail = useCallback(async () => {
     if (session?.user?.email) {
-      fetch(`/api/users/email/${encodeURIComponent(session?.user?.email)}`, {
-        cache: "no-store",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          getWishlistByUserId(data?.id);
+      try {
+        const response = await fetch(`/api/users/email/${encodeURIComponent(session?.user?.email)}`, {
+          cache: "no-store",
         });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Only call getWishlistByUserId if we have a valid user ID
+        if (data?.id) {
+          getWishlistByUserId(data.id);
+        } else {
+          console.warn('No user ID returned from API');
+          setWishlist([]);
+        }
+      } catch (error) {
+        console.error('Error fetching user by email:', error);
+        setWishlist([]); // Set empty wishlist on error
+      }
     }
   }, [session?.user?.email, getWishlistByUserId]);
 
   useEffect(() => {
-    getUserByEmail();
-  }, [session?.user?.email, wishlist.length, getUserByEmail]);
+    // Only fetch user data if we have a valid session with email
+    if (session?.user?.email) {
+      getUserByEmail();
+    } else {
+      // Clear wishlist if no valid session
+      setWishlist([]);
+    }
+  }, [session?.user?.email, getUserByEmail]);
 
   return (
     <>

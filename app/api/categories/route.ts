@@ -3,7 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const categories = await prisma.category.findMany({
+    const categories = await (prisma.category as any).findMany({
+      include: {
+        subcategories: {
+          include: {
+            subcategories: true // Include nested subcategories if any
+          }
+        },
+        parent: true
+      },
       orderBy: { id: 'desc' }
     });
 
@@ -25,13 +33,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate parent category exists if parentId is provided
+    if (body.parentId) {
+      const parentExists = await prisma.category.findUnique({
+        where: { id: body.parentId }
+      });
+      
+      if (!parentExists) {
+        return NextResponse.json(
+          { error: 'Parent category not found' }, 
+          { status: 400 }
+        );
+      }
+    }
+
     // Generate a unique ID for the category
     const categoryId = `cat_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    const category = await prisma.category.create({
+    const category = await (prisma.category as any).create({
       data: {
         id: categoryId,
-        name: body.name
+        name: body.name,
+        parentId: body.parentId || null
+      },
+      include: {
+        parent: true,
+        subcategories: true
       }
     });
 

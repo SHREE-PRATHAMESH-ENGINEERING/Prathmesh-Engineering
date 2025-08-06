@@ -95,7 +95,9 @@ const AddNewProduct = () => {
         return res.json();
       })
       .then((data) => {
-        setCategories(data);
+        // Ensure data is an array before setting it
+        const categoriesData = Array.isArray(data) ? data : [];
+        setCategories(categoriesData);
         setProduct({
           title: "",
           price: 0,
@@ -104,8 +106,12 @@ const AddNewProduct = () => {
           mainImage: "",
           description: "",
           slug: "",
-          categoryId: data[0]?.id,
+          categoryId: categoriesData[0]?.id || "",
         });
+      })
+      .catch((error) => {
+        console.error('Error fetching categories:', error);
+        setCategories([]);
       });
   };
 
@@ -166,13 +172,26 @@ const AddNewProduct = () => {
                         setProduct({ ...product, categoryId: e.target.value })
                       }
                     >
-                      {categories &&
-                        categories.map((category: any) => (
-                          <option key={category?.id} value={category?.id}>
-                            {category?.name}
-                          </option>
-                        ))}
+                      <option value="">Select a category</option>
+                      {Array.isArray(categories) && categories
+                        .filter(category => !category.parentId) // Only show main categories first
+                        .map(category => [
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>,
+                          // Add subcategories indented
+                          ...(category.subcategories && Array.isArray(category.subcategories) 
+                            ? category.subcategories.map(subcategory => (
+                                <option key={subcategory.id} value={subcategory.id}>
+                                  └ {subcategory.name}
+                                </option>
+                              ))
+                            : [])
+                        ]).flat()}
                     </select>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Main categories and their subcategories are shown with indentation
+                    </p>
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Product Price</label>

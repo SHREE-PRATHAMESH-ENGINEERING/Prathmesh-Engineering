@@ -14,7 +14,11 @@ const DashboardProductTable = () => {
         return res.json();
       })
       .then((data) => {
-        setProducts(data);
+        setProducts(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+        setProducts([]);
       });
   }, []);
 
@@ -40,15 +44,15 @@ const DashboardProductTable = () => {
                 <input type="checkbox" className="w-4 h-4 text-[#5068a4] rounded focus:ring-[#5068a4]" />
               </th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Product</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700">Category</th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Stock</th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Price</th>
               <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {products &&
-              products.map((product) => (
-                <tr key={nanoid()} className="hover:bg-[#5068a4] hover:bg-opacity-5 transition-colors duration-200">
+            {Array.isArray(products) && products.map((product) => (
+              <tr key={nanoid()} className="hover:bg-[#5068a4] hover:bg-opacity-5 transition-colors duration-200">
                   <td className="py-3 px-4">
                     <input type="checkbox" className="w-4 h-4 text-[#5068a4] rounded focus:ring-[#5068a4]" />
                   </td>
@@ -67,6 +71,24 @@ const DashboardProductTable = () => {
                         <div className="font-medium text-gray-900">{product?.title}</div>
                         <div className="text-sm text-gray-500">{product?.manufacturer}</div>
                       </div>
+                    </div>
+                  </td>
+                  <td className="py-3 px-4">
+                    <div className="text-sm">
+                      {product?.category ? (
+                        <div>
+                          <div className="font-medium text-gray-900">
+                            {product.category.name}
+                          </div>
+                          {(product.category as any).parent && (
+                            <div className="text-xs text-gray-500">
+                              Under: {(product.category as any).parent.name}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-gray-400 text-xs">No category</span>
+                      )}
                     </div>
                   </td>
                   <td className="py-3 px-4">
@@ -93,7 +115,8 @@ const DashboardProductTable = () => {
                   </td>
                 </tr>
               ))}
-          </tbody>        </table>
+          </tbody>
+        </table>
       </div>
     </div>
   );

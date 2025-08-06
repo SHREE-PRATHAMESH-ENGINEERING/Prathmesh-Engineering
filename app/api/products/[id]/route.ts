@@ -8,10 +8,14 @@ export async function GET(
   try {
     const id = params.id;
     
-    const product = await prisma.product.findUnique({
+    const product = await (prisma.product as any).findUnique({
       where: { id },
       include: {
-        category: true
+        category: {
+          include: {
+            parent: true
+          }
+        }
       }
     });
 
@@ -45,7 +49,7 @@ export async function PUT(
         mainImage: body.mainImage,
         rating: body.rating ? parseInt(body.rating) : 0,
         manufacturer: body.manufacturer || '',
-        inStock: body.inStock !== undefined ? parseInt(body.inStock) : 1
+        inStock: body.inStock ? parseInt(body.inStock) : 1
       }
     });
 

@@ -8,8 +8,13 @@ export async function GET(
   try {
     const id = params.id;
     
-    const category = await prisma.category.findUnique({
-      where: { id }
+    // Use type assertion until database migration is complete
+    const category = await (prisma.category as any).findUnique({
+      where: { id },
+      include: {
+        parent: true,
+        subcategories: true
+      }
     });
 
     if (!category) {
@@ -31,10 +36,37 @@ export async function PUT(
     const id = params.id;
     const body = await request.json();
     
-    const category = await prisma.category.update({
+    // Validate parent category exists if parentId is provided
+    if (body.parentId && body.parentId !== id) {
+      const parentExists = await (prisma.category as any).findUnique({
+        where: { id: body.parentId }
+      });
+      
+      if (!parentExists) {
+        return NextResponse.json(
+          { error: 'Parent category not found' }, 
+          { status: 400 }
+        );
+      }
+      
+      // Prevent circular reference (category can't be parent of itself)
+      if (body.parentId === id) {
+        return NextResponse.json(
+          { error: 'Category cannot be parent of itself' }, 
+          { status: 400 }
+        );
+      }
+    }
+    
+    const category = await (prisma.category as any).update({
       where: { id },
       data: {
-        name: body.name
+        name: body.name,
+        ...(body.parentId !== undefined && { parentId: body.parentId || null })
+      },
+      include: {
+        parent: true,
+        subcategories: true
       }
     });
 

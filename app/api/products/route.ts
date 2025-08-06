@@ -33,18 +33,26 @@ export async function GET(request: NextRequest) {
     
     if (limit) {
       // Get limited products for featured section
-      products = await prisma.product.findMany({
+      products = await (prisma.product as any).findMany({
         take: parseInt(limit),
         orderBy: { id: 'desc' },
         include: {
-          category: true
+          category: {
+            include: {
+              parent: true
+            }
+          }
         }
       });
     } else if (mode === 'admin') {
       // Get all products for admin
-      products = await prisma.product.findMany({
+      products = await (prisma.product as any).findMany({
         include: {
-          category: true
+          category: {
+            include: {
+              parent: true
+            }
+          }
         },
         orderBy: { id: 'desc' }
       });
@@ -52,12 +60,16 @@ export async function GET(request: NextRequest) {
       // Get paginated products with filters
       const skip = (page - 1) * pageSize;
       
-      products = await prisma.product.findMany({
+      products = await (prisma.product as any).findMany({
         where: whereClause,
         take: pageSize,
         skip: skip,
         include: {
-          category: true
+          category: {
+            include: {
+              parent: true
+            }
+          }
         },
         orderBy: { id: 'desc' }
       });
@@ -96,7 +108,7 @@ export async function POST(request: NextRequest) {
         mainImage: body.mainImage || '',
         rating: body.rating ? parseInt(body.rating) : 0,
         manufacturer: body.manufacturer || '',
-        inStock: body.inStock !== undefined ? parseInt(body.inStock) : 1
+        inStock: body.inStock ? parseInt(body.inStock) : 1
       },
       include: {
         category: true
