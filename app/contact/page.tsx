@@ -126,7 +126,7 @@ const ContactPage = () => {
                   </div>
                   
                   <h3 className="text-lg font-bold text-[#5068a4] mb-3 transition-all duration-500 group-hover:scale-105">{contact.title}</h3>
-                  <p className="text-sm font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors duration-300">{contact.info}</p>
+                  <p className="text-sm font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors duration-300 break-words overflow-wrap-anywhere">{contact.info}</p>
                   
                   <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#5068a4] to-transparent opacity-0 group-hover:opacity-60 transform scale-x-0 group-hover:scale-x-100 transition-all duration-700 mt-4 mx-auto"></div>
                   
