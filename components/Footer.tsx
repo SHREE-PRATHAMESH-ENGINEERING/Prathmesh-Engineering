@@ -129,9 +129,8 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Social Media Icons Section */}
             <div className="border-t border-gray-200 mt-12 pt-8">
-              <div className="flex justify-center">
+              <div className="flex flex-col items-center">
                 <div className="flex items-center gap-x-4">
                   <div className="flex gap-x-3">
                     {socialMediaIcons.map((social, index) => {
@@ -151,6 +150,15 @@ const Footer = () => {
                       );
                     })}
                   </div>
+                </div>
+
+                <div className="mt-6 flex flex-col items-center">
+                  <span className="flex text-center text-gray-500 text-sm">
+                    Copyright © {new Date().getFullYear()} Prathmesh Engineering. All rights reserved.
+                  </span>
+                  <span className="text-xs text-gray-400 mt-2 text-center max-w-5xl">
+                    This website and its content, including text, images, code, and design, are the property of Prathmesh Engineering and are protected by copyright laws. Unauthorized use, reproduction, or distribution is strictly prohibited.
+                  </span>
                 </div>
               </div>
             </div>

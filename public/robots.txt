@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://prathmeshengineering.com
+
+# Sitemaps
+Sitemap: https://prathmeshengineering.com/sitemap.xml
