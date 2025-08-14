@@ -1,66 +1,78 @@
 export const siteMetadata = {
   metadataBase: new URL("https://prathmeshengineering.com"),
-  title: "Prathmesh Engineering | PCB & Electronic Components Online Store",
-  description: "Shop PCBs, electronic components, modules, sensors, and engineering solutions online. Fast shipping across India. Trusted by makers, students, and professionals.",
+  title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
+  description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
   keywords: [
     "PCB",
+    "printed circuit board",
+    "single layer",
+    "multi-layer",
+    "flex PCB",
+    "rigid-flex",
+    "PCB manufacturing",
+    "PCB prototype",
     "electronics",
     "electronic components",
     "modules",
     "sensors",
-    "engineering solutions",
-    "online store",
-    "buy electronics",
-    "India",
-    "Prathmesh Engineering",
-    "makers",
-    "students",
-    "professionals",
-    "microcontrollers",
-    "robotics",
-    "IoT",
-    "automation"
+    "production runs",
+    "Shree Prathmesh Engineering",
+    "quality PCB",
+    "India"
   ],
   openGraph: {
-    title: "Prathmesh Engineering | PCB & Electronic Components Online Store",
-    description: "Shop PCBs, electronic components, modules, sensors, and engineering solutions online. Fast shipping across India. Trusted by makers, students, and professionals.",
+    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
+    description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
     url: "https://prathmeshengineering.com",
     images: [
       {
         url: "https://prathmeshengineering.com/logo%20v1.png",
         width: 1200,
         height: 630,
-        alt: "Prathmesh Engineering Logo"
+        alt: "Shree Prathmesh Engineering Logo"
       }
     ],
     type: "website",
-    site_name: "Prathmesh Engineering",
+    site_name: "Shree Prathmesh Engineering",
     locale: "en_IN",
     facebook: {
       app_id: "YOUR_FACEBOOK_APP_ID"
-    },
-    instagram: {
-      handle: "@prathmeshengineering"
-    },
-    whatsapp: {
-      message: "Shop PCBs & electronics at Prathmesh Engineering! https://prathmeshengineering.com"
-    },
-    linkedin: {
-      url: "https://www.linkedin.com/company/prathmeshengineering/",
-      title: "Prathmesh Engineering | PCB & Electronic Components Online Store",
-      summary: "Shop PCBs, electronic components, modules, sensors, and engineering solutions online. Fast shipping across India. Trusted by makers, students, and professionals."
-    },
-    email: {
-      subject: "Check out Prathmesh Engineering for PCBs & Electronics",
-      body: "Shop PCBs, electronic components, modules, sensors, and engineering solutions online at Prathmesh Engineering. https://prathmeshengineering.com"
     }
   },
   twitter: {
     card: "summary_large_image",
     site: "@prathmeshengineering",
-    title: "Prathmesh Engineering | PCB & Electronic Components Online Store",
-    description: "Shop PCBs, electronic components, modules, sensors, and engineering solutions online. Fast shipping across India.",
-    images: ["https://prathmeshengineering.com/logo%20v1.png"],
+    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
+    description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
+    images: ["https://prathmeshengineering.com/logo%20v1.png"]
+  },
+  organizationSchema: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Shree Prathmesh Engineering",
+    "url": "https://prathmeshengineering.com",
+    "logo": "https://prathmeshengineering.com/logo%20v1.png",
+    "description": "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors.",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-7972839225",
+      "contactType": "customer service"
+    }]
+  },
+  instagram: {
+    handle: "@prathmeshengineering"
+  },
+  whatsapp: {
+    message: "Shop PCBs & electronics at Shree Prathmesh Engineering! https://shreeprathmeshengineering.com"
+  },
+  linkedin: {
+    url: "https://www.linkedin.com/company/prathmeshengineering/",
+    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
+    summary: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping."
+  },
+  email: {
+    subject: "Check out Shree Prathmesh Engineering for PCBs & Electronics",
+    body: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping. https://shreeprathmeshengineering.com"
   },
   robots: "index, follow",
   alternates: {
@@ -68,11 +80,6 @@ export const siteMetadata = {
   },
   other: {
     "ld+json": `{
-      \"@context\": \"https://schema.org\",
-      \"@type\": \"Store\",
-      \"name\": \"Prathmesh Engineering\",
-      \"url\": \"https://prathmeshengineering.com\",
-      \"logo\": \"https://prathmeshengineering.com/logo v1.png\"
-    }`
+      \"@context\": \"https://schema.org\",\n      \"@type\": \"Store\",\n      \"name\": \"Shree Prathmesh Engineering\",\n      \"url\": \"https://shreeprathmeshengineering.com\",\n      \"logo\": \"https://shreeprathmeshengineering.com/logo v1.png\"\n    }`
   }
 };

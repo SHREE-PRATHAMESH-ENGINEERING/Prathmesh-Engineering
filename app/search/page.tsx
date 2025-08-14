@@ -1,4 +1,3 @@
-
 "use client";
 import { ProductItem, SectionTitle } from "@/components";
 import React, { useEffect, useState } from "react";

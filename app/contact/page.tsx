@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaIndustry, FaTools, FaShippingFast, FaAward } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaIndustry, FaTools, FaShippingFast } from 'react-icons/fa';
 import { contactStats, contactMethods, pcbServices, manufacturingCapabilities } from '@/lib/utils';
 
 const ContactPage = () => {
