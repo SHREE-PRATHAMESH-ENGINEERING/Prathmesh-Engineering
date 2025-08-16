@@ -146,9 +146,9 @@ const Header = () => {
           animation: slideInLeft 0.3s ease-out;
         }
       `}</style>
-      <header className="bg-white border-b-2 border-[#5068a4] relative">
+      <header className="bg-white relative">
       
-      <div className="h-16 text-[#5068a4] bg-white max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
+        <div className="h-16 text-[#5068a4] bg-[#162040] max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
         
         <div className="absolute top-1/2 left-1/4 w-12 h-0.5 bg-[#5068a4] opacity-10 animate-pulse max-sm:hidden"></div>
         <div className="absolute top-1/2 right-1/4 w-8 h-0.5 bg-[#5068a4] opacity-15 animate-pulse max-sm:hidden" style={{animationDelay: '1s'}}></div>
@@ -163,10 +163,10 @@ const Header = () => {
                   <a 
                     href={social.href} 
                     {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
-                    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#5068a4] hover:bg-opacity-10 transition-all duration-300 group"
+                    className="flex items-center justify-center w-10 h-10 hover:bg-[#5068a4] rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300"
                     title={social.title}
                   >
-                    {IconComponent && <IconComponent className="text-[#5068a4] text-xl transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />}
+                    {IconComponent && <IconComponent className="text-white text-xl transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />}
                   </a>
                 </li>
               );
@@ -178,23 +178,23 @@ const Header = () => {
             <>
             <li className="flex items-center">
               <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Login</span>
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
+                <span className="transition-all text-white duration-300 group-hover:text-[#3d5998]">Login</span>
               </Link>
             </li>
             <li className="flex items-center">
               <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Register</span>
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
+                <span className="transition-all text-white duration-300 group-hover:text-[#3d5998]">Register</span>
               </Link>
             </li>
             </>
             ) :  (<>
-            <span className="ml-10 text-base text-[#5068a4] font-medium max-lg:ml-0">{session.user?.email}</span>
+            <span className="ml-10 text-base text-white font-medium max-lg:ml-0">{session.user?.email}</span>
             <li className="flex items-center">
               <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Log out</span>
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
+                <span className="transition-all duration-300 text-white group-hover:text-[#3d5998]">Log out</span>
               </button>
             </li>
             </>)}

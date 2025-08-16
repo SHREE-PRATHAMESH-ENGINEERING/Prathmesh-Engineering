@@ -3,7 +3,7 @@ import React from "react";
 
 const IntroducingSection = () => {
   return (
-    <div className="py-20 pt-24 bg-[#FAF9EE] relative overflow-hidden">
+    <div className="py-20 pt-24 bg-gradient-to-b from-white via-[#eaf1fb] to-[#f5f8ff] relative overflow-hidden">
       
       <div className="text-center flex flex-col gap-y-8 items-center max-w-6xl mx-auto px-6 relative z-10">
 

@@ -10,7 +10,7 @@ const CategoryMenu = () => {
   };
 
   return (
-    <div className="py-10 bg-[#FAF9EE] relative">
+    <div className="py-10 bg-gradient-to-b from-white via-[#eaf1fb] to-[#f5f8ff] relative">
         <Heading title="SHOP BY CATEGORY" />
 
       <div className="max-w-screen-2xl mx-auto py-16 gap-6 max-sm:gap-3 px-16 max-md:px-10 grid grid-cols-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-[450px]:grid-cols-2 relative z-10">
