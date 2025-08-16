@@ -492,7 +492,7 @@ const Header = () => {
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 bg-white shadow-2xl rounded-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
                         <div className="p-6">
                           <h3 className="text-[#5068a4] font-bold text-lg mb-4 border-b border-gray-200 pb-2">
-                            PCB Types
+                            Types
                           </h3>
                           <ul className="space-y-1">
                             {item.subItems.map((subItem, index) => (

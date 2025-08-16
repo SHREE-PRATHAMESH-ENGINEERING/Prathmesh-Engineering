@@ -5,7 +5,7 @@ const IntroducingSection = () => {
   return (
     <div className="py-20 pt-24 bg-gradient-to-b from-white via-[#eaf1fb] to-[#f5f8ff] relative overflow-hidden">
       
-      <div className="text-center flex flex-col gap-y-8 items-center max-w-6xl mx-auto px-6 relative z-10">
+      <div className="text-center pb-10 flex flex-col gap-y-8 items-center max-w-6xl mx-auto px-6 relative z-10">
 
           <h2 className="text-black text-8xl font-extrabold text-center mb-2 max-md:text-6xl max-[480px]:text-4xl leading-tight">
             INTRODUCING{" "}

@@ -27,6 +27,18 @@ export const mainNavigation = [
   },
   {
     id: 4,
+    name: "FCBC Charger",
+    href: "/shop/FCBC-charger",
+    megaMenu: true,
+    subItems: [
+      { name: "FCBC Components", href: "/shop/FCBC-charger/cat_1755369870209_g47128c6z" },
+      { name: "FCBC Installation", href: "/shop/FCBC-charger/cat_1755369882810_0xb9qnmha" },
+      { name: "FCBC Repair", href: "/shop/FCBC-charger/cat_1755369897159_npfzvjjcy" },
+      { name: "FCBC Designing", href: "/shop/FCBC-charger/cat_1755369918767_adn9jtdjf" }
+    ]
+  },
+  {
+    id: 5,
     name: "Contact Us",
     href: "/contact",
     megaMenu: false
