@@ -68,104 +68,82 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white border-t-2 border-[#5068a4] relative overflow-hidden" aria-labelledby="footer-heading">
-        
-        <div className="relative z-10">
-          <h2 id="footer-heading" className="sr-only">
-            Footer
-          </h2>
-          <div className="mx-auto max-w-screen px-6 lg:px-8 pt-20 pb-14">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 items-start">
-              <div className="group relative flex justify-center md:justify-start">
-                <Image
-                  src="/logo v1 svg.svg"
-                  alt="Shree Prathmesh Engineering - Professional PCB Manufacturing"
-                  width={250}
-                  height={250}
-                  className="h-auto w-auto"
-                />
-                
-                <div className="absolute inset-0 -m-4 border border-[#5068a4] rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              </div>
-              
-              <div className="footer-section group text-center md:text-left md:ml-12 lg:ml-16">
-                <h3 className="text-lg font-bold leading-6 text-[#5068a4] relative">
-                  Quick Links
-                </h3>
-                <ul role="list" className="mt-6 space-y-3">
-                  {navigation.quicklinks.map((item, index) => (
-                    <li key={item.name} className="footer-link" style={{animationDelay: `${index * 0.1}s`}}>
-                      <a
-                        href={item.href}
-                        onClick={(e) => handleQuickLinkClick(item.name, item.href, e)}
-                        className="text-sm leading-6 text-black hover:text-[#5068a4] transition-colors duration-300 relative group inline-block cursor-pointer"
-                      >
-                        {item.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5068a4] group-hover:w-full transition-all duration-300"></span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="footer-section group text-center md:text-left">
-                <h3 className="text-lg font-bold leading-6 text-[#5068a4] relative">
-                  Our Company
-                </h3>
-                <ul role="list" className="mt-6 space-y-3">
-                  {navigation.ourcompany.map((item, index) => (
-                    <li key={item.name} className="footer-link" style={{animationDelay: `${index * 0.1}s`}}>
-                      <a
-                        href={item.href}
-                        onClick={(e) => handlePolicyClick(item.name, item.href, e)}
-                        className="text-sm leading-6 text-black hover:text-[#5068a4] transition-colors duration-300 relative group inline-block cursor-pointer"
-                      >
-                        {item.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5068a4] group-hover:w-full transition-all duration-300"></span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      <footer className="relative overflow-hidden bg-gradient-to-br bg-[#5068a4] border-t-0 shadow-2xl pt-16 pb-0" aria-labelledby="footer-heading">
+        <div className="mx-auto max-w-screen-xl px-8 lg:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 items-start pb-12">
+            <div className="flex flex-col items-center md:items-start gap-y-4">
+              <Image
+                src="/logo v1 svg.svg"
+                alt="Shree Prathmesh Engineering - Professional PCB Manufacturing"
+                width={200}
+                height={200}
+                className=" drop-shadow-xl rounded-2xl bg-white/80 p-0.5"
+              />
+              <span className="text-white text-md font-normal mt-2">We bring intelligent computing everywhere</span>
             </div>
-            
-            <div className="border-t border-gray-200 mt-12 pt-8">
-              <div className="flex flex-col items-center">
-                <div className="flex items-center gap-x-4">
-                  <div className="flex gap-x-3">
-                    {socialMediaIcons.map((social, index) => {
-                      const IconComponent = getIconComponent(social.icon);
-                      return (
-                        <a
-                          key={social.id}
-                          href={social.href}
-                          {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
-                          className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#5068a4] to-[#3d5998] rounded-xl hover:scale-110 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
-                          title={social.title}
-                          style={{ animationDelay: `${index * 50}ms` }}
-                        >
-                          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                          {IconComponent && <IconComponent className="text-white text-lg relative z-10 group-hover:scale-110 transition-transform duration-300" />}
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="mt-6 flex flex-col items-center">
-                  <span className="flex text-center text-gray-500 text-sm">
-                    Copyright © {new Date().getFullYear()} Prathmesh Engineering. All rights reserved.
-                  </span>
-                  <span className="text-xs text-gray-400 mt-2 text-center max-w-5xl">
-                    This website and its content, including text, images, code, and design, are the property of Prathmesh Engineering and are protected by copyright laws. Unauthorized use, reproduction, or distribution is strictly prohibited.
-                  </span>
-                </div>
-              </div>
+            <div className="footer-section text-center md:text-left">
+              <h3 className="text-base font-bold leading-6 text-white mb-4 tracking-wide uppercase">Quick Links</h3>
+              <ul role="list" className="space-y-2">
+                {navigation.quicklinks.map((item, index) => (
+                  <li key={item.name} className="footer-link">
+                    <a
+                      href={item.href}
+                      onClick={(e) => handleQuickLinkClick(item.name, item.href, e)}
+                      className="text-sm leading-6 text-white transition-colors duration-300 px-2 py-1 rounded-lg hover:bg-blue-900/30 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-section text-center md:text-left">
+              <h3 className="text-base font-bold leading-6 text-white mb-4 tracking-wide uppercase">Our Company</h3>
+              <ul role="list" className="space-y-2">
+                {navigation.ourcompany.map((item, index) => (
+                  <li key={item.name} className="footer-link">
+                    <a
+                      href={item.href}
+                      onClick={(e) => handlePolicyClick(item.name, item.href, e)}
+                      className="text-sm leading-6 text-white transition-colors duration-300 px-2 py-1 rounded-lg hover:bg-blue-900/30 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#162040] border-t border-blue-900/40 py-8 mt-0">
+          <div className="mx-auto max-w-screen-xl px-8 flex flex-col md:flex-row items-center justify-between gap-y-6">
+            <div className="flex items-center gap-x-2">
+              {socialMediaIcons.map((social, index) => {
+                const IconComponent = getIconComponent(social.icon);
+                return (
+                  <a
+                    key={social.id}
+                    href={social.href}
+                    {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="flex items-center justify-center w-10 h-10 hover:bg-[#5068a4] rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+                    title={social.title}
+                  >
+                    {IconComponent && <IconComponent className="text-white text-lg relative z-10 group-hover:scale-110 transition-transform duration-300" />}
+                  </a>
+                );
+              })}
+            </div>
+            <div className="flex flex-col items-center md:items-end">
+              <span className="text-center md:text-right text-white text-sm">
+                Copyright © {new Date().getFullYear()} Prathmesh Engineering. All rights reserved.
+              </span>
+              <span className="text-xs text-blue-300 mt-2 pl-0 md:pl-20 text-center md:text-right max-w-5xl">
+                This website and its content, including text, images, code, and design, are the property of Prathmesh Engineering and are protected by copyright laws. Unauthorized use, reproduction, or distribution is strictly prohibited.
+              </span>
             </div>
           </div>
         </div>
       </footer>
-
       <PolicyModal
         isOpen={modalOpen}
         onClose={closeModal}
