@@ -22,9 +22,7 @@ const Hero = () => {
             PREMIUM PCBs FOR YOUR PROJECTS
           </h1>
           <p className="text-gray-100 max-sm:text-sm leading-relaxed drop-shadow">
-            Discover high-quality Printed Circuit Boards engineered for precision and reliability. 
-            From prototypes to production runs, we deliver custom PCB solutions that meet your exact 
-            specifications. Professional-grade circuits designed for engineers, makers, and innovators.
+            Leading PCB manufacturer for Renewable Energy, Industrial Automation, Electronics, and FCBC Chargers. Fast PCB fabrication, custom design, and reliable circuits for engineers and innovators. From prototypes to production, our PCBs and electronic solutions deliver quality and speed.
           </p>
           <div className="flex gap-x-4 max-lg:flex-col max-lg:gap-y-4">
             <button className="btn-pcb-hero max-lg:text-xl max-sm:text-lg">

@@ -21,12 +21,11 @@ const CategoryItem = ({ title, children, href }: CategoryItemProps) => {
              }}>
         </div>
         
-        <div className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-inner group-hover:shadow-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#5068a4]/10 group-hover:to-[#3d5998]/10 flex-shrink-0">
-          <div className="transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+        <div className="relative flex items-center justify-center w-20 h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-inner group-hover:shadow-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#5068a4]/10 group-hover:to-[#3d5998]/10 flex-shrink-0">
+          <div className="text-5xl transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-3">
             {children}
           </div>
-          
-          <div className="absolute inset-0 rounded-xl border-2 border-[#5068a4] opacity-0 group-hover:opacity-30 group-hover:animate-ping"></div>
+          <div className="absolute inset-0 rounded-2xl border-2 border-[#5068a4] opacity-0 group-hover:opacity-30 group-hover:animate-ping"></div>
         </div>
 
         <h3 className="font-bold text-base text-center text-gray-800 group-hover:text-[#5068a4] transition-all duration-500 group-hover:scale-105 leading-tight px-2 flex-shrink-0">

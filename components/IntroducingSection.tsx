@@ -20,16 +20,16 @@ const IntroducingSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-100 transform transition-all duration-500 hover:scale-105 hover:shadow-xl group">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5068a4] to-[#3d5998] rounded-t-2xl"></div>
-            <p className="text-gray-800 text-center text-md font-semibold max-md:text-lg max-[480px]:text-base group-hover:text-[#5068a4] transition-colors duration-300">
-              Premium PCBs for all your electronic projects.
+            <p className="text-gray-800 text-center text-sm font-normal max-md:text-lg max-[480px]:text-base group-hover:text-[#5068a4] transition-colors duration-300">
+              Leading PCB manufacturer in India for custom Printed Circuit Boards, electronics manufacturing, and FCBC chargers. Fast PCB fabrication, assembly, and delivery for industrial, renewable energy, and automation projects.
             </p>
             <div className="w-8 h-0.5 bg-[#5068a4] mx-auto mt-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-100 transform transition-all duration-500 hover:scale-105 hover:shadow-xl group">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#3d5998] to-[#5068a4] rounded-t-2xl"></div>
-            <p className="text-gray-800 text-center text-md font-semibold max-md:text-lg max-[480px]:text-base group-hover:text-[#5068a4] transition-colors duration-300">
-              High-quality Printed Circuit Boards designed for professionals.
+            <p className="text-gray-800 text-center text-sm font-nornal max-md:text-lg max-[480px]:text-base group-hover:text-[#5068a4] transition-colors duration-300">
+              Get reliable, high-quality PCBs and electronic solutions for engineers, makers, and innovators. Trusted for precision, speed, and quality in every project—prototype to production.
             </p>
             <div className="w-8 h-0.5 bg-[#5068a4] mx-auto mt-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>

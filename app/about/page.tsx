@@ -61,20 +61,13 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-gray-700 leading-relaxed text-md">
                 <p className="">
-                  Founded with a vision to revolutionize PCB manufacturing, Shree Prathmesh Engineering 
-                  has grown from a small workshop to a leading manufacturer in the electronics industry. 
-                  Our journey began with a simple mission: to deliver high-quality printed circuit boards 
-                  that exceed customer expectations.
+                  Shree Prathmesh Engineering is India’s trusted PCB manufacturer, delivering high-quality Printed Circuit Boards, FCBC chargers, and electronics solutions for Renewable Energy, Industrial Automation, and Electronics Manufacturing. Our story began with a commitment to precision, reliability, and innovation in every PCB and electronic product we create.
                 </p>
                 <p className="">
-                  Over the years, we have invested in state-of-the-art technology and built a team of 
-                  skilled professionals who share our commitment to excellence. From single-layer prototypes 
-                  to complex multi-layer production runs, we handle every project with the same level of 
-                  dedication and precision.
+                  From single-layer prototypes to advanced multi-layer production, we combine state-of-the-art technology and expert engineering to meet the needs of industry leaders, makers, and innovators.
                 </p>
                 <p className="">
-                  Today, we proudly serve customers across various industries, from consumer electronics 
-                  to industrial automation, providing them with reliable PCB solutions that power their innovations.
+                  Today, we serve diverse sectors—consumer electronics, industrial automation, renewable energy, and more—providing turnkey PCB solutions, electronic parts, and reliable FCBC chargers. Partner with us for quality, expertise, and customer-focused service that drives innovation across India and beyond.
                 </p>
               </div>
             </div>

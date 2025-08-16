@@ -39,49 +39,49 @@ export const socialMediaIcons = [
     id: 'phone',
     icon: 'FaPhone',
     href: 'tel:+917972839225',
-    title: 'Call Us',
+    title: 'Call for PCB & FCBC Charger Quotes',
     external: false
   },
   {
     id: 'whatsapp',
     icon: 'FaWhatsapp',
     href: 'https://wa.me/917972839225',
-    title: 'WhatsApp',
+    title: 'WhatsApp Support for Electronics & Chargers',
     external: true
   },
   {
     id: 'linkedin',
     icon: 'FaLinkedin',
     href: 'https://linkedin.com/company/shree-prathamesh-engineering',
-    title: 'LinkedIn',
+    title: 'LinkedIn - PCB & Power Solutions',
     external: true
   },
   {
     id: 'instagram',
     icon: 'FaInstagram',
     href: 'https://instagram.com/shreeprathameshengineering',
-    title: 'Instagram',
+    title: 'Instagram - Electronics & FCBC Chargers',
     external: true
   },
   {
     id: 'twitter',
     icon: 'FaTwitter',
-    href: 'https://twitter.com/shreeprathamesh',
-    title: 'Twitter',
+    href: 'https://twitter.com/shreeprathmesh',
+    title: 'Twitter - PCB Manufacturing & Chargers',
     external: true
   },
   {
     id: 'facebook',
     icon: 'FaFacebook',
     href: 'https://facebook.com/shreeprathameshengineering',
-    title: 'Facebook',
+    title: 'Facebook - PCB, Electronics & FCBC Chargers',
     external: true
   },
   {
     id: 'email',
     icon: 'FaEnvelope',
     href: 'mailto:contact@prathmeshengineering.com',
-    title: 'Email',
+    title: 'Email - PCB, Electronics & Charger Inquiries',
     external: false
   }
 ];
@@ -90,38 +90,59 @@ export const socialMediaIcons = [
 export const categoryMenuList = [
   {
     id: 1,
-    title: "Single Layer PCBs",
-    icon: "🔧",
-    href: "/shop/single-layer-pcbs",
-    categoryId: "cat_1753894634025_vzk9y7yae"
+    title: "Renewable Energy & Power Electronics",
+    icon: "🔋",
+    href: "/shop/renewable-energy-power-electronics",
+    categoryId: "cat_1755359545922_kvv90j2qo"
   },
   {
     id: 2,
-    title: "Multi Layer PCBs",
-    icon: "⚙️",
-    href: "/shop/multi-layer-pcbs",
-    categoryId: "cat_1753894657262_vt9ovggw5"
+    title: "Industrial Automation & Control Systems",
+    icon: "🤖",
+    href: "/shop/industrial-automation-control-systems",
+    categoryId: "cat_1755359535184_ycszd4ofy"
   },
   {
     id: 3,
-    title: "Flex PCBs",
-    icon: "🔌",
-    href: "/shop/flex-pcbs",
-    categoryId: "cat_1753894667307_1p6i1fljb"
+    title: "Electronic Parts & Chips",
+    icon: "💾",
+    href: "/shop/electronic-parts-chips",
+    categoryId: "cat_1755359527089_kcfcv75zm"
   },
   {
     id: 4,
-    title: "Rigid-Flex PCBs",
+    title: "PCB Manufacturing & Assembly",
     icon: "🛠️",
-    href: "/shop/rigid-flex-pcbs",
-    categoryId: "cat_1753894678072_zydbmq0m4"
+    href: "/shop/pcb-manufacturing-assembly",
+    categoryId: "cat_1755359513578_2hja5latw"
   },
   {
     id: 5,
-    title: "Prototype PCBs",
-    icon: "⚡",
-    href: "/shop/prototype-pcbs",
-    categoryId: "cat_1753894689818_mv1zqvuzs"
+    title: "Electrical Equipment & Components",
+    icon: "🔦",
+    href: "/shop/electrical-equipment-components",
+    categoryId: "cat_1755359505775_sk8llytp9"
+  },
+  {
+    id: 6,
+    title: "Electronics Manufacturing",
+    icon: "🏭",
+    href: "/shop/electronics-manufacturing",
+    categoryId: "cat_1755359493693_qqnt4g206"
+  },
+  {
+    id: 7,
+    title: "FCBC Charger",
+    icon: "🔌",
+    href: "/shop/fcbc-charger",
+    categoryId: "cat_1755360138837_4u8nrvhf3"
+  },
+  {
+    id: 8,
+    title: "Electronic Services",
+    icon: "🧰",
+    href: "/shop/electronic-services",
+    categoryId: "cat_1755360778583_z62r3a9ww"
   },
 ];
 
@@ -142,7 +163,7 @@ export const testimonials = [
     name: "John Mitchell",
     position: "Senior Hardware Engineer",
     company: "TechCorp Industries",
-    content: "Outstanding PCB quality and fast turnaround time. Shree Prathamesh Engineering has been our go-to partner for all custom PCB solutions. Their attention to detail and professional service is unmatched.",
+    content: "Shree Prathmesh Engineering delivers top-tier PCB manufacturing and FCBC charger solutions. Their fast turnaround, precision engineering, and expert support have made them our preferred partner for industrial electronics projects.",
     rating: 5,
     avatar: "JM"
   },
@@ -151,8 +172,8 @@ export const testimonials = [
     name: "Sarah Chen",
     position: "Product Development Manager",
     company: "InnovateTech Solutions",
-    content: "The precision and reliability of their PCBs have significantly improved our product performance. Their technical expertise and customer support made our complex project a success.",
-    rating: 4,
+    content: "Their advanced PCB fabrication and custom battery charger design helped us launch reliable products for power electronics and automation. Highly recommended for quality and technical expertise.",
+    rating: 5,
     avatar: "SC"
   },
   {
@@ -160,7 +181,7 @@ export const testimonials = [
     name: "David Rodriguez",
     position: "Electronics Design Lead",
     company: "Future Electronics",
-    content: "Exceptional quality control and competitive pricing. We've been working with them for over two years, and they consistently deliver high-quality PCBs that meet our exact specifications.",
+    content: "Exceptional quality control, competitive pricing, and responsive customer service. Shree Prathmesh Engineering consistently delivers high-performance PCBs and FCBC chargers for our industrial and substation needs.",
     rating: 5,
     avatar: "DR"
   }
@@ -209,18 +230,18 @@ export const aboutStats = [
 export const whyChooseUsFeatures = [
   {
     icon: "⚡",
-    title: "Fast Turnaround",
-    description: "Quick delivery times without compromising on quality, ensuring your projects stay on schedule."
+    title: "Rapid Delivery & Turnaround",
+    description: "Industry-leading speed for PCB manufacturing, FCBC charger production, and electronics solutions. Keep your projects on schedule with our efficient processes."
   },
   {
     icon: "🛠️",
-    title: "Expert Team",
-    description: "Skilled professionals with years of experience in PCB design and manufacturing."
+    title: "Certified Engineering Team",
+    description: "Experienced professionals in PCB design, battery charger development, and power electronics. Trusted expertise for industrial and substation applications."
   },
   {
     icon: "🤝",
-    title: "Customer Support",
-    description: "Dedicated support team providing technical assistance and project guidance."
+    title: "Dedicated Customer Support",
+    description: "Responsive technical assistance and project guidance for PCBs, FCBC chargers, and electronics. Your satisfaction and success are our priority."
   }
 ];
 
@@ -228,19 +249,19 @@ export const leadershipTeam = [
   {
     name: "Prathmesh Shah",
     position: "Founder & CEO",
-    description: "Visionary leader with 15+ years in electronics manufacturing",
+    description: "Industry leader in PCB manufacturing, FCBC charger innovation, and electronics solutions. 15+ years driving excellence in power and automation sectors.",
     initials: "PS"
   },
   {
     name: "Dr. Rajesh Kumar",
     position: "Chief Technology Officer",
-    description: "Expert in advanced PCB technologies and process optimization",
+    description: "Specialist in advanced PCB technologies, battery management systems, and process optimization for industrial and substation electronics.",
     initials: "RK"
   },
   {
     name: "Priya Mehta",
     position: "Quality Assurance Director",
-    description: "Ensuring the highest standards in every product we deliver",
+    description: "Champion of quality control and reliability in PCB, FCBC charger, and electronics manufacturing. Committed to delivering best-in-class products.",
     initials: "PM"
   }
 ];
@@ -299,18 +320,18 @@ export const contactMethods = [
 export const pcbServices = [
   {
     iconType: "tools",
-    title: "Advanced Manufacturing",
-    description: "State-of-the-art equipment with precision manufacturing capabilities for complex PCB designs"
+    title: "Precision PCB Manufacturing",
+    description: "Advanced PCB fabrication for single, multi-layer, and custom designs. High-quality, reliable, and tailored for industrial, power electronics, and FCBC charger applications."
   },
   {
     iconType: "shipping",
-    title: "Lightning Fast Delivery",
-    description: "Industry-leading turnaround times with rush service available for urgent projects"
+    title: "Fast Turnaround & Delivery",
+    description: "Rapid production and shipping for PCBs, battery chargers, and electronics. Rush service available for urgent industrial and substation projects."
   },
   {
     iconType: "industry",
-    title: "Engineering Support",
-    description: "Expert technical consultation from design optimization to manufacturing recommendations"
+    title: "Expert Engineering & Support",
+    description: "Technical consultation for PCB design, battery management, and FCBC charger integration. Optimize your electronics for performance and reliability."
   }
 ];
 
