@@ -177,32 +177,30 @@ const Header = () => {
             {!session ? ( 
             <>
             <li className="flex items-center">
-              <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all text-white duration-300 group-hover:text-[#3d5998]">Login</span>
+              <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                      <span className="transition-all text-white duration-300">Login</span>
               </Link>
             </li>
             <li className="flex items-center">
-              <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all text-white duration-300 group-hover:text-[#3d5998]">Register</span>
+              <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                      <span className="transition-all text-white duration-300 ">Register</span>
               </Link>
             </li>
             </>
             ) :  (<>
             <span className="ml-10 text-base text-white font-medium max-lg:ml-0">{session.user?.email}</span>
             <li className="flex items-center">
-              <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 text-white group-hover:text-[#3d5998]">Log out</span>
+              <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                <span className="transition-all duration-300 text-white ">Log out</span>
               </button>
             </li>
             </>)}
           </ul>
         </div>
       </div>
-      
-      <div className="h-0.5 bg-[#5068a4] max-sm:hidden"></div>
       
       {pathname.startsWith("/admin") === false && (
         <>
@@ -471,7 +469,7 @@ const Header = () => {
       )}
 
       {pathname.startsWith("/admin") === false && (
-        <nav className="bg-gradient-to-r from-[#5068a4] to-[#3d5998] border-t border-white border-opacity-20 max-sm:hidden">
+          <nav className="bg-gradient-to-r bg-[#5068a4] border-b-2 border-b-white max-sm:hidden">
           <div className="max-w-screen-2xl mx-auto px-16 max-[1320px]:px-12 max-lg:px-6 max-md:px-4">
             <div className="flex justify-center items-center h-14">
               <ul className="flex items-center gap-x-12 max-lg:gap-x-8 max-md:gap-x-6">

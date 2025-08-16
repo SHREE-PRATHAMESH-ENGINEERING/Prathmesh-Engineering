@@ -212,7 +212,7 @@ const CheckoutPage = () => {
         src="https://checkout.razorpay.com/v1/checkout.js"
         strategy="lazyOnload"
       />
-      <div className="bg-white">
+      <div className="bg-gradient-to-b from-[#f5f8ff] via-[#eaf1fb] to-white">
         <SectionTitle title="Checkout" path="Home | Cart | Checkout" />
       
       <div

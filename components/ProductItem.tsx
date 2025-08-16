@@ -12,7 +12,7 @@ const ProductItem = ({
 }) => {
   return (
     <Link href={`/product/${product.slug}`} className="block group w-full max-w-xs mx-auto">
-  <div className="relative rounded-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-scale cursor-pointer">
+  <div className="relative rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-scale cursor-pointer">
 
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5068a4] to-[#3d5998]"></div>
         

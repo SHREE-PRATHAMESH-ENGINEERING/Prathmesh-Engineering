@@ -14,7 +14,7 @@ const Hero = () => {
           className="object-cover w-full h-full"
         />
 
-         <div className="absolute inset-0 bg-black/70" />
+         <div className="absolute inset-0 bg-black/80" />
       </div>
       <div className="grid grid-cols-3 items-center justify-items-center px-10 gap-x-10 max-w-screen-2xl mx-auto h-full max-lg:grid-cols-1 max-lg:py-10 max-lg:gap-y-10 relative z-10">
         <div className="flex flex-col gap-y-5 max-lg:order-last col-span-2">

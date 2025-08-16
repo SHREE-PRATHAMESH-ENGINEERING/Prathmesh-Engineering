@@ -47,7 +47,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9EE] relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b px-4 md:px-20 from-white via-[#eaf1fb] to-[#f5f8ff] relative overflow-hidden">
       <div className="absolute inset-0 pcb-hero-bg opacity-40"></div>
       
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -63,7 +63,7 @@ const ContactPage = () => {
       </div>
 
       <section className={`relative py-20 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
+        <div className="relative max-w-7xl md:px-20 mx-auto px-6 z-10">
           <div className="text-center animate-in">
             <h1 className="text-4xl md:text-6xl font-bold text-[#5068a4] mb-6">
               Contact Our <span className="text-gray-800">PCB Experts</span>

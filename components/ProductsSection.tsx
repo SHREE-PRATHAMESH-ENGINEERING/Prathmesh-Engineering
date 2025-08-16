@@ -53,7 +53,7 @@ const ProductsSection = () => {
             {products.map((product: Product, index: number) => (
               <div
                 key={product.id}
-                className="w-full max-w-sm bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-blue-100 p-6 flex flex-col items-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 group overflow-hidden"
+                className="w-full max-w-sm bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-blue-100 p-2 flex flex-col items-center transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 group overflow-hidden"
                 style={{ animationDelay: `${index * 0.15}s`, animationFillMode: 'both' }}
               >
                 <ProductItem product={product} color="white" />
