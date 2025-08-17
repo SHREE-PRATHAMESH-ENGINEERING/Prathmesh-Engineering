@@ -159,49 +159,26 @@ const Header = () => {
       `}</style>
       <header className="bg-white relative">
       
-        <div className="h-16 text-[#5068a4] bg-[#162040] max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
+        <div className="h-16 text-[#5068a4] bg-[#162040]  max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
         
         <div className="absolute top-1/2 left-1/4 w-12 h-0.5 bg-[#5068a4] opacity-10 animate-pulse max-sm:hidden"></div>
         <div className="absolute top-1/2 right-1/4 w-8 h-0.5 bg-[#5068a4] opacity-15 animate-pulse max-sm:hidden" style={{animationDelay: '1s'}}></div>
         
-        <div className="flex justify-between h-full max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:gap-y-2 max-w-screen-2xl mx-auto px-12 max-md:px-6 relative z-10">
+        <div className="flex justify-between h-full max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:gap-y-2 max-w-screen-2xl mx-auto px-6 relative z-10">
           
-          <ul className="flex items-center h-full gap-x-2 max-lg:h-auto">
-            {socialMediaIcons.map((social) => {
-              const IconComponent = getIconComponent(social.icon);
-              return (
-                <li key={social.id} className="flex items-center">
-                  <a 
-                    href={social.href} 
-                    {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
-                    className="flex items-center justify-center w-10 h-10 hover:bg-[#5068a4] rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300"
-                    title={social.title}
-                  >
-                    {IconComponent && <IconComponent className="text-white text-xl transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-
-          <ul className="flex items-center gap-x-5 h-full max-lg:h-auto max-md:gap-x-3 font-semibold">
-            {!session ? ( 
-            <>
-            <li className="flex items-center">
-              <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
-                      <span className="transition-all text-white duration-300">Login</span>
-              </Link>
-            </li>
-            <li className="flex items-center">
-              <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
-                      <span className="transition-all text-white duration-300 ">Register</span>
-              </Link>
-            </li>
-            </>
-            ) :  (<>
-            <li className="relative flex items-center">
+          <div className="flex items-center gap-x-5 ml-auto h-full max-lg:h-auto max-md:gap-x-3 font-semibold">
+            {!session ? (
+              <>
+                <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                  <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                  <span className="transition-all text-white duration-300">Login</span>
+                </Link>
+                <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                  <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                  <span className="transition-all text-white duration-300 ">Register</span>
+                </Link>
+              </>
+            ) : (
               <button
                 className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] p-3 rounded transition-all duration-300 text-[#5068a4] focus:outline-none"
                 onClick={() => setShowProfileDropdown(prev => !prev)}
@@ -209,28 +186,27 @@ const Header = () => {
               >
                 <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
               </button>
-              {showProfileDropdown && typeof window !== "undefined" && ReactDOM.createPortal(
-                <div style={{ position: 'fixed', top: '70px', right: '40px', zIndex: 9999 }} className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-4 animate-fadeIn">
-                  <div className="text-gray-700 text-sm break-all">{session.user?.email}</div>
-                  <button
-                    onClick={() => { setShowProfileDropdown(false); handleLogout(); }}
-                    className="mt-4 w-full bg-[#5068a4] text-white py-2 rounded-lg font-semibold hover:bg-[#3d5998] transition-all duration-300"
-                  >
-                    Log out
-                  </button>
-                </div>, document.body
-              )}
-            </li>
-          </>)}
-          </ul>
+            )}
+            {session && showProfileDropdown && typeof window !== "undefined" && ReactDOM.createPortal(
+              <div style={{ position: 'fixed', top: '70px', right: '40px', zIndex: 9999 }} className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-4 animate-fadeIn">
+                <div className="text-gray-700 text-sm break-all">{session.user?.email}</div>
+                <button
+                  onClick={() => { setShowProfileDropdown(false); handleLogout(); }}
+                  className="mt-4 w-full bg-[#5068a4] text-white py-2 rounded-lg font-semibold hover:bg-[#3d5998] transition-all duration-300"
+                >
+                  Log out
+                </button>
+              </div>, document.body
+            )}
+          </div>
         </div>
       </div>
       
       {pathname.startsWith("/admin") === false && (
         <>
-
-          <div className="h-32 bg-transparent flex items-center justify-between px-16 max-[1320px]:px-12 max-lg:px-6 max-md:px-4 max-lg:flex-col max-lg:gap-y-4 max-lg:justify-center max-lg:h-auto max-lg:py-4 max-w-screen-2xl mx-auto relative z-10 max-sm:hidden">
-            <Link href="/" className="group relative max-lg:order-1">
+          <div className="h-32 bg-transparent flex md:flex-row items-center justify-between px-16 max-[1320px]:px-12 max-lg:px-6 max-md:px-4 max-lg:flex-col max-lg:gap-y-4 max-lg:justify-center max-lg:h-auto max-lg:py-4 max-w-screen-2xl mx-auto relative z-10 max-md:hidden">
+              <div className="flex justify-start px-4 lg:px-0 w-full lg:w-auto">
+              <Link href="/" className="group relative">
               <Image
                 src="/logo v1 svg.svg"
                 width={200}
@@ -240,8 +216,9 @@ const Header = () => {
               />
               <div className="absolute inset-0 -m-2 border border-[#5068a4] rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
             </Link>
+            </div>
             
-            <div className="flex-1 max-w-2xl mx-8 max-lg:order-3 max-lg:mx-0 max-lg:w-full max-md:max-w-full">
+            <div className="flex-1 max-w-2xl mx-8 max-lg:order-2 max-lg:mx-0 max-lg:w-full max-md:max-w-full hidden lg:block">
               <form onSubmit={handleSearch} className="relative group">
                 <div className="relative">
                   <input
@@ -260,16 +237,38 @@ const Header = () => {
                 </div>
               </form>
             </div>
-            
-            <div className="flex gap-x-6 items-center max-lg:order-2 max-md:gap-x-6">
+
+              <div className="flex gap-x-6 items-center max-lg:order-2 max-md:gap-x-6 px-4 lg:px-0">
               <HeartElement wishQuantity={wishQuantity} />
               <OrdersElement />
               <CartElement />
             </div>
           </div>
 
+            <div className="w-full border-t-2 border-[#5068a4] py-4 justify-center hidden md:flex lg:hidden">
+              <div className="searchbar-2 max-w-2xl w-full">
+                <form onSubmit={handleSearch} className="relative group">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search products, categories, manufacturers..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full h-12 pl-4 pr-12 border-2 border-[#5068a4] rounded-full bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#3d5998] focus:ring-2 focus:ring-[#5068a4] focus:ring-opacity-20 transition-all duration-300"
+                    />
+                    <button
+                      type="submit"
+                      className="absolute right-1 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-[#5068a4] hover:bg-[#3d5998] rounded-full flex items-center justify-center transition-all duration-300 group"
+                    >
+                      <FaSearch className="text-white text-sm group-hover:scale-110 transition-transform duration-300" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
 
-          <div className="hidden max-sm:block bg-white px-4 py-3 relative z-10">
+
+          <div className="hidden max-md:block bg-white px-4 py-3 relative z-10">
             <div className="flex items-center justify-between mb-3">
               <Link href="/" className="group relative">
                 <Image
@@ -314,7 +313,7 @@ const Header = () => {
           </div>
 
           {isMobileMenuOpen && (
-            <div className="hidden max-sm:block fixed inset-0 bg-black bg-opacity-50 z-50 animate-fadeIn" onClick={() => setIsMobileMenuOpen(false)}>
+            <div className="hidden max-md:block fixed inset-0 bg-black bg-opacity-50 z-50 animate-fadeIn" onClick={() => setIsMobileMenuOpen(false)}>
               <div className="bg-white w-90 h-full shadow-2xl overflow-y-auto animate-slideInLeft" onClick={(e) => e.stopPropagation()}>
                 <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-[#5068a4] to-[#3d5998]">
                   <div className="flex items-center justify-between">
@@ -464,27 +463,6 @@ const Header = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <h3 className="text-[#5068a4] font-semibold text-lg border-b border-[#5068a4] border-opacity-20 pb-2">Follow Us</h3>
-                    <div className="grid grid-cols-4 gap-3">
-                      {socialMediaIcons.map((social, index) => {
-                        const IconComponent = getIconComponent(social.icon);
-                        return (
-                          <a
-                            key={social.id}
-                            href={social.href}
-                            {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
-                            className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#5068a4] to-[#3d5998] rounded-xl hover:scale-110 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
-                            title={social.title}
-                            style={{ animationDelay: `${index * 50}ms` }}
-                          >
-                            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                            {IconComponent && <IconComponent className="text-white text-lg relative z-10 group-hover:scale-110 transition-transform duration-300" />}
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

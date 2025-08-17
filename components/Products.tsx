@@ -4,6 +4,7 @@ import prisma from "@/utils/db";
 
 const Products = async ({ slug }: any) => {
   const searchQuery = slug?.searchParams?.search;
+  const sortMode = slug?.searchParams?.sort || "defaultSort";
   
   if (searchQuery) {
     const searchConditions = [
@@ -76,9 +77,20 @@ const Products = async ({ slug }: any) => {
       return { ...product, searchScore: score };
     });
 
-    const sortedProducts = scoredProducts
-      .sort((a, b) => b.searchScore - a.searchScore)
-      .map(({ searchScore, ...product }) => product);
+    let sortedProducts = scoredProducts;
+    if (sortMode === "titleAsc") {
+      sortedProducts = sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortMode === "titleDesc") {
+      sortedProducts = sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
+    } else if (sortMode === "lowPrice") {
+      sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (sortMode === "highPrice") {
+      sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
+    } else {
+      sortedProducts = sortedProducts.sort((a, b) => b.searchScore - a.searchScore);
+    }
+    // Fix: Type assertion to remove searchScore for rendering
+    const renderProducts = sortedProducts.map(({ searchScore, ...rest }) => rest);
 
     return (
       <div>
@@ -87,13 +99,13 @@ const Products = async ({ slug }: any) => {
             Search Results for &quot;{searchQuery}&quot;
           </h3>
           <p className="text-blue-600 text-sm">
-            Found {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''} matching your search
+            Found {renderProducts.length} product{renderProducts.length !== 1 ? 's' : ''} matching your search
           </p>
         </div>
         
         <div className="grid grid-cols-4 justify-items-center gap-x-4 gap-y-5 lg:gap-x-6 lg:gap-y-6 max-[1300px]:grid-cols-3 max-lg:grid-cols-2 max-[500px]:grid-cols-2">
-          {sortedProducts.length > 0 ? (
-            sortedProducts.map((product: Product) => (
+          {renderProducts.length > 0 ? (
+            renderProducts.map((product: any) => (
               <ProductItem key={product.id} product={product} color="black" />
             ))
           ) : (
@@ -166,6 +178,16 @@ const Products = async ({ slug }: any) => {
     whereClause.categoryId = slug.searchParams.categoryId;
   }
 
+  let orderBy: any = { id: 'desc' };
+  if (sortMode === "titleAsc") {
+    orderBy = { title: 'asc' };
+  } else if (sortMode === "titleDesc") {
+    orderBy = { title: 'desc' };
+  } else if (sortMode === "lowPrice") {
+    orderBy = { price: 'asc' };
+  } else if (sortMode === "highPrice") {
+    orderBy = { price: 'desc' };
+  }
   const products = await prisma.product.findMany({
     where: whereClause,
     take: pageSize,
@@ -173,7 +195,7 @@ const Products = async ({ slug }: any) => {
     include: {
       category: true
     },
-    orderBy: { id: 'desc' }
+    orderBy: orderBy
   });
 
   return (
