@@ -22,7 +22,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="bg-[#FAF9EE] min-h-screen relative overflow-hidden">
+    <div className="bg-gradient-to-b from-[#f5f8ff] via-[#eaf1fb] to-white min-h-screen relative overflow-hidden">
       <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-[#5068a4] rounded-full opacity-20 float-element"></div>
       
       <SectionTitle title="Cart Page" path="Home | Cart" />

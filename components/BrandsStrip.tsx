@@ -38,7 +38,7 @@ const BrandsStrip = () => {
   };
 
   return (
-    <div className="py-16 pb-12 overflow-hidden bg-[#FAF9EE]">
+    <div className="py-16 pt-40 pb-12 overflow-hidden bg-gradient-to-b from-[#f5f8ff] via-[#eaf1fb] to-white">
       <div className="max-w-screen-2xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-[#5068a4] mb-4">

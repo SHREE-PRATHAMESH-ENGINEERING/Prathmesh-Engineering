@@ -1,7 +1,7 @@
 export const siteMetadata = {
   metadataBase: new URL("https://prathmeshengineering.com"),
-  title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
-  description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
+  title: "Prathmesh Engineering - PCB & Electronics Solutions | FCBC Charger Manufacturer",
+  description: "Shree Prathmesh Engineering is a leading manufacturer and supplier of Float Cum Boost Chargers (FCBC), custom battery chargers, and advanced PCB solutions for industrial, substation, and power electronics applications. Get reliable, efficient, and custom-built battery charging and electronics manufacturing services in India.",
   keywords: [
     "PCB",
     "printed circuit board",
@@ -18,11 +18,66 @@ export const siteMetadata = {
     "production runs",
     "Shree Prathmesh Engineering",
     "quality PCB",
-    "India"
+    "India",
+    "FCBC charger manufacturer",
+    "Float cum boost charger supplier",
+    "FCBC battery charger for substations",
+    "Industrial battery charger",
+    "DC power system manufacturer",
+    "Custom FCBC charger design",
+    "Best FCBC charger company in India",
+    "FCBC charger with SMPS technology",
+    "110V FCBC charger manufacturer",
+    "220V FCBC charger manufacturer",
+    "Rectifier-based FCBC charger",
+    "Transformer for FCBC charger",
+    "SMPS modules for FCBC charger",
+    "Microcontroller-based FCBC charger design",
+    "Battery monitoring PCB",
+    "Power supply PCB for chargers",
+    "PCB manufacturer in India",
+    "PCB manufacturer in [Your City]",
+    "PCB fabrication services",
+    "Custom PCB design company",
+    "PCB assembly services",
+    "Rigid PCB",
+    "Flex PCB",
+    "Multilayer PCB",
+    "Prototype PCB manufacturer",
+    "Turnkey PCB solutions",
+    "Best PCB company in India",
+    "Electronics manufacturing services (EMS)",
+    "Contract electronics manufacturer",
+    "IoT hardware development",
+    "Embedded system design company",
+    "Consumer electronics manufacturer",
+    "Industrial electronics solutions",
+    "Medical electronics PCB design",
+    "Automotive electronics PCB manufacturer",
+    "Electrical equipment supplier",
+    "Power supply and SMPS manufacturer",
+    "Transformer and circuit board supplier",
+    "Cables manufacturer",
+    "Connectors manufacturer",
+    "Relays manufacturer",
+    "Best PCB company",
+    "Affordable PCB manufacturer",
+    "High-quality PCB design services",
+    "Electronic product prototyping",
+    "ISO certified PCB manufacturer",
+    "Fast PCB fabrication & delivery",
+    "Renewable Energy & Power Electronics",
+    "Industrial Automation & Control Systems",
+    "Electronic Parts & Chips",
+    "PCB Manufacturing & Assembly",
+    "Electrical Equipment & Components",
+    "Electronics Manufacturing",
+    "FCBC Charger",
+    "Electronic Services"
   ],
   openGraph: {
-    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
-    description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
+    title: "FCBC Charger Manufacturer | Float Cum Boost Battery Chargers | PCB & Electronics Solutions",
+    description: "Get high-quality FCBC chargers, battery management PCBs, and custom electronics from Shree Prathmesh Engineering. Trusted for industrial, substation, and power system solutions in India.",
     url: "https://prathmeshengineering.com",
     images: [
       {
@@ -42,8 +97,8 @@ export const siteMetadata = {
   twitter: {
     card: "summary_large_image",
     site: "@prathmeshengineering",
-    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
-    description: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping.",
+    title: "FCBC Charger Manufacturer | PCB & Electronics Solutions | Shree Prathmesh Engineering",
+    description: "Order FCBC chargers, battery management PCBs, and custom electronics for substations, power plants, and industrial automation. Fast turnaround and expert support.",
     images: ["https://prathmeshengineering.com/logo%20v1.png"]
   },
   organizationSchema: {
@@ -52,7 +107,7 @@ export const siteMetadata = {
     "name": "Shree Prathmesh Engineering",
     "url": "https://prathmeshengineering.com",
     "logo": "https://prathmeshengineering.com/logo%20v1.png",
-    "description": "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors.",
+    "description": "Shree Prathmesh Engineering is India’s trusted provider of FCBC chargers, PCB manufacturing, battery management systems, and custom electronics for industrial and substation applications.",
     "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": "+91-7972839225",
@@ -63,16 +118,16 @@ export const siteMetadata = {
     handle: "@prathmeshengineering"
   },
   whatsapp: {
-    message: "Shop PCBs & electronics at Shree Prathmesh Engineering! https://shreeprathmeshengineering.com"
+    message: "Get a quote for FCBC chargers, battery management PCBs, and custom electronics at Shree Prathmesh Engineering! https://shreeprathmeshengineering.com"
   },
   linkedin: {
     url: "https://www.linkedin.com/company/prathmeshengineering/",
-    title: "Shree Prathmesh Engineering - PCB Manufacturing & Electronic Components",
-    summary: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping."
+    title: "FCBC Charger Manufacturer | PCB & Electronics Solutions | Shree Prathmesh Engineering",
+    summary: "Leading Electronics, PCB Manufacturing & Power Solutions (including FCBC Chargers)."
   },
   email: {
     subject: "Check out Shree Prathmesh Engineering for PCBs & Electronics",
-    body: "Leading PCB manufacturer and electronics store specializing in single layer, multi-layer, flex, and rigid-flex printed circuit boards, as well as electronic components, modules, and sensors. Quality PCB prototypes, production runs, and fast shipping. https://shreeprathmeshengineering.com"
+    body: "Leading Electronics, PCB Manufacturing & Power Solutions (including FCBC Chargers). https://shreeprathmeshengineering.com"
   },
   robots: "index, follow",
   alternates: {

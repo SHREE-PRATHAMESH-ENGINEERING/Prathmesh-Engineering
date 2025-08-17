@@ -19,64 +19,62 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#FAF9EE] to-white relative overflow-hidden">
-
-      <div className="absolute inset-0 bg-gradient-to-r from-[#5068a4]/5 via-transparent to-[#5068a4]/5"></div>
-      
-      <div className="max-w-screen-2xl mx-auto px-4 relative z-10">
+    <section className="py-20 px-4 md:px-20 bg-gradient-to-b from-[#22336b] via-[#5068a4] to-[#ffffff] relative overflow-hidden">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+      `}</style>
+      <div className="max-w-screen-2xl pb-20 pt-10 mx-auto px-4 relative z-10 animate-fadeInUp">
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#5068a4] mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
             What Our Clients Say
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto text-md">
+          <p className="text-blue-100 max-w-3xl mx-auto text-md">
             Don&apos;t just take our word for it. Here&apos;s what industry professionals say about our PCB manufacturing services and quality.
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-[#5068a4] to-[#00a86b] mx-auto mt-6"></div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 group overflow-hidden"
+              className="relative bg-white backdrop-blur-md rounded-2xl p-8 shadow-xl border border-blue-100 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 group overflow-hidden"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5068a4] to-[#3d5998] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              
               <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500" 
                    style={{
                      backgroundImage: `radial-gradient(circle at 25% 25%, #5068a4 2px, transparent 2px), radial-gradient(circle at 75% 75%, #3d5998 1px, transparent 1px)`,
                      backgroundSize: '30px 30px, 20px 20px'
                    }}>
               </div>
-
               <div className="relative mb-6 group-hover:scale-110 transition-transform duration-500">
                 <svg className="w-10 h-10 text-[#5068a4] opacity-60 group-hover:opacity-80 transition-all duration-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                 </svg>
-                
                 <div className="absolute inset-0 rounded-full border-2 border-[#5068a4] opacity-0 group-hover:opacity-20 group-hover:animate-ping w-12 h-12 -m-1"></div>
               </div>
-
-              <p className="text-sm text-gray-700 mb-6 leading-relaxed italic group-hover:text-gray-800 transition-colors duration-300">
+              <p className="text-sm text-blue-900 mb-6 leading-relaxed italic group-hover:text-[#5068a4] transition-colors duration-300">
                 &quot;{testimonial.content}&quot;
               </p>
-
               <div className="flex items-center mb-6 group-hover:scale-105 transition-transform duration-300">
                 {renderStars(testimonial.rating)}
               </div>
-
               <div className="flex items-center">
                 <div className="relative w-12 h-12 rounded-full bg-[#5068a4] flex items-center justify-center text-white font-bold text-lg mr-4 group-hover:scale-110 transition-transform duration-500 shadow-lg group-hover:shadow-xl">
                   {testimonial.avatar}
-                  
                   <div className="absolute inset-0 rounded-full border-2 border-[#00a86b] opacity-0 group-hover:opacity-40 group-hover:animate-pulse"></div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 text-lg group-hover:text-[#5068a4] transition-all duration-300">
+                  <h4 className="font-semibold text-blue-900 text-lg group-hover:text-[#5068a4] transition-all duration-300">
                     {testimonial.name}
                   </h4>
-                  <p className="text-xs text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-xs text-blue-700 group-hover:text-blue-900 transition-colors duration-300">
                     {testimonial.position}
                   </p>
                   <p className="text-xs text-[#5068a4] font-medium group-hover:font-bold group-hover:text-[#3d5998] transition-all duration-300">

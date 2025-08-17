@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useCallback } from "react";
+import ReactDOM from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBell, FaChevronDown } from "react-icons/fa6";
@@ -15,6 +16,16 @@ import { useWishlistStore } from "@/app/_zustand/wishlistStore";
 import { mainNavigation, socialMediaIcons } from "@/lib/utils";
 
 const Header = () => {
+  // Profile dropdown state
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  // Close profile dropdown on scroll
+  useEffect(() => {
+    if (!showProfileDropdown) return;
+    const handleScroll = () => setShowProfileDropdown(false);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showProfileDropdown]);
+  
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const { wishlist, setWishlist, wishQuantity } = useWishlistStore();
@@ -87,7 +98,7 @@ const Header = () => {
       setWishlist(productArray);
     } catch (error) {
       console.error('Error fetching wishlist:', error);
-      setWishlist([]); // Set empty array on error
+      setWishlist([]);
     }
   }, [setWishlist]);
 
@@ -113,7 +124,7 @@ const Header = () => {
         }
       } catch (error) {
         console.error('Error fetching user by email:', error);
-        setWishlist([]); // Set empty wishlist on error
+        setWishlist([]); 
       }
     }
   }, [session?.user?.email, getWishlistByUserId, setWishlist]);
@@ -146,9 +157,9 @@ const Header = () => {
           animation: slideInLeft 0.3s ease-out;
         }
       `}</style>
-      <header className="bg-white border-b-2 border-[#5068a4] relative">
+      <header className="bg-white relative">
       
-      <div className="h-16 text-[#5068a4] bg-white max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
+        <div className="h-16 text-[#5068a4] bg-[#162040] max-lg:px-5 max-lg:h-auto max-lg:py-3 max-sm:hidden relative overflow-hidden border-b border-gray-200">
         
         <div className="absolute top-1/2 left-1/4 w-12 h-0.5 bg-[#5068a4] opacity-10 animate-pulse max-sm:hidden"></div>
         <div className="absolute top-1/2 right-1/4 w-8 h-0.5 bg-[#5068a4] opacity-15 animate-pulse max-sm:hidden" style={{animationDelay: '1s'}}></div>
@@ -163,10 +174,10 @@ const Header = () => {
                   <a 
                     href={social.href} 
                     {...(social.external && { target: "_blank", rel: "noopener noreferrer" })}
-                    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#5068a4] hover:bg-opacity-10 transition-all duration-300 group"
+                    className="flex items-center justify-center w-10 h-10 hover:bg-[#5068a4] rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300"
                     title={social.title}
                   >
-                    {IconComponent && <IconComponent className="text-[#5068a4] text-xl transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />}
+                    {IconComponent && <IconComponent className="text-white text-xl transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />}
                   </a>
                 </li>
               );
@@ -177,32 +188,43 @@ const Header = () => {
             {!session ? ( 
             <>
             <li className="flex items-center">
-              <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Login</span>
+              <Link href="/login" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                      <span className="transition-all text-white duration-300">Login</span>
               </Link>
             </li>
             <li className="flex items-center">
-              <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Register</span>
+              <Link href="/register" className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
+                      <span className="transition-all text-white duration-300 ">Register</span>
               </Link>
             </li>
             </>
             ) :  (<>
-            <span className="ml-10 text-base text-[#5068a4] font-medium max-lg:ml-0">{session.user?.email}</span>
-            <li className="flex items-center">
-              <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] hover:bg-opacity-10 px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
-                <FaRegUser className="text-[#5068a4] transition-all duration-300 group-hover:scale-110 group-hover:text-[#3d5998]" />
-                <span className="transition-all duration-300 group-hover:text-[#3d5998]">Log out</span>
+            <li className="relative flex items-center">
+              <button
+                className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] p-3 rounded transition-all duration-300 text-[#5068a4] focus:outline-none"
+                onClick={() => setShowProfileDropdown(prev => !prev)}
+                aria-label="Profile"
+              >
+                <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
               </button>
+              {showProfileDropdown && typeof window !== "undefined" && ReactDOM.createPortal(
+                <div style={{ position: 'fixed', top: '70px', right: '40px', zIndex: 9999 }} className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-4 animate-fadeIn">
+                  <div className="text-gray-700 text-sm break-all">{session.user?.email}</div>
+                  <button
+                    onClick={() => { setShowProfileDropdown(false); handleLogout(); }}
+                    className="mt-4 w-full bg-[#5068a4] text-white py-2 rounded-lg font-semibold hover:bg-[#3d5998] transition-all duration-300"
+                  >
+                    Log out
+                  </button>
+                </div>, document.body
+              )}
             </li>
-            </>)}
+          </>)}
           </ul>
         </div>
       </div>
-      
-      <div className="h-0.5 bg-[#5068a4] max-sm:hidden"></div>
       
       {pathname.startsWith("/admin") === false && (
         <>
@@ -471,7 +493,7 @@ const Header = () => {
       )}
 
       {pathname.startsWith("/admin") === false && (
-        <nav className="bg-gradient-to-r from-[#5068a4] to-[#3d5998] border-t border-white border-opacity-20 max-sm:hidden">
+          <nav className="bg-gradient-to-r bg-[#5068a4] border-b-2 border-b-white max-sm:hidden">
           <div className="max-w-screen-2xl mx-auto px-16 max-[1320px]:px-12 max-lg:px-6 max-md:px-4">
             <div className="flex justify-center items-center h-14">
               <ul className="flex items-center gap-x-12 max-lg:gap-x-8 max-md:gap-x-6">
@@ -494,7 +516,7 @@ const Header = () => {
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 bg-white shadow-2xl rounded-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-2">
                         <div className="p-6">
                           <h3 className="text-[#5068a4] font-bold text-lg mb-4 border-b border-gray-200 pb-2">
-                            PCB Types
+                            Types
                           </h3>
                           <ul className="space-y-1">
                             {item.subItems.map((subItem, index) => (

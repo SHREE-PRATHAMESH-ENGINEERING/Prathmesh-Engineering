@@ -12,11 +12,11 @@ const ProductItem = ({
 }) => {
   return (
     <Link href={`/product/${product.slug}`} className="block group w-full max-w-xs mx-auto">
-      <div className="relative bg-[#FAF9EE] rounded-2xl shadow-lg border border-gray-100 overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:rotate-1 animate-scale cursor-pointer">
+  <div className="relative rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-scale cursor-pointer">
 
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5068a4] to-[#3d5998]"></div>
         
-        <div className="relative overflow-hidden p-6 max-sm:p-4 lg:p-4 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
           <Image
             src={
               product.mainImage
@@ -26,7 +26,7 @@ const ProductItem = ({
             width="0"
             height="0"
             sizes="100vw"
-            className="w-full h-[250px] max-sm:h-[180px] lg:h-[200px] object-cover rounded-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-2"
+            className="w-full h-[250px] max-sm:h-[180px] lg:h-[200px] object-cover rounded-xl transition-all duration-500 group-hover:scale-110"
             alt={product?.title}
           />
           

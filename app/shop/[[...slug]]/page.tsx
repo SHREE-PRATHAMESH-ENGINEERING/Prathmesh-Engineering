@@ -34,21 +34,23 @@ const ShopPage = (slug: any) => {
   };
   
   return (
-    <div className="text-black bg-white">
-      <div className=" max-w-screen-2xl mx-auto px-10 max-sm:px-5">
+    <div className="min-h-screen bg-gradient-to-b from-white via-[#eaf1fb] to-[#f5f8ff] relative overflow-hidden">
+      <div className="absolute inset-0 pcb-pattern opacity-10 pointer-events-none"></div>
+      <div className="max-w-screen-2xl mx-auto px-10 max-sm:px-5 relative z-10">
         <Breadcrumb />
-        <div className="grid grid-cols-[200px_1fr] gap-x-10 max-md:grid-cols-1 max-md:gap-y-5">
+        <div className="grid grid-cols-[220px_1fr] gap-x-10 max-md:grid-cols-1 max-md:gap-y-5">
           <Filters />
           <div>
             <div className="flex justify-between items-center max-lg:flex-col max-lg:gap-y-5">
-              <h2 className="text-2xl font-bold max-sm:text-xl max-[400px]:text-lg uppercase">
+              <h2 className="text-2xl font-bold text-[#5068a4] max-sm:text-xl max-[400px]:text-lg uppercase drop-shadow">
                 {getPageTitle()}
               </h2>
-
               <SortBy />
             </div>
             <div className="divider"></div>
-            <Products slug={slug} />
+            <div className=" p-6">
+              <Products slug={slug} />
+            </div>
             <Pagination />
           </div>
         </div>
