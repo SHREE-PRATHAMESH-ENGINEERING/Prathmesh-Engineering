@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useCallback } from "react";
+import ReactDOM from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBell, FaChevronDown } from "react-icons/fa6";
@@ -15,6 +16,16 @@ import { useWishlistStore } from "@/app/_zustand/wishlistStore";
 import { mainNavigation, socialMediaIcons } from "@/lib/utils";
 
 const Header = () => {
+  // Profile dropdown state
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  // Close profile dropdown on scroll
+  useEffect(() => {
+    if (!showProfileDropdown) return;
+    const handleScroll = () => setShowProfileDropdown(false);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showProfileDropdown]);
+  
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const { wishlist, setWishlist, wishQuantity } = useWishlistStore();
@@ -87,7 +98,7 @@ const Header = () => {
       setWishlist(productArray);
     } catch (error) {
       console.error('Error fetching wishlist:', error);
-      setWishlist([]); // Set empty array on error
+      setWishlist([]);
     }
   }, [setWishlist]);
 
@@ -113,7 +124,7 @@ const Header = () => {
         }
       } catch (error) {
         console.error('Error fetching user by email:', error);
-        setWishlist([]); // Set empty wishlist on error
+        setWishlist([]); 
       }
     }
   }, [session?.user?.email, getWishlistByUserId, setWishlist]);
@@ -190,14 +201,27 @@ const Header = () => {
             </li>
             </>
             ) :  (<>
-            <span className="ml-10 text-base text-white font-medium max-lg:ml-0">{session.user?.email}</span>
-            <li className="flex items-center">
-              <button onClick={() => handleLogout()} className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] px-2 py-1 rounded transition-all duration-300 text-[#5068a4]">
+            <li className="relative flex items-center">
+              <button
+                className="flex items-center gap-x-2 font-semibold group hover:bg-[#5068a4] p-3 rounded transition-all duration-300 text-[#5068a4] focus:outline-none"
+                onClick={() => setShowProfileDropdown(prev => !prev)}
+                aria-label="Profile"
+              >
                 <FaRegUser className="text-white transition-all duration-300 group-hover:scale-110 " />
-                <span className="transition-all duration-300 text-white ">Log out</span>
               </button>
+              {showProfileDropdown && typeof window !== "undefined" && ReactDOM.createPortal(
+                <div style={{ position: 'fixed', top: '70px', right: '40px', zIndex: 9999 }} className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-4 animate-fadeIn">
+                  <div className="text-gray-700 text-sm break-all">{session.user?.email}</div>
+                  <button
+                    onClick={() => { setShowProfileDropdown(false); handleLogout(); }}
+                    className="mt-4 w-full bg-[#5068a4] text-white py-2 rounded-lg font-semibold hover:bg-[#3d5998] transition-all duration-300"
+                  >
+                    Log out
+                  </button>
+                </div>, document.body
+              )}
             </li>
-            </>)}
+          </>)}
           </ul>
         </div>
       </div>

@@ -64,28 +64,28 @@ export const socialMediaIcons = [
   {
     id: 'linkedin',
     icon: 'FaLinkedin',
-    href: 'https://linkedin.com/company/shree-prathamesh-engineering',
+    href: 'https://www.linkedin.com/company/prathmeshengineering',
     title: 'LinkedIn - PCB & Power Solutions',
     external: true
   },
   {
     id: 'instagram',
     icon: 'FaInstagram',
-    href: 'https://instagram.com/shreeprathameshengineering',
+    href: 'https://www.instagram.com/prathmeshengineering/',
     title: 'Instagram - Electronics & FCBC Chargers',
     external: true
   },
   {
     id: 'twitter',
     icon: 'FaTwitter',
-    href: 'https://twitter.com/shreeprathmesh',
+    href: 'https://x.com/PrathmeshEng',
     title: 'Twitter - PCB Manufacturing & Chargers',
     external: true
   },
   {
     id: 'facebook',
     icon: 'FaFacebook',
-    href: 'https://facebook.com/shreeprathameshengineering',
+    href: 'https://www.facebook.com/profile.php?id=61579788681001&viewas=100000686899395',
     title: 'Facebook - PCB, Electronics & FCBC Chargers',
     external: true
   },
