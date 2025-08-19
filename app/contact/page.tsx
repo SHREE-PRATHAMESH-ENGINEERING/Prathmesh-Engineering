@@ -32,18 +32,34 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you for your inquiry! Our PCB engineering team will review your requirements and get back to you within 4 hours with a detailed quote and timeline.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
+    setSubmitMessage("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: `${formData.subject}\n\n${formData.message}\n\nPhone: ${formData.phone}`
+        })
       });
-    }, 2000);
+      const result = await res.json();
+      if (result.success) {
+        setSubmitMessage('Thank you for your inquiry! Our PCB engineering team will review your requirements and get back to you within 4 hours with a detailed quote and timeline.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitMessage('There was an error sending your message. Please try again later.');
+      }
+    } catch (err) {
+      setSubmitMessage('There was an error sending your message. Please try again later.');
+    }
+    setIsSubmitting(false);
   };
 
   return (
