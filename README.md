@@ -1,8 +1,8 @@
 
 # Admin credentials
 
-- username: `admin@pcb.com`
-- password: `admin123456`
+- username: `prathameshengg2019@gmail.com`
+- password: `Pr@thmeshEngg01`
 - Access admin panel: `url/admin`
 
 

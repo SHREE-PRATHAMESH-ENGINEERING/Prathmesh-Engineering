@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaIndustry, FaTools, FaShippingFast } from 'react-icons/fa';
 import { contactStats, contactMethods, pcbServices, manufacturingCapabilities } from '@/lib/utils';
+import { toast } from 'react-hot-toast';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -45,6 +46,7 @@ const ContactPage = () => {
       });
       const result = await res.json();
       if (result.success) {
+        toast.success('Message sent successfully!');
         setSubmitMessage('Thank you for your inquiry! Our PCB engineering team will review your requirements and get back to you within 4 hours with a detailed quote and timeline.');
         setFormData({
           name: '',
@@ -54,9 +56,11 @@ const ContactPage = () => {
           message: ''
         });
       } else {
+        toast.error('There was an error sending your message. Please try again later.');
         setSubmitMessage('There was an error sending your message. Please try again later.');
       }
     } catch (err) {
+      toast.error('There was an error sending your message. Please try again later.');
       setSubmitMessage('There was an error sending your message. Please try again later.');
     }
     setIsSubmitting(false);
