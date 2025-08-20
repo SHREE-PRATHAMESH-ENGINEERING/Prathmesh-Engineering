@@ -92,7 +92,7 @@ export const socialMediaIcons = [
   {
     id: 'email',
     icon: 'FaEnvelope',
-    href: 'mailto:contact@prathmeshengineering.com',
+    href: 'mailto:admin@prathmeshengineering.com',
     title: 'Email - PCB, Electronics & Charger Inquiries',
     external: false
   }
@@ -312,7 +312,7 @@ export const contactMethods = [
   {
     iconType: "email",
     title: "Email Support",
-    info: "contact@prathmeshengineering.com",
+    info: "admin@prathmeshengineering.com",
     delay: "0.2s"
   },
   {
@@ -486,7 +486,7 @@ If you have any questions or suggestions about our Privacy Policy, please contac
 
 Company Name: Prathmesh Engineering
 Address: Dhaurahara, Vijaypur, Mirzapur, Uttar Pradesh 231303
-Email: contact@prathmeshengineering.com
+Email: admin@prathmeshengineering.com
 Phone: 7972839225`;
 
 export const returnPolicyContent = `Return and Refund Policy
@@ -526,7 +526,7 @@ Electrical Components: Components that have been fitted or used.
 5. Return Process
 To initiate a return, please follow these steps:
 
-Contact Us: Send an email to contact@prathmeshengineering.com or call our customer service at 7972839225 with your order number and a clear reason for the return.
+Contact Us: Send an email to admin@prathmeshengineering.com or call our customer service at 7972839225 with your order number and a clear reason for the return.
 
 Provide Information: Our team may ask you to provide photos or videos of the product to assess its condition.
 
@@ -562,7 +562,7 @@ To cancel an order, please contact our customer service team immediately.
 9. Contact Us
 For any questions regarding our Return and Refund Policy, please contact us at:
 
-Email: contact@prathmeshengineering.com
+Email: admin@prathmeshengineering.com
 
 Phone: 7972839225`;
 
