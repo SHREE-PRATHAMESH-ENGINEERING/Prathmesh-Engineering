@@ -45,7 +45,7 @@ const BrandsStrip = () => {
             Trusted by Leading Brands
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We partner with industry leaders to deliver cutting-edge PCB solutions for the world&apos;s most innovative electronic products.
+            We partner with industry leaders to deliver cutting-edge solutions in PCBs, FCBC battery chargers, and electronic modules & components. Our technology powers innovative products in renewable energy, industrial automation, and advanced electronics.
           </p>
         </div>
         

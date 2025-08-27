@@ -19,10 +19,10 @@ const Hero = () => {
       <div className="grid grid-cols-3 items-center justify-items-center px-10 gap-x-10 max-w-screen-2xl mx-auto h-full max-lg:grid-cols-1 max-lg:py-10 max-lg:gap-y-10 relative z-10">
         <div className="flex flex-col gap-y-5 max-lg:order-last col-span-2">
           <h1 className="text-6xl text-[#fff] font-bold mb-3 drop-shadow-lg max-xl:text-5xl max-md:text-4xl max-sm:text-3xl">
-            PREMIUM PCBs FOR YOUR PROJECTS
+            Electronics, PCBs & FCBC Chargers for Every Project
           </h1>
           <p className="text-gray-100 max-sm:text-sm leading-relaxed drop-shadow">
-            Leading PCB manufacturer for Renewable Energy, Industrial Automation, Electronics, and FCBC Chargers. Fast PCB fabrication, custom design, and reliable circuits for engineers and innovators. From prototypes to production, our PCBs and electronic solutions deliver quality and speed.
+            Prathmesh Engineering is your trusted partner for high-quality PCBs, advanced FCBC battery chargers, and electronic components & modules. We serve Renewable Energy, Industrial Automation, Power Electronics, and more. Get fast PCB fabrication, custom charger design, and reliable electronic solutions for engineers, innovators, and manufacturers. From prototypes to production, our products deliver performance, efficiency, and speed.
           </p>
           <div className="flex gap-x-4 max-lg:flex-col max-lg:gap-y-4">
             <button className="btn-pcb-hero max-lg:text-xl max-sm:text-lg">

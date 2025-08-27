@@ -4,12 +4,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaPhone, FaWhatsapp, FaLinkedin, FaInstagram, FaTwitter, FaFacebook, FaEnvelope } from "react-icons/fa";
-import PolicyModal from "./PolicyModal";
 
 const Footer = () => {
   const router = useRouter();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalType, setModalType] = useState<"privacy" | "return" | "terms" | null>(null);
 
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: React.ComponentType<any> } = {
@@ -38,32 +35,6 @@ const Footer = () => {
         router.push(href);
       }
     }
-  };
-
-  const handlePolicyClick = (linkName: string, href: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    if (linkName === "Privacy policy") {
-      setModalType("privacy");
-      setModalOpen(true);
-    } else if (linkName === "Return policy") {
-      setModalType("return");
-      setModalOpen(true);
-    } else if (linkName === "Terms & conditions") {
-      setModalType("terms");
-      setModalOpen(true);
-    } else if (linkName === "About us") {
-      router.push("/about");
-    } else {
-      if (href !== "#") {
-        router.push(href);
-      }
-    }
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setModalType(null);
   };
 
   return (
@@ -104,7 +75,6 @@ const Footer = () => {
                   <li key={item.name} className="footer-link">
                     <a
                       href={item.href}
-                      onClick={(e) => handlePolicyClick(item.name, item.href, e)}
                       className="text-sm leading-6 text-white transition-colors duration-300 px-2 py-1 rounded-lg hover:bg-blue-900/30 focus:outline-none focus:ring-2 focus:ring-blue-300"
                     >
                       {item.name}
@@ -144,11 +114,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <PolicyModal
-        isOpen={modalOpen}
-        onClose={closeModal}
-        type={modalType}
-      />
     </>
   );
 };

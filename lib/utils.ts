@@ -205,13 +205,13 @@ export const navigation = {
     { name: "Home", href: "#" },
     { name: "Products", href: "#" },
     { name: "Contact us", href: "/contact" },
-    { name: "Check order", href: "#" },
+    { name: "Abous us", href: "/about" },
   ],
   ourcompany: [
-    { name: "About us", href: "/about" },
-    { name: "Privacy policy", href: "#" },
-    { name: "Return policy", href: "#" },
-    { name: "Terms & conditions", href: "#" },
+    { name: "Shipping & Delivery", href: "/shipping-and-delivery" },
+    { name: "Privacy policy", href: "/privacy-policy" },
+    { name: "Cancellation & Refund", href: "/cancellation-and-refund" },
+    { name: "Terms & conditions", href: "/terms-and-conditions" },
   ],
 };
 
@@ -397,7 +397,7 @@ export const isValidEmailAddressFormat = (input: string) => {
 };
 
 // Policy Content
-export const privacyPolicyContent = `Privacy Policy for Prathmesh Engineering
+export const privacyPolicyContent = `Privacy Policy
 
 This Privacy Policy explains how Prathmesh Engineering collects, uses, and protects your personal information when you visit our website, use our services, or interact with us. Your privacy is important to us, and we are committed to safeguarding your personal data in compliance with applicable laws, including the Digital Personal Data Protection Act, 2023, of India.
 
@@ -489,13 +489,13 @@ Address: Dhaurahara, Vijaypur, Mirzapur, Uttar Pradesh 231303
 Email: admin@prathmeshengineering.com
 Phone: 7972839225`;
 
-export const returnPolicyContent = `Return and Refund Policy
+export const returnPolicyContent = `Cancellation and Refund
 
 1. Introduction
 At Prathmesh Engineering, we are committed to ensuring your satisfaction with every purchase. We offer a simple and transparent return and refund policy for all our products.
 
 2. Return Window
-You may initiate a return for an item purchased from our website within 12 days from the date of delivery.
+You may initiate a return for an item purchased from our website within 15 days from the date of delivery.
 
 3. Eligibility for Returns
 To be eligible for a return, your item must meet the following conditions:
@@ -566,7 +566,7 @@ Email: admin@prathmeshengineering.com
 
 Phone: 7972839225`;
 
-export const termsConditionsContent = `Terms and Conditions for Prathmesh Engineering
+export const termsConditionsContent = `Terms and Conditions
 
 1. Introduction
 
@@ -643,3 +643,47 @@ We reserve the right to modify these Terms at any time. Your continued use of th
 12. Privacy Policy
 
 Our Privacy Policy, which is available on a separate page on our website, describes how we collect, use, and protect your personal information. By using our website, you consent to the collection and use of your information as described in the Privacy Policy.`;
+
+export const shippingPolicyContent = `Shipping and Delivery
+
+1. Introduction
+At Prathmesh Engineering, we are committed to delivering your products safely, securely, and on time. This Shipping Policy outlines our procedures, timelines, and terms for shipping electronics, PCBs, FCBC chargers, and related products.
+
+2. Shipping Coverage
+We ship our products across India and to select international destinations. Please contact us for international shipping availability and rates.
+
+3. Processing Time
+Orders are typically processed within 1-3 business days after payment confirmation. Custom or bulk orders may require additional processing time, which will be communicated to you at the time of order.
+
+4. Shipping Methods & Carriers
+We use reliable courier partners and logistics providers to ensure safe and timely delivery. Shipping method and carrier are selected based on your location, order size, and delivery requirements.
+
+5. Shipping Charges
+Shipping charges are calculated based on product weight, dimensions, destination, and shipping method. The applicable shipping fee will be displayed at checkout before you complete your purchase.
+
+6. Estimated Delivery Time
+- Standard Delivery: 15-21 business days within India.
+- Express Delivery: 7-15 business days within India (available for select products and locations).
+- International Delivery: 30-45 business days, depending on destination and customs clearance.
+
+Please note that delivery times are estimates and may vary due to unforeseen circumstances, holidays, or remote locations.
+
+7. Order Tracking
+Once your order is shipped, you will receive a tracking number via email or SMS. You can use this number to track your shipment on the carrier’s website.
+
+8. Shipping Address
+Please ensure your shipping address is accurate and complete. We are not responsible for delays or lost shipments due to incorrect or incomplete addresses.
+
+9. Damaged or Lost Shipments
+If your shipment arrives damaged or is lost in transit, please contact us within 48 hours of delivery. We will work with the carrier to resolve the issue and, if necessary, arrange for a replacement or refund.
+
+10. Customs, Duties & Taxes (International Orders)
+International shipments may be subject to customs duties, taxes, and import fees, which are the responsibility of the recipient. Prathmesh Engineering is not liable for any additional charges imposed by customs authorities.
+
+11. Contact Us
+For any questions or concerns regarding shipping, please contact us at:
+
+Email: admin@prathmeshengineering.com
+Phone: 7972839225
+Address: Dhaurahara, Vijaypur, Mirzapur, Uttar Pradesh 231303
+`;

@@ -40,4 +40,3 @@ export { default as StatsElement } from "./StatsElement";
 export { default as DashboardProductTable } from "./DashboardProductTable";
 export { default as AdminOrders } from "./AdminOrders";
 export { default as OrderItem } from "./OrderItem";
-export { default as PolicyModal } from "./PolicyModal";
