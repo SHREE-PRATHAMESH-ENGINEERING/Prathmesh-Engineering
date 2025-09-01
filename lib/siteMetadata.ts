@@ -44,7 +44,6 @@ export const siteMetadata = {
     "Flex PCB",
     "Multilayer PCB",
     "Prototype PCB manufacturer",
-    "Turnkey PCB solutions",
     "Best PCB company in India",
     "Electronics manufacturing services (EMS)",
     "Contract electronics manufacturer",
@@ -91,7 +90,7 @@ export const siteMetadata = {
     site_name: "Shree Prathmesh Engineering",
     locale: "en_IN",
     facebook: {
-      app_id: "YOUR_FACEBOOK_APP_ID"
+      app_id: "https://www.facebook.com/profile.php?id=61579788681001&viewas=100000686899395"
     }
   },
   twitter: {

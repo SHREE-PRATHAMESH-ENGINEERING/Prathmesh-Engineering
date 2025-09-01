@@ -12,17 +12,17 @@ export const mainNavigation = [
     href: "/shop/pcbs",
     megaMenu: true,
     subItems: [
-      { name: "Single Layer PCBs", href: "/shop?categoryId=cat_1753894634025_vzk9y7yae" },
-      { name: "Multi Layer PCBs", href: "/shop?categoryId=cat_1753894657262_vt9ovggw5" },
-      { name: "Flex PCBs", href: "/shop?categoryId=cat_1753894667307_1p6i1fljb" },
-      { name: "Rigid-Flex PCBs", href: "/shop?categoryId=cat_1753894678072_zydbmq0m4" },
-      { name: "Prototype PCBs", href: "/shop?categoryId=cat_1753894689818_mv1zqvuzs" }
+      { name: "Single Layer PCBs", href: "/shop?categoryId=cat_1756715468151_znl2aa9xy" },
+      { name: "Multi Layer PCBs", href: "/shop?categoryId=cat_1756715478262_dadnbqjhb" },
+      { name: "Flex PCBs", href: "/shop?categoryId=cat_1756715491755_zyzkzrgkb" },
+      { name: "Rigid-Flex PCBs", href: "/shop?categoryId=cat_1756715503442_88czx54t7" },
+      { name: "Prototype PCBs", href: "/shop?categoryId=cat_1756715516643_nrno0u8l0" }
     ]
   },
   {
     id: 3,
     name: "Electronic Products",
-    href: "/shop/electronics",
+    href: "/shop?categoryId=cat_1756715536854_82xxeuh1b",
     megaMenu: false
   },
   {
@@ -31,10 +31,10 @@ export const mainNavigation = [
     href: "/shop/FCBC-charger",
     megaMenu: true,
     subItems: [
-      { name: "FCBC Components", href: "/shop/FCBC-charger/cat_1755369870209_g47128c6z" },
-      { name: "FCBC Installation", href: "/shop/FCBC-charger/cat_1755369882810_0xb9qnmha" },
-      { name: "FCBC Repair", href: "/shop/FCBC-charger/cat_1755369897159_npfzvjjcy" },
-      { name: "FCBC Designing", href: "/shop/FCBC-charger/cat_1755369918767_adn9jtdjf" }
+      { name: "FCBC Components", href: "/shop/FCBC-charger/cat_1756715561550_q6pdhyxwo" },
+      { name: "FCBC Installation", href: "/shop/FCBC-charger/cat_1756715572845_lst7m1736" },
+      { name: "FCBC Repair", href: "/shop/FCBC-charger/cat_1756715583808_liq96rbxy" },
+      { name: "FCBC Designing", href: "/shop/FCBC-charger/cat_1756715600045_youoh24qg" }
     ]
   },
   {
@@ -105,56 +105,56 @@ export const categoryMenuList = [
     title: "Renewable Energy & Power Electronics",
     icon: "🔋",
     href: "/shop/renewable-energy-power-electronics",
-    categoryId: "cat_1755359545922_kvv90j2qo"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
   {
     id: 2,
     title: "Industrial Automation & Control Systems",
     icon: "🤖",
     href: "/shop/industrial-automation-control-systems",
-    categoryId: "cat_1755359535184_ycszd4ofy"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
   {
     id: 3,
     title: "Electronic Parts & Chips",
     icon: "💾",
     href: "/shop/electronic-parts-chips",
-    categoryId: "cat_1755359527089_kcfcv75zm"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
   {
     id: 4,
     title: "PCB Manufacturing & Assembly",
     icon: "🛠️",
     href: "/shop/pcb-manufacturing-assembly",
-    categoryId: "cat_1755359513578_2hja5latw"
+    categoryId: "cat_1756715441493_mg4bcyelu"
   },
   {
     id: 5,
     title: "Electrical Equipment & Components",
     icon: "🔦",
     href: "/shop/electrical-equipment-components",
-    categoryId: "cat_1755359505775_sk8llytp9"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
   {
     id: 6,
     title: "Electronics Manufacturing",
     icon: "🏭",
     href: "/shop/electronics-manufacturing",
-    categoryId: "cat_1755359493693_qqnt4g206"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
   {
     id: 7,
     title: "FCBC Charger",
     icon: "🔌",
     href: "/shop/fcbc-charger",
-    categoryId: "cat_1755360138837_4u8nrvhf3"
+    categoryId: "cat_1756715547448_5clx31dfc"
   },
   {
     id: 8,
     title: "Electronic Services",
     icon: "🧰",
     href: "/shop/electronic-services",
-    categoryId: "cat_1755360778583_z62r3a9ww"
+    categoryId: "cat_1756715536854_82xxeuh1b"
   },
 ];
 

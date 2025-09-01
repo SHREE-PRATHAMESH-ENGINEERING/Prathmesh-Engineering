@@ -81,6 +81,7 @@ const AddNewProduct = () => {
 
       if (response.ok) {
         const data = await response.json();
+        setProduct({ ...product, mainImage: data.url });
       } else {
         console.error("File upload unsuccessfull");
       }
@@ -95,7 +96,6 @@ const AddNewProduct = () => {
         return res.json();
       })
       .then((data) => {
-        // Ensure data is an array before setting it
         const categoriesData = Array.isArray(data) ? data : [];
         setCategories(categoriesData);
         setProduct({
@@ -243,13 +243,12 @@ const AddNewProduct = () => {
                       className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#5068a4] file:text-white hover:file:bg-[#3d5998]"
                       onChange={(e: any) => {
                         uploadFile(e.target.files[0]);
-                        setProduct({ ...product, mainImage: e.target.files[0].name });
                       }}
                     />
                     {product?.mainImage && (
                       <div className="mt-4">
                         <Image
-                          src={`/` + product?.mainImage}
+                          src={product?.mainImage}
                           alt={product?.title}
                           className="w-32 h-32 object-cover rounded-xl border-2 border-gray-200"
                           width={128}

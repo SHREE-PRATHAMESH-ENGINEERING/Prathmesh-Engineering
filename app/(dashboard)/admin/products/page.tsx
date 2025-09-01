@@ -1,6 +1,5 @@
 "use client";
 import {
-  CustomButton,
   DashboardProductTable,
   DashboardSidebar,
 } from "@/components";
