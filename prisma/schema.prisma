@@ -91,3 +91,10 @@ model wishlist {
   @@index([productId], map: "Wishlist_productId_fkey")
   @@index([userId], map: "Wishlist_userId_fkey")
 }
+
+model Otp {
+  id        String   @id @default(uuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+}
