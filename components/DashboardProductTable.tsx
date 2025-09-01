@@ -62,7 +62,7 @@ const DashboardProductTable = () => {
                         <Image
                           width={48}
                           height={48}
-                          src={product?.mainImage ? `/${product?.mainImage}` : "/product_placeholder.jpg"}
+                          src={product?.mainImage}
                           alt={product?.title}
                           className="w-full h-full object-cover"
                         />

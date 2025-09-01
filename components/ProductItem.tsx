@@ -18,11 +18,7 @@ const ProductItem = ({
         
         <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
           <Image
-            src={
-              product.mainImage
-                ? `/${product.mainImage}`
-                : "/product_placeholder.jpg"
-            }
+            src={product?.mainImage}
             width="0"
             height="0"
             sizes="100vw"

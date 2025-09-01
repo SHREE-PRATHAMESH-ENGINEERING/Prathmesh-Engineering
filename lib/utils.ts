@@ -22,7 +22,7 @@ export const mainNavigation = [
   {
     id: 3,
     name: "Electronic Products",
-    href: "/shop/electronics",
+    href: "/shop?categoryId=cat_1756715536854_82xxeuh1b",
     megaMenu: false
   },
   {
