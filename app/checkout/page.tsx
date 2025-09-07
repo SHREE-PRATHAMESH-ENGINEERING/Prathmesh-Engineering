@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "../_zustand/userStore";
 import { isValidEmailAddressFormat, isValidNameOrLastname } from "@/lib/utils";
 import { isValidPostalCode, isValidPhoneNumber } from "@/lib/utils";
 import Script from "next/script";
@@ -31,6 +32,10 @@ const CheckoutPage = () => {
     orderNotice: "",
   });
   const { products, total, clearCart } = useProductStore();
+  const { user, fetchUser } = useUserStore();
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
   const router = useRouter();
 
   const country = "India";
@@ -73,7 +78,6 @@ const CheckoutPage = () => {
         return;
       }
 
-
       try {
         const razorpayResponse = await fetch("/api/razorpay", {
           method: "POST",
@@ -94,11 +98,11 @@ const CheckoutPage = () => {
         }
 
         const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "your_razorpay_key_id",
+          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
           amount: razorpayData.amount,
           currency: "INR",
-          name: "Electronic Store",
-          description: "Purchase from Electronic Store",
+          name: "Shree Prathmesh Engineering",
+          description: "Purchase from PCB & Electronic store",
           order_id: razorpayData.orderId,
           handler: async function (response: any) {
 
@@ -167,6 +171,7 @@ const CheckoutPage = () => {
           city: checkoutForm.city,
           country: checkoutForm.country,
           orderNotice: checkoutForm.orderNotice,
+          userId: user?.id || null,
         }),
       });
 

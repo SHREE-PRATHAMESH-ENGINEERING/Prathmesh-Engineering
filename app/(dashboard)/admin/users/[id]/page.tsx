@@ -100,74 +100,74 @@ const DashboardSingleUserPage = ({
   }, [id]);
 
   return (
-    <div className="bg-white flex justify-start max-w-screen-2xl mx-auto xl:h-full max-xl:flex-col max-xl:gap-y-5">
+    <div className="bg-gradient-to-br from-[#FAF9EE] to-white min-h-screen flex justify-start max-w-screen-2xl mx-auto max-xl:flex-col">
       <DashboardSidebar />
-      <div className="flex flex-col gap-y-7 xl:pl-5 max-xl:px-5 w-full">
-        <h1 className="text-3xl font-semibold">User details</h1>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Email:</span>
-            </div>
-            <input
-              type="email"
-              className="input input-bordered w-full max-w-xs"
-              value={userInput.email}
-              onChange={(e) =>
-                setUserInput({ ...userInput, email: e.target.value })
-              }
-            />
-          </label>
-        </div>
-
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">New password:</span>
-            </div>
-            <input
-              type="password"
-              className="input input-bordered w-full max-w-xs"
-              onChange={(e) =>
-                setUserInput({ ...userInput, newPassword: e.target.value })
-              }
-              value={userInput.newPassword}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">User role: </span>
-            </div>
-            <select
-              className="select select-bordered"
-              value={userInput.role}
-              onChange={(e) =>
-                setUserInput({ ...userInput, role: e.target.value })
-              }
+      <div className="flex-1 flex items-center justify-center p-8 max-xl:p-4">
+        <div className="bg-white rounded-2xl shadow-lg border-2 border-[#5068a4] border-opacity-10 w-full max-w-lg p-8 flex flex-col gap-y-7">
+          <h1 className="text-3xl font-bold text-[#5068a4] mb-2">User Details</h1>
+          <div>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text text-[#5068a4] font-semibold">Email:</span>
+              </div>
+              <input
+                type="email"
+                className="input input-bordered w-full"
+                value={userInput.email}
+                onChange={(e) =>
+                  setUserInput({ ...userInput, email: e.target.value })
+                }
+              />
+            </label>
+          </div>
+          <div>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text text-[#5068a4] font-semibold">New Password:</span>
+              </div>
+              <input
+                type="password"
+                className="input input-bordered w-full"
+                onChange={(e) =>
+                  setUserInput({ ...userInput, newPassword: e.target.value })
+                }
+                value={userInput.newPassword}
+              />
+            </label>
+          </div>
+          <div>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text text-[#5068a4] font-semibold">User Role:</span>
+              </div>
+              <select
+                className="select select-bordered w-full"
+                value={userInput.role}
+                onChange={(e) =>
+                  setUserInput({ ...userInput, role: e.target.value })
+                }
+              >
+                <option value="admin">admin</option>
+                <option value="user">user</option>
+              </select>
+            </label>
+          </div>
+          <div className="flex gap-x-4 max-sm:flex-col mt-4">
+            <button
+              type="button"
+              className="uppercase bg-[#5068a4] px-8 py-4 text-lg border border-[#5068a4] font-bold text-white shadow-sm rounded-xl hover:bg-[#3d5998] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#5068a4] transition-all duration-300"
+              onClick={updateUser}
             >
-              <option value="admin">admin</option>
-              <option value="user">user</option>
-            </select>
-          </label>
-        </div>
-        <div className="flex gap-x-2 max-sm:flex-col">
-          <button
-            type="button"
-            className="uppercase bg-blue-500 px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2"
-            onClick={updateUser}
-          >
-            Update user
-          </button>
-          <button
-            type="button"
-            className="uppercase bg-red-600 px-10 py-5 text-lg border border-black border-gray-300 font-bold text-white shadow-sm hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2"
-            onClick={deleteUser}
-          >
-            Delete user
-          </button>
+              Update User
+            </button>
+            <button
+              type="button"
+              className="uppercase bg-red-600 px-8 py-4 text-lg border border-red-600 font-bold text-white shadow-sm rounded-xl hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 transition-all duration-300"
+              onClick={deleteUser}
+            >
+              Delete User
+            </button>
+          </div>
         </div>
       </div>
     </div>

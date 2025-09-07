@@ -61,6 +61,10 @@ export async function DELETE(
   try {
     const id = params.id;
     
+    await prisma.customer_order_product.deleteMany({
+      where: { customerOrderId: id }
+    });
+
     await prisma.customer_order.delete({
       where: { id }
     });

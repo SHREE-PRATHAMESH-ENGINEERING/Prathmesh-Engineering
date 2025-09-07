@@ -2,9 +2,13 @@ import prisma from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 import { sendOrderConfirmationEmail } from "@/lib/sendOrderConfirmationEmail";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const userId = searchParams.get("userId");
+    const where = userId ? { userId } : undefined;
     const orders = await prisma.customer_order.findMany({
+      where,
       include: {
         customer_order_product: {
           include: {
@@ -43,7 +47,8 @@ export async function POST(request: NextRequest) {
         country: body.country,
         orderNotice: body.orderNotice || '',
         status: body.status || 'pending',
-        total: parseFloat(body.total)
+        total: parseFloat(body.total),
+        userId: body.userId || null
       }
     });
 
