@@ -6,8 +6,8 @@ export async function GET(
   { params }: { params: { userId: string } }
 ) {
   try {
-    const { userId } = params;
-    console.log("Fetching orders for userId:", userId);
+  const { userId } = params;
+  console.log("[API] Fetching orders for userId:", userId);
 
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
@@ -19,15 +19,13 @@ export async function GET(
     });
 
     if (!user) {
-      console.log("User not found for userId:", userId);
+      console.log("[API] User not found for userId:", userId);
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-
-    console.log("Found user with email:", user.email);
-
+    
     const orders = await prisma.customer_order.findMany({
       where: {
-        email: user.email
+        userId: userId
       },
       include: {
         customer_order_product: {
@@ -47,7 +45,7 @@ export async function GET(
       orderBy: { dateTime: 'desc' }
     });
 
-    console.log(`Found ${orders.length} orders for user:`, user.email);
+  console.log(`[API] Found ${orders.length} orders for user:`, user.email);
 
     const transformedOrders = orders.map(order => ({
       id: order.id,

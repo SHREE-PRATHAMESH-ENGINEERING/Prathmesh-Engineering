@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBell, FaChevronDown } from "react-icons/fa6";
+import { FaChevronDown } from "react-icons/fa6";
 import { FaSearch, FaRegUser, FaInstagram, FaTwitter, FaFacebook, FaLinkedin, FaWhatsapp, FaPhone, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 
 import CartElement from "./CartElement";
@@ -533,34 +533,7 @@ const Header = () => {
 
             <div className="absolute inset-0 -m-2 border border-[#5068a4] rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
           </Link>
-          <div className="flex gap-x-5 items-center max-sm:gap-x-3">
-            <FaBell className="text-xl max-sm:text-lg hover:text-[#5068a4] transition-colors duration-300 cursor-pointer" />
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="w-10 max-sm:w-8">
-                <Image
-                  src="/randomuser.jpg"
-                  alt="random profile photo"
-                  width={30}
-                  height={30}
-                  className="w-full h-full rounded-full hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 max-sm:w-40 max-sm:right-0"
-              >
-                <li>
-                  <Link href="/admin">Dashboard</Link>
-                </li>
-                <li>
-                  <a>Profile</a>
-                </li>
-                <li onClick={handleLogout}>
-                  <a href="#">Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          
         </div>
       )}
     </header>

@@ -28,6 +28,24 @@ interface OrderProduct {
 
 const AdminSingleOrder = () => {
   const [orderProducts, setOrderProducts] = useState<OrderProduct[]>();
+  type OrderStatus = "processing" | "shipped" | "delivered" | "cancelled";
+  interface Order {
+    id: string;
+    adress: string;
+    apartment: string;
+    company: string;
+    dateTime: string;
+    email: string;
+    lastname: string;
+    name: string;
+    phone: string;
+    postalCode: string;
+    city: string;
+    country: string;
+    orderNotice: string;
+    status: OrderStatus;
+    total: number;
+  }
   const [order, setOrder] = useState<Order>({
     id: "",
     adress: "",
@@ -121,22 +139,16 @@ const AdminSingleOrder = () => {
   };
 
   const deleteOrder = async () => {
-    const requestOptions = {
-      method: "DELETE",
-    };
-
-    fetch(
-      `/api/order-product/${order?.id}`,
-      requestOptions
-    ).then((response) => {
-      fetch(
-        `/api/orders/${order?.id}`,
-        requestOptions
-      ).then((response) => {
-        toast.success("Order deleted successfully");
-        router.push("/admin/orders");
+    const requestOptions = { method: "DELETE" };
+    fetch(`/api/orders/${order?.id}`, requestOptions)
+      .then((response) => {
+        if (response.status === 204) {
+          toast.success("Order deleted successfully");
+          router.push("/admin/orders");
+        } else {
+          toast.error("Failed to delete order");
+        }
       });
-    });
   };
 
   return (
@@ -269,16 +281,16 @@ const AdminSingleOrder = () => {
                   ...order,
                   status: e.target.value as
                     | "processing"
+                    | "shipped"
                     | "delivered"
-                    | "cancelled"
-                    | "need urgent",
+                    | "cancelled",
                 })
               }
             >
               <option value="processing">Processing</option>
+              <option value="shipped">Shipped</option>
               <option value="delivered">Delivered</option>
               <option value="cancelled">Cancelled</option>
-              <option value="need urgent">Need Urgent</option>
             </select>
           </div>
           
@@ -325,22 +337,8 @@ const AdminSingleOrder = () => {
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Order Summary</h3>
             <div className="space-y-2">
               <div className="flex justify-between text-gray-700">
-                <span>Subtotal:</span>
+                <span>Total Paid:</span>
                 <span className="font-semibold">₹{order?.total}</span>
-              </div>
-              <div className="flex justify-between text-gray-700">
-                <span>Tax (20%):</span>
-                <span className="font-semibold">₹{Math.round(order?.total / 5)}</span>
-              </div>
-              <div className="flex justify-between text-gray-700">
-                <span>Shipping:</span>
-                <span className="font-semibold">₹5</span>
-              </div>
-              <div className="border-t border-[#5068a4] border-opacity-20 pt-2 mt-2">
-                <div className="flex justify-between text-xl font-bold text-[#5068a4]">
-                  <span>Total:</span>
-                  <span>₹{Math.round(order?.total + order?.total / 5 + 5)}</span>
-                </div>
               </div>
             </div>
           </div>

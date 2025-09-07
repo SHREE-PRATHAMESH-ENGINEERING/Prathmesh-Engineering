@@ -110,9 +110,10 @@ const RegisterPage = () => {
       return;
     }
 
-    if (!password || password.length < 8) {
-      setError("Password is invalid");
-      toast.error("Password is invalid");
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError("Password must be at least 8 characters, include uppercase, lowercase, number, and special character.");
+      toast.error("Password must be at least 8 characters, include uppercase, lowercase, number, and special character.");
       return;
     }
 
@@ -122,7 +123,6 @@ const RegisterPage = () => {
       return;
     }
 
-    // Send OTP
     try {
       const otpRes = await fetch("/api/send-otp", {
         method: "POST",

@@ -1,7 +1,5 @@
-import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import toast from "react-hot-toast";
 import prisma from "@/utils/db";
 
 export default async function Layout({

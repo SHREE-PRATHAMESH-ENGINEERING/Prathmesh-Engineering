@@ -34,6 +34,8 @@ model customer_order {
   city                   String
   country                String
   orderNotice            String?
+  userId                 String
+  user                   user                     @relation(fields: [userId], references: [id], onDelete: Cascade)
   customer_order_product customer_order_product[]
 }
 
@@ -79,6 +81,7 @@ model user {
   password String?
   role     String?    @default("user")
   wishlist wishlist[]
+  customer_orders customer_order[]
 }
 
 model wishlist {
