@@ -1,5 +1,6 @@
 import prisma from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
+import { sendOrderConfirmationEmail } from "@/lib/sendOrderConfirmationEmail";
 
 export async function GET() {
   try {
@@ -25,7 +26,6 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Generate a unique ID for the order
     const orderId = `order_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     
     const order = await prisma.customer_order.create({
@@ -46,6 +46,31 @@ export async function POST(request: NextRequest) {
         total: parseFloat(body.total)
       }
     });
+
+    // Fetch order with products for email
+    let orderWithProducts = null;
+    try {
+      orderWithProducts = await prisma.customer_order.findUnique({
+        where: { id: order.id },
+        include: {
+          customer_order_product: {
+            include: {
+              product: true
+            }
+          }
+        }
+      });
+      if (orderWithProducts) {
+        const orderForEmail = {
+          ...orderWithProducts,
+          dateTime: orderWithProducts.dateTime ? orderWithProducts.dateTime.toISOString() : undefined,
+          orderNotice: orderWithProducts.orderNotice ?? undefined,
+        };
+        await sendOrderConfirmationEmail(orderForEmail);
+      }
+    } catch (err) {
+      console.error('Failed to send confirmation email:', err);
+    }
 
     return NextResponse.json(order, { status: 201 });
   } catch (error) {

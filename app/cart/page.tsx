@@ -10,8 +10,10 @@ import { FaCheck, FaClock, FaCircleQuestion, FaXmark } from "react-icons/fa6";
 import { useProductStore } from "../_zustand/store";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { getShippingEstimate, getTaxEstimate } from "@/lib/utils";
 
 const CartPage = () => {
+  
   const { products, removeFromCart, calculateTotals, total } =
     useProductStore();
 
@@ -20,6 +22,11 @@ const CartPage = () => {
     calculateTotals();
     toast.success("Product removed from the cart");
   };
+
+  const country = "India";
+  const deliveryType = "standard";
+  const shippingEstimate = getShippingEstimate(country, deliveryType);
+  const taxEstimate = getTaxEstimate(country, total);
 
   return (
     <div className="bg-gradient-to-b from-[#f5f8ff] via-[#eaf1fb] to-white min-h-screen relative overflow-hidden">
@@ -145,7 +152,7 @@ const CartPage = () => {
                       />
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">₹5.00</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹{shippingEstimate}</dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="flex text-sm text-gray-600">
@@ -163,16 +170,14 @@ const CartPage = () => {
                       />
                     </a>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">
-                    ₹{total / 5}
-                  </dd>
+                  <dd className="text-sm font-medium text-gray-900">₹{taxEstimate}</dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <dt className="text-base font-medium text-gray-900">
                     Order total
                   </dt>
                   <dd className="text-base font-medium text-gray-900">
-                    ₹{total === 0 ? 0 : Math.round(total + total / 5 + 5)}
+                    ₹{total === 0 ? 0 : Math.round(total + taxEstimate + shippingEstimate)}
                   </dd>
                 </div>
               </dl>

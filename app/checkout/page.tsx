@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { isValidEmailAddressFormat, isValidNameOrLastname } from "@/lib/utils";
+import { isValidPostalCode, isValidPhoneNumber } from "@/lib/utils";
 import Script from "next/script";
+import { getShippingEstimate, getTaxEstimate } from "@/lib/utils";
 
 declare global {
   interface Window {
@@ -17,6 +19,7 @@ declare global {
 const CheckoutPage = () => {
   const [checkoutForm, setCheckoutForm] = useState({
     name: "",
+    lastname: "",
     phone: "",
     email: "",
     company: "",
@@ -30,9 +33,16 @@ const CheckoutPage = () => {
   const { products, total, clearCart } = useProductStore();
   const router = useRouter();
 
+  const country = "India";
+  const deliveryType = "standard";
+  const shippingEstimate = getShippingEstimate(country, deliveryType);
+  const taxEstimate = getTaxEstimate(country, total);
+  const finalTotal = Math.round(total + taxEstimate + shippingEstimate);
+
   const makePurchase = async () => {
     if (
       checkoutForm.name.length > 0 &&
+      checkoutForm.lastname.length > 0 &&
       checkoutForm.phone.length > 0 &&
       checkoutForm.email.length > 0 &&
       checkoutForm.company.length > 0 &&
@@ -46,13 +56,23 @@ const CheckoutPage = () => {
         toast.error("You entered invalid format for name");
         return;
       }
-
+      if (!isValidNameOrLastname(checkoutForm.lastname)) {
+        toast.error("You entered invalid format for last name");
+        return;
+      }
       if (!isValidEmailAddressFormat(checkoutForm.email)) {
         toast.error("You entered invalid format for email address");
         return;
       }
+      if (!isValidPhoneNumber(checkoutForm.phone)) {
+        toast.error("Please enter a valid 10-digit phone number");
+        return;
+      }
+      if (!isValidPostalCode(checkoutForm.postalCode)) {
+        toast.error("Please enter a valid 6-digit pincode");
+        return;
+      }
 
-      const finalTotal = Math.round(total + total / 5 + 5);
 
       try {
         const razorpayResponse = await fetch("/api/razorpay", {
@@ -135,6 +155,7 @@ const CheckoutPage = () => {
         },
         body: JSON.stringify({
           name: checkoutForm.name,
+          lastname: checkoutForm.lastname,
           phone: checkoutForm.phone,
           email: checkoutForm.email,
           company: checkoutForm.company,
@@ -142,7 +163,7 @@ const CheckoutPage = () => {
           apartment: checkoutForm.apartment,
           postalCode: checkoutForm.postalCode,
           status: "paid",
-          total: total,
+          total: finalTotal,
           city: checkoutForm.city,
           country: checkoutForm.country,
           orderNotice: checkoutForm.orderNotice,
@@ -158,6 +179,7 @@ const CheckoutPage = () => {
 
       setCheckoutForm({
         name: "",
+        lastname: "",
         phone: "",
         email: "",
         company: "",
@@ -249,7 +271,7 @@ const CheckoutPage = () => {
                   className="flex items-start space-x-4 py-6"
                 >
                   <Image
-                    src={product?.image ? `/${product?.image}` : "/product_placeholder.jpg"}
+                    src={product?.image}
                     alt={product?.title}
                     width={80}
                     height={80}
@@ -267,27 +289,22 @@ const CheckoutPage = () => {
               ))}
             </ul>
 
-            <dl className="hidden space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
-              <div className="flex items-center justify-between">
-                <dt className="text-gray-600">Subtotal</dt>
-                <dd>₹{total}</dd>
-              </div>
-
+            <dl className="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
               <div className="flex items-center justify-between">
                 <dt className="text-gray-600">Shipping</dt>
-                <dd>₹5</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹{shippingEstimate}</dd>
               </div>
 
               <div className="flex items-center justify-between">
                 <dt className="text-gray-600">Taxes</dt>
-                <dd>₹{total / 5}</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹{taxEstimate}</dd>
               </div>
 
               <div className="flex items-center justify-between border-t border-gray-200 pt-6">
-                <dt className="text-base">Total</dt>
-                <dd className="text-base">
-                  ₹{total === 0 ? 0 : Math.round(total + total / 5 + 5)}
-                </dd>
+                <dt className="text-base">Total Paid</dt>
+                  <dd className="text-base font-medium text-gray-900">
+                    ₹{finalTotal}
+                  </dd>
               </div>
             </dl>
 
@@ -321,80 +338,112 @@ const CheckoutPage = () => {
                 Contact information
               </h2>
 
-              <div className="mt-6">
-                <label
-                  htmlFor="name-input"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <div className="mt-1">
-                  <input
-                    value={checkoutForm.name}
-                    onChange={(e) =>
-                      setCheckoutForm({
-                        ...checkoutForm,
-                        name: e.target.value,
-                      })
-                    }
-                    type="text"
-                    id="name-input"
-                    name="name-input"
-                    autoComplete="text"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
+
+              <div className="mt-6 flex gap-4">
+                <div className="flex-1">
+                  <label
+                    htmlFor="name-input"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    First Name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      value={checkoutForm.name}
+                      onChange={(e) =>
+                        setCheckoutForm({
+                          ...checkoutForm,
+                          name: e.target.value,
+                        })
+                      }
+                      type="text"
+                      id="name-input"
+                      name="name-input"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <label
+                    htmlFor="lastname-input"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Last Name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      value={checkoutForm.lastname}
+                      onChange={(e) =>
+                        setCheckoutForm({
+                          ...checkoutForm,
+                          lastname: e.target.value,
+                        })
+                      }
+                      type="text"
+                      id="lastname-input"
+                      name="lastname-input"
+                      autoComplete="family-name"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6">
-                <label
-                  htmlFor="phone-input"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Phone number
-                </label>
-                <div className="mt-1">
-                  <input
-                    value={checkoutForm.phone}
-                    onChange={(e) =>
-                      setCheckoutForm({
-                        ...checkoutForm,
-                        phone: e.target.value,
-                      })
-                    }
-                    type="tel"
-                    id="phone-input"
-                    name="phone-input"
-                    autoComplete="text"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label
-                  htmlFor="email-address"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email address
-                </label>
-                <div className="mt-1">
-                  <input
-                    value={checkoutForm.email}
-                    onChange={(e) =>
-                      setCheckoutForm({
-                        ...checkoutForm,
-                        email: e.target.value,
-                      })
-                    }
-                    type="email"
-                    id="email-address"
-                    name="email-address"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
-                </div>
-              </div>
+                <div className="mt-6 flex gap-4">
+                  <div className="flex-1">
+                    <label
+                      htmlFor="phone-input"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Phone number
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        value={checkoutForm.phone}
+                        onChange={(e) =>
+                          setCheckoutForm({
+                            ...checkoutForm,
+                            phone: e.target.value,
+                          })
+                        }
+                        type="tel"
+                        id="phone-input"
+                        name="phone-input"
+                        autoComplete="text"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <label
+                      htmlFor="email-address"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Email address
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        value={checkoutForm.email}
+                        onChange={(e) =>
+                          setCheckoutForm({
+                            ...checkoutForm,
+                            email: e.target.value,
+                          })
+                        }
+                        type="email"
+                        id="email-address"
+                        name="email-address"
+                        autoComplete="email"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        required
+                      />
+                    </div>
+                  </div>
+                  </div>
             </section>
 
 
@@ -436,7 +485,7 @@ const CheckoutPage = () => {
                     htmlFor="address"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Address
+                    House, street address, etc.
                   </label>
                   <div className="mt-1">
                     <input
@@ -452,6 +501,7 @@ const CheckoutPage = () => {
                           adress: e.target.value,
                         })
                       }
+                        required
                     />
                   </div>
                 </div>
@@ -461,7 +511,7 @@ const CheckoutPage = () => {
                     htmlFor="apartment"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Apartment, suite, etc.
+                    Area, Landmark, etc.
                   </label>
                   <div className="mt-1">
                     <input
@@ -476,6 +526,7 @@ const CheckoutPage = () => {
                           apartment: e.target.value,
                         })
                       }
+                        required
                     />
                   </div>
                 </div>
@@ -501,6 +552,7 @@ const CheckoutPage = () => {
                           city: e.target.value,
                         })
                       }
+                        required
                     />
                   </div>
                 </div>
@@ -526,6 +578,7 @@ const CheckoutPage = () => {
                           country: e.target.value,
                         })
                       }
+                        required
                     />
                   </div>
                 </div>
@@ -551,6 +604,7 @@ const CheckoutPage = () => {
                           postalCode: e.target.value,
                         })
                       }
+                        required
                     />
                   </div>
                 </div>
@@ -560,7 +614,7 @@ const CheckoutPage = () => {
                     htmlFor="order-notice"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Order notice
+                    Any remarks
                   </label>
                   <div className="mt-1">
                     <textarea

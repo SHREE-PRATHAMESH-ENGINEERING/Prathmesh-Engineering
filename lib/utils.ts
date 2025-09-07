@@ -386,16 +386,6 @@ export const manufacturingCapabilities = {
   ]
 };
 
-export const isValidNameOrLastname = (input: string) => {
-  const regex = /^[a-zA-Z\s]+$/;
-  return regex.test(input);
-};
-
-export const isValidEmailAddressFormat = (input: string) => {
-  const regex = /^\S+@\S+\.\S+$/;
-  return regex.test(input);
-};
-
 // Policy Content
 export const privacyPolicyContent = `Privacy Policy
 
@@ -687,3 +677,53 @@ Email: admin@prathmeshengineering.com
 Phone: 7972839225
 Address: Dhaurahara, Vijaypur, Mirzapur, Uttar Pradesh 231303
 `;
+
+export const isValidNameOrLastname = (input: string) => {
+  const regex = /^[a-zA-Z\s]+$/;
+  return regex.test(input);
+};
+
+export const isValidEmailAddressFormat = (input: string) => {
+  const regex = /^\S+@\S+\.\S+$/;
+  return regex.test(input);
+};
+
+export const isValidPhoneNumber = (input: string) => {
+  return /^(\+?[1-9]\d{1,14}|[6-9]\d{9})$/.test(input);
+};
+
+export const isValidPostalCode = (input: string) => {
+  return /^[1-9][0-9]{5}$/.test(input) || /^[A-Za-z0-9 \-]{3,10}$/.test(input);
+};
+
+// Configurable rates for shipping and tax
+export const SHIPPING_RATES = {
+  india: {
+    standard: { base: 100 },
+    express: { base: 200 }
+  },
+  international: { base: 500 }
+};
+
+export const TAX_RATES = {
+  india: 0.18,
+  international: 0.10
+};
+
+export const getShippingEstimate = (
+  country: string,
+  deliveryType: "standard" | "express" = "standard"
+) => {
+  if (country.toLowerCase() === "india") {
+    const rate = SHIPPING_RATES.india[deliveryType];
+    return rate.base;
+  } else {
+    const rate = SHIPPING_RATES.international;
+    return rate.base;
+  }
+};
+
+export const getTaxEstimate = (country: string, subtotal: number) => {
+  const rate = country.toLowerCase() === "india" ? TAX_RATES.india : TAX_RATES.international;
+  return Math.round(subtotal * rate);
+};
