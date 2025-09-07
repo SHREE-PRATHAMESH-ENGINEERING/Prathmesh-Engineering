@@ -5,13 +5,12 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Generate a unique ID for the order product
     const orderProductId = `order_prod_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     
     const orderProduct = await prisma.customer_order_product.create({
       data: {
         id: orderProductId,
-        customerOrderId: body.orderId,
+        customerOrderId: body.customerOrderId,
         productId: body.productId,
         quantity: parseInt(body.quantity)
       }

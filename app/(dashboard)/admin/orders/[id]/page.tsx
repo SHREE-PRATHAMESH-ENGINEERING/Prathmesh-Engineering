@@ -294,7 +294,6 @@ const AdminSingleOrder = () => {
             ></textarea>
           </div>
 
-          {/* Order Products Section */}
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-gray-800 mb-4 border-b border-[#5068a4] border-opacity-20 pb-2">Order Items</h3>
             <div className="space-y-4">
@@ -302,7 +301,7 @@ const AdminSingleOrder = () => {
                 <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl" key={product?.id}>
                   <div className="w-16 h-16 rounded-lg overflow-hidden border-2 border-gray-200">
                     <Image
-                      src={product?.product?.mainImage ? `/${product?.product?.mainImage}` : "/product_placeholder.jpg"}
+                      src={product?.product?.mainImage ? product?.product?.mainImage : "/product_placeholder.jpg"}
                       alt={product?.product?.title}
                       width={64}
                       height={64}
@@ -322,7 +321,6 @@ const AdminSingleOrder = () => {
             </div>
           </div>
 
-          {/* Order Total Section */}
           <div className="bg-[#5068a4] bg-opacity-5 rounded-xl p-6 mb-8">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Order Summary</h3>
             <div className="space-y-2">
@@ -347,7 +345,6 @@ const AdminSingleOrder = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-4 max-sm:flex-col">
             <button
               type="button"
