@@ -33,8 +33,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    setTimeout(() => signOut(), 1000);
-    toast.success("Logout successful!");
+  signOut({ callbackUrl: "/" });
+  toast.success("Logout successful!");
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -42,19 +42,6 @@ const Header = () => {
     if (searchQuery.trim()) {
       window.location.href = `/shop?search=${encodeURIComponent(searchQuery.trim())}`;
     }
-  };
-
-  const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: React.ComponentType<any> } = {
-      FaPhone,
-      FaWhatsapp,
-      FaLinkedin,
-      FaInstagram,
-      FaTwitter,
-      FaFacebook,
-      FaEnvelope
-    };
-    return iconMap[iconName];
   };
 
   const getWishlistByUserId = useCallback(async (id: string) => {
